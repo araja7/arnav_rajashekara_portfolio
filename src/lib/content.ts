@@ -41,8 +41,10 @@ export const aboutContent = {
     that affords convenience, but instead actually expands human capability. That realization 
     sparked a fundamental curiosity: How far can software push the boundaries of human potential? 
     That question has fueled me ever since, as I aim to be at the forefront of the efforts to find out.`,
+    "",
     `When I'm not coding, you'll find me weightlifting, watching sports, reading, playing piano, 
     or exploring new technologies. I also love spending time with my friends and family.`,
+    "",
     `I love opportunities to apply my skills in software 
     engineering and data science to build impactful products.`,
   ],
