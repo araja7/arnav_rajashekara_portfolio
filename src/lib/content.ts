@@ -31,18 +31,18 @@ export const navLinks = [
 
 export const aboutContent = {
   headline: "About Me",
-  intro: `I'm a Computer Science and Data Science student passionate about building 
-    intelligent systems that solve real-world problems. With a strong foundation in 
-    software engineering and machine learning, I love turning complex data into 
-    actionable insights.`,
+  intro: `I am a passionate fourth-year B.S. computer science & statistics student with a strong 
+          foundation in programming and a deep curiosity for cutting-edge technologies. 
+          I am eager to explore the endless possibilities of the digital world and committed to 
+          continuous learning. I am enthusiastic about solving real-world problems through 
+          innovative software solutions.`,
   bio: [
-    `My journey in tech started with a curiosity about how things work. That curiosity 
-    led me to explore everything from low-level systems programming to cutting-edge 
-    machine learning models.`,
-    `When I'm not coding, you'll find me contributing to open-source projects, 
-    exploring new technologies, or mentoring aspiring developers. I believe in 
-    continuous learning and sharing knowledge with the community.`,
-    `I'm currently seeking opportunities where I can apply my skills in software 
+    `My journey in tech started with a realization that technology was not just a luxury 
+    that affords convenience, but instead actually expands human capability. That realization 
+    sparked a fundamental curiosity: How far can software push the boundaries of human potential? 
+    That question has fueled me ever since, as I aim to be at the forefront of the efforts to find out.`,
+    `When I'm not coding, you'll find me weightlifting, watching sports, reading, or exploring new technologies.`,
+    `I love opportunities to apply my skills in software 
     engineering and data science to build impactful products.`,
   ],
 };
