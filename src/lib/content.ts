@@ -8,11 +8,11 @@ import projectRobot from "@/assets/project-robot.png";
 import projectMario from "@/assets/project-mario.png";
 
 export const siteConfig = {
-  name: "Arnav",
+  name: "Arnav Rajashekara",
   title: "Software Engineer | Data Scientist",
   tagline: "Building intelligent systems, one line of code at a time.",
-  email: "arnav@example.com",
-  location: "San Francisco, CA",
+  email: "arnavrajashekara2@gmail.com",
+  location: "Seattle, WA",
   resumeUrl: "/resume.pdf",
 };
 
