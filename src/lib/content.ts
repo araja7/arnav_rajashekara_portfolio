@@ -17,9 +17,7 @@ export const siteConfig = {
 };
 
 export const socialLinks = {
-  github: "https://github.com/arnav",
-  linkedin: "https://linkedin.com/in/arnav",
-  twitter: "https://twitter.com/arnav",
+  linkedin: "https://www.linkedin.com/in/arnav-rajashekara-078995275/",
   email: "mailto:arnavrajashekara2@gmail.com",
 };
 
