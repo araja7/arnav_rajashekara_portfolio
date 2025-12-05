@@ -20,7 +20,7 @@ export const socialLinks = {
   github: "https://github.com/arnav",
   linkedin: "https://linkedin.com/in/arnav",
   twitter: "https://twitter.com/arnav",
-  email: "mailto:arnav@example.com",
+  email: "mailto:arnavrajashekara2@gmail.com",
 };
 
 export const navLinks = [
