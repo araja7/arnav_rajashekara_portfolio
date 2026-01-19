@@ -13,7 +13,7 @@ export const siteConfig = {
   tagline: "Automate the ordinary. Engineer the impossible.",
   email: "arnavrajashekara2@gmail.com",
   location: "Seattle, WA",
-  resumeUrl: "/resume.pdf",
+  resumeUrl: "/arnav_rajashekara_resume.pdf",
 };
 
 export const socialLinks = {
