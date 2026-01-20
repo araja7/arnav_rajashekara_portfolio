@@ -19,7 +19,7 @@ const Projects = () => {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeading
               title="Featured Projects"
-              subtitle="A collection of projects showcasing my expertise in software engineering, data science, and machine learning."
+              subtitle="A collection of projects showcasing impactful technical solutions to real-world problems."
             />
 
             {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
