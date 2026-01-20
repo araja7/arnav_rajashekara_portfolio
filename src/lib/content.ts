@@ -82,7 +82,7 @@ export const skills = [
     ],
   },
   {
-    category: "ML/Data Science",
+    category: "AI/ML/Data Science",
     items: [
       { name: "PyTorch", icon: "pytorch" },
       { name: "TensorFlow", icon: "tensorflow" },
