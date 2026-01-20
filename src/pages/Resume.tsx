@@ -64,11 +64,11 @@ const Resume = () => {
                 </div>
                 
                 {/* Uncomment when PDF is available */}
-                {/* <iframe
+                {<iframe
                   src={siteConfig.resumeUrl}
                   className="w-full h-full"
                   title="Resume PDF"
-                /> */}
+                />}
               </div>
             </motion.div>
           </div>
