@@ -31,7 +31,7 @@ const About = () => {
             >
               <div className="prose prose-lg dark:prose-invert mx-auto">
                 {aboutContent.bio.map((paragraph, index) => (
-                  <p key={index} className="text-muted-foreground leading-relaxed mb-4">
+                  <p key={index} className="text-muted-foreground leading-relaxed mb-4 indent-4">
                     {paragraph}
                   </p>
                 ))}
