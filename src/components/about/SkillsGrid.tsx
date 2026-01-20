@@ -2,29 +2,50 @@ import { motion } from "framer-motion";
 import { 
   Code2, Database, Server, Brain, MessageSquare, 
   BarChart3, Container, Cloud, Boxes, Palette,
-  FileCode, Terminal, Layers, Cpu
+  FileCode, Terminal, Layers, Cpu, GitBranch,
+  Github, Send, Webhook, CheckSquare2, FileText,
+  BookOpen, LineChart, FlaskConical, Circle,
+  TestTube, Calculator, Rss, Zap, Rocket,
+  Grid3x3, Settings, Cog, Radio
 } from "lucide-react";
 import { skills } from "@/lib/content";
 
 const iconMap: Record<string, any> = {
   python: FileCode,
-  c: Terminal,
+  java: Code2,
   javascript: Code2,
   typescript: Code2,
+  c: Terminal,
+  html: Code2,
   database: Database,
+  r: Code2,
+  matlab: Calculator,
+  assembly: Terminal,
   react: Boxes,
   nextjs: Layers,
   tailwind: Palette,
-  framer: Boxes,
+  rss: Radio,
   nodejs: Server,
-  aws: Cloud,
-  docker: Container,
+  flask: FlaskConical,
+  fastapi: Zap,
   postgresql: Database,
-  mongodb: Database,
-  brain: Brain,
-  message: MessageSquare,
   pytorch: Cpu,
+  tensorflow: Cpu,
+  sklearn: Brain,
   chart: BarChart3,
+  numpy: Grid3x3,
+  scipy: Calculator,
+  matplotlib: LineChart,
+  beautifulsoup: FlaskConical,
+  aws: Cloud,
+  azure: Cloud,
+  terraform: Layers,
+  git: GitBranch,
+  jenkins: Settings,
+  kubernetes: Container,
+  docker: Container,
+  cucumber: FlaskConical,
+  junit: TestTube,
 };
 
 export function SkillsGrid() {
