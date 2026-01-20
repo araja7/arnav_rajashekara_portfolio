@@ -22,10 +22,14 @@ const Projects = () => {
               subtitle="A collection of projects showcasing my expertise in software engineering, data science, and machine learning."
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               {projects.map((project, index) => (
                 <ProjectCard key={project.id} project={project} index={index} />
               ))}
+            </div> */}
+            
+            <div className="max-w-5xl mx-auto text-center py-20">
+              <p className="text-2xl md:text-3xl text-muted-foreground">Stay tuned</p>
             </div>
           </div>
         </section>
