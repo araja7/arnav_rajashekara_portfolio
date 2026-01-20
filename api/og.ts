@@ -3,36 +3,30 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 type Meta = {
   title: string;
   description: string;
-  image: string;
 };
 
-const DEFAULT_SITE_URL = "https://arnav.dev";
+const DEFAULT_SITE_URL = "https://arnav-rajashekara-portfolio.vercel.app";
 
 const ROUTE_META: Record<string, Meta> = {
   "/": {
     title: "Arnav | Software Engineer & Data Scientist",
     description: "Building intelligent systems, one line of code at a time.",
-    image: "https://lovable.dev/opengraph-image-p98pqg.png",
   },
   "/about": {
     title: "About | Arnav",
     description: "Learn more about Arnav — background, skills, and experience.",
-    image: "https://lovable.dev/opengraph-image-p98pqg.png",
   },
   "/projects": {
     title: "Projects | Arnav",
     description: "Explore Arnav's portfolio of software engineering and data science projects.",
-    image: "https://lovable.dev/opengraph-image-p98pqg.png",
   },
   "/resume": {
     title: "Resume | Arnav",
     description: "View and download Arnav's professional resume.",
-    image: "https://lovable.dev/opengraph-image-p98pqg.png",
   },
   "/contact": {
     title: "Contact | Arnav",
     description: "Get in touch with Arnav.",
-    image: "https://lovable.dev/opengraph-image-p98pqg.png",
   },
 };
 
@@ -72,10 +66,10 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
     ({
       title: "Arnav | Software Engineer & Data Scientist",
       description: "Building intelligent systems, one line of code at a time.",
-      image: "https://lovable.dev/opengraph-image-p98pqg.png",
     } satisfies Meta);
 
   const pageUrl = `${siteUrl}${cleanPath === "/" ? "" : cleanPath}`;
+  const imageUrl = `${siteUrl}/tab_image.jpg`;
 
   res.setHeader("Content-Type", "text/html; charset=utf-8");
   res.setHeader("Cache-Control", "public, max-age=0, s-maxage=86400, stale-while-revalidate=604800");
@@ -94,13 +88,13 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
     <meta property="og:title" content="${escapeHtml(meta.title)}" />
     <meta property="og:description" content="${escapeHtml(meta.description)}" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="${escapeHtml(meta.image)}" />
+    <meta property="og:image" content="${escapeHtml(imageUrl)}" />
     <meta property="og:url" content="${escapeHtml(pageUrl)}" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${escapeHtml(meta.title)}" />
     <meta name="twitter:description" content="${escapeHtml(meta.description)}" />
-    <meta name="twitter:image" content="${escapeHtml(meta.image)}" />
+    <meta name="twitter:image" content="${escapeHtml(imageUrl)}" />
 
     <meta http-equiv="refresh" content="0; url=${escapeHtml(pageUrl)}" />
   </head>
