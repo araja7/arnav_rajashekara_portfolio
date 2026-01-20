@@ -155,7 +155,7 @@ export const timeline = [
     year: "2023",
     title: "Student Researcher",
     company: "Buckeye AutoDrive",
-    description: "Working as part of a team to develop and demonstrate an autonomous vehicle that can navigate urban driving courses as described by SAE J3016 Standard Level 4 automation.",
+    description: "Worked as part of a team to develop and demonstrate an autonomous vehicle that can navigate urban driving courses as described by SAE J3016 Standard Level 4 automation.",
     type: "work" as const,
   },
   {
