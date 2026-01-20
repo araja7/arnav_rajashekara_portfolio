@@ -9,24 +9,24 @@ const DEFAULT_SITE_URL = "https://arnav-rajashekara-portfolio.vercel.app";
 
 const ROUTE_META: Record<string, Meta> = {
   "/": {
-    title: "Arnav | Software Engineer & Data Scientist",
+    title: "Arnav Rajashekara | Software Engineer & Data Scientist",
     description: "Building intelligent systems, one line of code at a time.",
   },
   "/about": {
-    title: "About | Arnav",
-    description: "Learn more about Arnav — background, skills, and experience.",
+    title: "About | Arnav Rajashekara",
+    description: "Learn more about Arnav Rajashekara — background, skills, and experience.",
   },
   "/projects": {
-    title: "Projects | Arnav",
-    description: "Explore Arnav's portfolio of software engineering and data science projects.",
+    title: "Projects | Arnav Rajashekara",
+    description: "Explore Arnav Rajashekara's portfolio of software engineering and data science projects.",
   },
   "/resume": {
-    title: "Resume | Arnav",
-    description: "View and download Arnav's professional resume.",
+    title: "Resume | Arnav Rajashekara",
+    description: "View and download Arnav Rajashekara's professional resume.",
   },
   "/contact": {
-    title: "Contact | Arnav",
-    description: "Get in touch with Arnav.",
+    title: "Contact | Arnav Rajashekara",
+    description: "Get in touch with Arnav Rajashekara.",
   },
 };
 
@@ -64,7 +64,7 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
   const meta: Meta =
     ROUTE_META[cleanPath] ??
     ({
-      title: "Arnav | Software Engineer & Data Scientist",
+      title: "Arnav Rajashekara | Software Engineer & Data Scientist",
       description: "Building intelligent systems, one line of code at a time.",
     } satisfies Meta);
 
