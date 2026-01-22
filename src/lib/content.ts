@@ -19,6 +19,7 @@ export const siteConfig = {
 export const socialLinks = {
   linkedin: "https://www.linkedin.com/in/arnav-rajashekara-078995275/",
   email: "mailto:arnavrajashekara2@gmail.com",
+  github: "https://github.com/araja7",
 };
 
 export const navLinks = [

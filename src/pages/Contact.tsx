@@ -24,6 +24,7 @@ const Contact = () => {
 
   const socialInfo = [
     { icon: Linkedin, label: "LinkedIn", href: socialLinks.linkedin },
+    { icon: Github, label: "GitHub", href: socialLinks.github },
   ];
 
   return (

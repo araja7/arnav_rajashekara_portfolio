@@ -7,6 +7,7 @@ export function Footer() {
 
   const socialIcons = [
     { href: socialLinks.linkedin, icon: Linkedin, label: "LinkedIn" },
+    { href: socialLinks.github, icon: Github, label: "GitHub" },
     { href: socialLinks.email, icon: Mail, label: "Email" },
   ];
 
