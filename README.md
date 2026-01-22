@@ -1,64 +1,63 @@
-# Welcome to your Lovable project
+# Arnav Rajashekara - Portfolio
 
-## Project info
+A modern, responsive portfolio website showcasing my work, skills, and experience as a Software Engineer and Data Scientist.
 
-**URL**: https://lovable.dev/projects/c8d1405a-a903-49cf-9ebd-b9206ca78c6f
+## Features
 
-## How can I edit this code?
+- **Modern UI/UX**: Built with React, TypeScript, and Tailwind CSS
+- **Responsive Design**: Fully responsive across all device sizes
+- **Dark Mode**: Theme toggle for light/dark mode
+- **Contact Form**: Integrated contact form with email functionality via Resend
+- **Project Showcase**: Display of featured projects with descriptions and tech stacks
+- **Resume Download**: Direct access to downloadable resume
+- **SEO Optimized**: Meta tags and Open Graph support
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/c8d1405a-a903-49cf-9ebd-b9206ca78c6f) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
+## Technologies
 
 This project is built with:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **Vite** - Fast build tool and dev server
+- **TypeScript** - Type-safe JavaScript
+- **React** - UI library
+- **React Router** - Client-side routing
+- **shadcn/ui** - High-quality component library
+- **Tailwind CSS** - Utility-first CSS framework
+- **Framer Motion** - Animation library
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or higher) - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- npm or yarn
+
+### Installation
+
+```sh
+# Clone the repository
+git clone <YOUR_GIT_URL>
+
+# Navigate to the project directory
+cd arnav_rajashekara_portfolio
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
+```
+
+The application will be available at `http://localhost:8080`
+
+### Build for Production
+
+```sh
+# Create a production build
+npm run build
+
+# Preview the production build
+npm run preview
+```
 
 ## Contact Form Setup
 
@@ -81,14 +80,31 @@ That's it! The contact form will now send emails when users submit messages.
    - If you have your own domain, you can verify it in Resend and update the `from` field in `api/contact.ts` to use your domain email (e.g., `'Portfolio Contact Form <contact@yourdomain.com>'`)
    - Without a domain, the form uses `onboarding@resend.dev` which works perfectly fine!
 
-## How can I deploy this project?
+## Deployment
 
-Simply open [Lovable](https://lovable.dev/projects/c8d1405a-a903-49cf-9ebd-b9206ca78c6f) and click on Share -> Publish.
+This project is configured for deployment on Vercel. Simply connect your GitHub repository to Vercel and it will automatically deploy on push.
 
-## Can I connect a custom domain to my Lovable project?
+### Custom Domain
 
-Yes, you can!
+You can connect a custom domain in your Vercel project settings under the Domains section.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## Project Structure
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+```
+├── api/              # Serverless functions (Vercel)
+├── public/           # Static assets
+├── src/
+│   ├── components/   # React components
+│   ├── pages/        # Page components
+│   ├── lib/          # Utilities and content
+│   └── hooks/        # Custom React hooks
+└── vercel.json       # Vercel configuration
+```
+
+## Customization
+
+All portfolio content (bio, projects, skills, etc.) can be edited in `src/lib/content.ts`. Simply update the exported objects to customize your portfolio.
+
+## License
+
+This project is private and proprietary.
