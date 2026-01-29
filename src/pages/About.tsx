@@ -16,13 +16,24 @@ const About = () => {
       <Layout>
         <section className="pt-32 pb-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Header */}
-            <SectionHeading
-              title={aboutContent.headline}
-              subtitle={aboutContent.intro}
-            />
+            {/* Header - title only; picture goes where intro was */}
+            <SectionHeading title={aboutContent.headline} />
 
-            {/* Bio - text left, photo right */}
+            {/* Family photo - where "I am a passionate...software solutions" was */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="flex justify-center mb-12"
+            >
+              <img
+                src="/family_photo.jpg"
+                alt="Family"
+                className="rounded-lg object-cover w-full max-w-md sm:max-w-lg md:max-w-xl shadow-lg"
+              />
+            </motion.div>
+
+            {/* Bio - "I am a passionate..." left, "my journey...impact products" right */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -31,19 +42,19 @@ const About = () => {
             >
               <div className="flex-1 min-w-0">
                 <div className="prose prose-lg dark:prose-invert text-left max-w-2xl">
+                  <p className="text-muted-foreground leading-relaxed">
+                    {aboutContent.intro}
+                  </p>
+                </div>
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="prose prose-lg dark:prose-invert text-left max-w-2xl">
                   {aboutContent.bio.map((paragraph, index) => (
                     <p key={index} className="text-muted-foreground leading-relaxed mb-4">
                       {paragraph}
                     </p>
                   ))}
                 </div>
-              </div>
-              <div className="flex-shrink-0 w-full lg:w-auto lg:max-w-sm">
-                <img
-                  src="/family_photo.jpg"
-                  alt="Family"
-                  className="rounded-lg object-cover w-full max-w-xs lg:max-w-sm shadow-lg"
-                />
               </div>
             </motion.div>
 
