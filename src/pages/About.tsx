@@ -11,15 +11,15 @@ const About = () => {
     <>
       <Helmet>
         <title>{`About | ${siteConfig.name}`}</title>
-        <meta name="description" content={aboutContent.intro} />
+        <meta name="description" content={aboutContent.intro.join(" ")} />
       </Helmet>
       <Layout>
         <section className="pt-32 pb-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Header - title only; picture goes where intro was */}
+            {/* Header - title only*/}
             <SectionHeading title={aboutContent.headline} />
 
-            {/* Family photo - where "I am a passionate...software solutions" was */}
+            {/* Family photo */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -33,7 +33,7 @@ const About = () => {
               />
             </motion.div>
 
-            {/* Bio - "I am a passionate..." left, "my journey...impact products" right */}
+            {/* Bio */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -42,9 +42,11 @@ const About = () => {
             >
               <div className="flex-1 min-w-0">
                 <div className="prose prose-lg dark:prose-invert text-left max-w-2xl">
-                  <p className="text-muted-foreground leading-relaxed mb-4">
-                    {aboutContent.intro}
-                  </p>
+                  {aboutContent.intro.map((paragraph, index) => (
+                    <p key={index} className="text-muted-foreground leading-relaxed mb-4">
+                      {paragraph}
+                    </p>
+                  ))}
                 </div>
               </div>
               <div className="flex-1 min-w-0">
