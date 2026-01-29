@@ -22,19 +22,28 @@ const About = () => {
               subtitle={aboutContent.intro}
             />
 
-            {/* Bio */}
+            {/* Bio - text left, photo right */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="max-w-3xl mx-auto mb-20"
+              className="flex flex-col lg:flex-row gap-10 lg:gap-12 items-start mb-20"
             >
-              <div className="prose prose-lg dark:prose-invert mx-auto">
-                {aboutContent.bio.map((paragraph, index) => (
-                  <p key={index} className="text-muted-foreground leading-relaxed mb-4">
-                    {paragraph}
-                  </p>
-                ))}
+              <div className="flex-1 min-w-0">
+                <div className="prose prose-lg dark:prose-invert text-left max-w-2xl">
+                  {aboutContent.bio.map((paragraph, index) => (
+                    <p key={index} className="text-muted-foreground leading-relaxed mb-4">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </div>
+              <div className="flex-shrink-0 w-full lg:w-auto lg:max-w-sm">
+                <img
+                  src="/family_photo.jpg"
+                  alt="Family"
+                  className="rounded-lg object-cover w-full max-w-xs lg:max-w-sm shadow-lg"
+                />
               </div>
             </motion.div>
 
