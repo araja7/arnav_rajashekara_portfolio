@@ -42,7 +42,7 @@ const About = () => {
             >
               <div className="flex-1 min-w-0">
                 <div className="prose prose-lg dark:prose-invert text-left max-w-2xl">
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed mb-4">
                     {aboutContent.intro}
                   </p>
                 </div>
