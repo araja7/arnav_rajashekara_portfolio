@@ -32,16 +32,17 @@ export const navLinks = [
 
 export const aboutContent = {
   headline: "About Me",
-  intro: `I am a passionate fourth-year B.S. Computer Science & Engineering and Statistics student with a strong 
+  intro: [`I am a passionate fourth-year B.S. Computer Science & Engineering and Statistics student with a strong 
           foundation in programming and a deep curiosity for cutting-edge technologies. 
           I am eager to explore the endless possibilities of the digital world and am committed to 
           continuous learning. I am enthusiastic about solving real-world problems through 
           innovative software solutions.`,
+          `My journey in tech started with a realization that technology was not just a luxury 
+          that affords convenience, but instead actually expands human capability. That realization 
+          sparked a fundamental curiosity: How far can software push the boundaries of human potential? 
+          That question has fueled me ever since, as I aim to be at the forefront of the efforts to find out.`,],
+          
   bio: [
-    `My journey in tech started with a realization that technology was not just a luxury 
-    that affords convenience, but instead actually expands human capability. That realization 
-    sparked a fundamental curiosity: How far can software push the boundaries of human potential? 
-    That question has fueled me ever since, as I aim to be at the forefront of the efforts to find out.`,
     `When I'm not coding, you'll find me weightlifting, watching sports (Go Hawks!), reading, playing piano, 
     or exploring new technologies. I also love spending time with my friends and family.`,
     `I love opportunities to apply my skills in software 
