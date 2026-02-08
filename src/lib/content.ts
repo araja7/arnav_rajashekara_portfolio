@@ -128,7 +128,7 @@ export const timeline = [
   },
   {
     year: "2025",
-    title: "Software Engineering Intern",
+    title: "Software Engineer Intern",
     company: "NetJets Inc. (A Berkshire Hathaway Company)",
     description: "Developed a secure, scalable, and intuitive web-based portal for business analysts to view AWS S3 data.",
     type: "work" as const,
