@@ -9,7 +9,7 @@ import projectMario from "@/assets/project-mario.png";
 
 export const siteConfig = {
   name: "Arnav Rajashekara",
-  title: "Software Engineer | Data Scientist",
+  title: "Software Engineer",
   tagline: "Automate the ordinary. Engineer the impossible.",
   email: "arnavrajashekara2@gmail.com",
   location: "Seattle, WA",
