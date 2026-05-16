@@ -20,6 +20,10 @@ const ROUTE_META: Record<string, Meta> = {
     title: "Projects | Arnav Rajashekara",
     description: "Explore Arnav Rajashekara's portfolio of software engineering and data science projects.",
   },
+  "/publications": {
+    title: "Publications | Arnav Rajashekara",
+    description: "Research output, thesis work, and academic writing by Arnav Rajashekara.",
+  },
   "/resume": {
     title: "Resume | Arnav Rajashekara",
     description: "View and download Arnav Rajashekara's professional resume.",

@@ -24,8 +24,34 @@ export const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Projects", href: "/projects" },
+  { name: "Publications", href: "/publications" },
   { name: "Resume", href: "/resume" },
   { name: "Contact", href: "/contact" },
+];
+
+export const publicationsContent = {
+  headline: "Publications",
+  subtitle:
+    "Research output, thesis work, and academic writing.",
+};
+
+export const publications = [
+  {
+    id: "undergrad-thesis-scotus-2026",
+    title: "Inferring Agenda: An Unsupervised Approach to SCOTUS Issue Classification",
+    type: "Undergraduate Thesis",
+    venue: "The Ohio State University · Knowledge Bank",
+    year: "2026",
+    description:
+      "Develops an unsupervised approach to classifying U.S. Supreme Court petitions into issue areas, supporting agenda inference from SCOTUS filing text without labeled training data.",
+    highlights: [
+      "Successfully defended undergraduate thesis",
+      "Presented at the 2026 Midwest Political Science Association (MPSA) Conference in Chicago",
+      "Nominated for best undergraduate presentation",
+    ],
+    link: "https://kb.osu.edu/handle/1811/107152",
+    linkLabel: "View thesis",
+  },
 ];
 
 export const aboutContent = {
