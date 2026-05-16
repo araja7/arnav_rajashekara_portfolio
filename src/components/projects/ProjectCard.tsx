@@ -7,6 +7,7 @@ interface ProjectCardProps {
     id: string;
     title: string;
     description: string;
+    longDescription: string;
     techStack: string[];
     image: string;
     github: string;
@@ -51,13 +52,22 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             {project.title}
           </h3>
           
-          <p className="mt-2 text-muted-foreground text-sm line-clamp-2">
+          <p className="mt-3 text-foreground/90 text-sm leading-relaxed font-medium">
             {project.description}
           </p>
 
+          <div className="mt-4 space-y-3 text-muted-foreground text-sm leading-relaxed">
+            {project.longDescription
+              .trim()
+              .split(/\n\n+/)
+              .map((paragraph, paragraphIndex) => (
+                <p key={paragraphIndex}>{paragraph.trim()}</p>
+              ))}
+          </div>
+
           {/* Tech stack */}
-          <div className="mt-4 flex flex-wrap gap-2">
-            {project.techStack.slice(0, 4).map((tech) => (
+          <div className="mt-5 flex flex-wrap gap-2">
+            {project.techStack.map((tech) => (
               <span
                 key={tech}
                 className="px-2 py-1 rounded-md bg-secondary text-secondary-foreground text-xs font-medium"
@@ -65,12 +75,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 {tech}
               </span>
             ))}
-            {project.techStack.length > 4 && (
-              <span className="px-2 py-1 rounded-md bg-secondary text-secondary-foreground text-xs font-medium">
-                +{project.techStack.length - 4}
-              </span>
-            )}
-          </div>
+          </motion.div>
 
           {/* Actions */}
           <div className="mt-6 flex items-center gap-3">

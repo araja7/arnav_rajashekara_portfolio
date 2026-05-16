@@ -22,7 +22,7 @@ const Projects = () => {
               subtitle="A collection of projects showcasing impactful technical solutions to real-world problems."
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="flex flex-col gap-10 max-w-3xl mx-auto">
               {projects.map((project, index) => (
                 <ProjectCard key={project.id} project={project} index={index} />
               ))}
