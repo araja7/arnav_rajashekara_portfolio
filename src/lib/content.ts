@@ -45,7 +45,7 @@ export const publications = [
     description:
       "Presents an end-to-end machine learning pipeline to process, embed, and cluster large-scale legal text data, addressing computational efficiency and interpretability challenges present in high-dimensional natural language data.",
     link: "https://kb.osu.edu/handle/1811/107152",
-    linkLabel: "View thesis",
+    linkLabel: "View paper",
   },
 ];
 
