@@ -32,7 +32,7 @@ export const navLinks = [
 export const publicationsContent = {
   headline: "Publications",
   subtitle:
-    "Research output, thesis work, and academic writing.",
+    "Research output and academic writing.",
 };
 
 export const publications = [
@@ -140,10 +140,23 @@ export const skills = [
 export const timeline = [
   {
     year: "2026",
+    title: "Began MEng CS Degree",
+    company: "Cornell University",
+    description: "Began pursuing a Master of Engineering in Computer Science at Cornell University, Ithaca.",
+    type: "education" as const,
+  },
+  {
+    year: "2026",
+    title: "Graduated with B.S. in Computer Science & Engineering with a Minor in Statistics",
+    company: "The Ohio State University",
+    description: "Graduated Cum Laude with Honors Research Distinction. GPA: 3.65/4.00",
+    type: "education" as const,
+  },
+  {
+    year: "2026",
     title: "Midwest Political Science Association (MPSA) Conference Presentation",
     company: "Midwest Political Science Association",
-    description:
-      "Finished writing and successfully defended undergraduate thesis: Inferring Agenda: An Unsupervised Approach to SCOTUS Issue Classification. Presented at the 2026 MPSA Conference in Chicago, and was nominated for best undergraduate presentation.",
+    description: "Finished writing and successfully defended undergraduate thesis: Inferring Agenda: An Unsupervised Approach to SCOTUS Issue Classification. Presented at the 2026 MPSA Conference in Chicago, and was nominated for best undergraduate presentation.",
     link: "https://kb.osu.edu/handle/1811/107152",
     linkLabel: "View thesis",
     type: "work" as const,
@@ -201,7 +214,7 @@ export const timeline = [
     year: "2022",
     title: "Started CSE + Statistics Degree",
     company: "The Ohio State University",
-    description: "Began pursuing a Bachelor of Science in Computer Science & Engineering and Statistics",
+    description: "Began pursuing a Bachelor of Science in Computer Science & Engineering with a Minor in Statistics",
     type: "education" as const,
   },
 ];
