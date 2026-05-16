@@ -75,7 +75,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 {tech}
               </span>
             ))}
-          </motion.div>
+          </div>
 
           {/* Actions */}
           <div className="mt-6 flex items-center gap-3">
