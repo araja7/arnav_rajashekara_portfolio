@@ -2,10 +2,8 @@
 // PORTFOLIO CONTENT - EDIT ALL TEXT HERE
 // ============================================
 
-import projectLegal from "@/assets/project-legal.png";
-import projectS3 from "@/assets/project-s3.png";
-import projectRobot from "@/assets/project-robot.png";
-import projectMario from "@/assets/project-mario.png";
+import projectGridsmart from "@/assets/project-robot.png";
+import projectStockrag from "@/assets/project-legal.png";
 
 export const siteConfig = {
   name: "Arnav Rajashekara",
@@ -179,58 +177,36 @@ export const timeline = [
 
 export const projects = [
   {
-    id: "ai-legal-classifier",
-    title: "AI Legal Document Classifier",
-    description: "An NLP-powered system that automatically classifies and extracts key information from legal documents, reducing manual review time by 70%.",
-    longDescription: `Built a comprehensive NLP pipeline using transformer models to classify legal documents 
-      into categories such as contracts, agreements, and court filings. Implemented named entity recognition 
-      for extracting parties, dates, and key clauses. The system processes thousands of documents daily 
-      with 95% accuracy.`,
-    techStack: ["Python", "PyTorch", "Transformers", "FastAPI", "PostgreSQL"],
-    image: projectLegal,
-    github: "https://github.com/arnav/legal-classifier",
-    demo: "https://legal-classifier.demo.com",
-    featured: true,
-  },
-  {
-    id: "s3-storage-browser",
-    title: "S3 Storage Browser",
-    description: "A modern, intuitive web interface for browsing and managing AWS S3 buckets with advanced filtering and batch operations.",
-    longDescription: `Developed a React-based file browser for AWS S3 that supports drag-and-drop uploads, 
-      advanced search and filtering, batch operations, and real-time sync. Implemented presigned URLs 
-      for secure file access and integrated with AWS IAM for fine-grained permissions.`,
-    techStack: ["React", "TypeScript", "AWS SDK", "TailwindCSS", "Node.js"],
-    image: projectS3,
-    github: "https://github.com/arnav/s3-browser",
-    demo: "https://s3-browser.demo.com",
-    featured: true,
-  },
-  {
-    id: "robot-analytics",
-    title: "Robot Analytics Dashboard",
-    description: "Real-time industrial robot monitoring dashboard with predictive maintenance alerts and performance analytics.",
-    longDescription: `Created a comprehensive dashboard for monitoring industrial robots in manufacturing plants. 
-      Features include real-time telemetry visualization, anomaly detection using ML models, predictive 
-      maintenance scheduling, and historical performance analysis. Reduced unplanned downtime by 40%.`,
-    techStack: ["React", "D3.js", "Python", "TensorFlow", "InfluxDB", "Grafana"],
-    image: projectRobot,
-    github: "https://github.com/arnav/robot-analytics",
-    demo: "https://robot-analytics.demo.com",
-    featured: true,
-  },
-  {
-    id: "super-mario-c",
-    title: "Super Mario Clone in C",
-    description: "A faithful recreation of the classic Super Mario Bros game built from scratch in C with custom physics engine.",
-    longDescription: `Developed a complete platformer game engine in C, including sprite rendering, 
-      collision detection, physics simulation, and level parsing. Features multiple levels, 
-      power-ups, enemies with AI behavior, and a custom level editor. Optimized for smooth 
-      60 FPS gameplay on minimal hardware.`,
-    techStack: ["C", "SDL2", "Custom Physics", "Level Editor"],
-    image: projectMario,
-    github: "https://github.com/arnav/super-mario-c",
+    id: "gridsmart",
+    title: "GridSmart – Cost-Aware Energy Task Scheduler",
+    description:
+      "Full-stack tool that syncs household energy demand with real-time PJM grid pricing, using constraint-based scheduling to minimize cost and flatten load profiles.",
+    longDescription: `GridSmart addresses residential energy peaks by synchronizing high-load appliance runs with live Locational Marginal Prices from the PJM Interconnection. Users set earliest-start and must-finish-by windows; a sliding-window optimizer finds the lowest-cost schedule while respecting household kW limits across competing tasks.
+
+Core features include real-time PJM API ingestion with CSV fallback, greedy scheduling with min-heap task ordering, resource contention management to avoid exceeding max household draw, and a React dashboard with Recharts visualizations and savings reports versus a FIFO baseline.
+
+Built with a FastAPI backend (scheduler, grid service, caching, fail-safe mode) and a Vite + React frontend. Simulated tests on PJM Ohio Hub data showed 15–40% cost reductions by shifting load from afternoon peaks to overnight troughs.`,
+    techStack: ["Python", "FastAPI", "React", "Recharts", "PJM API", "Vite"],
+    image: projectGridsmart,
+    github: "https://github.com/araja7/GridSmart",
     demo: null,
-    featured: false,
+    featured: true,
+  },
+  {
+    id: "stockrag",
+    title: "StockRAG",
+    description:
+      "RAG-based stock recommendation system grounded in SEC EDGAR data for ~7,100 companies, with ChromaDB retrieval and Gemini-generated answers with filing citations.",
+    longDescription: `Done in collaboration with five other engineers for our senior capstone project, StockRAG lets users ask natural-language questions (e.g. "suggest a semiconductor stock with strong free cash flow"). A FastAPI backend retrieves the most relevant company profiles, descriptions, and annual snapshots from a ChromaDB vector store, then Google Gemini produces grounded recommendations with citations back to EDGAR filings.
+
+The repo includes a one-shot cold-start orchestrator that sets up the Python venv, installs backend and frontend dependencies, prompts for API keys, streams a prebuilt Chroma snapshot from Hugging Face (~256 MB), and launches the backend (port 8000) and React + Vite frontend (port 5173).
+
+Data pipeline coverage spans 7,138 EDGAR-listed companies across three Chroma collections (profiles, descriptions, annual snapshots), embedded with sentence-transformers/all-MiniLM-L6-v2. The RAG flow merges multi-collection search, formats a cited context blob, and maps LLM output to structured recommendations with EDGAR source URLs.`,
+    techStack: ["Python", "FastAPI", "React", "ChromaDB", "Gemini", "Vite"],
+    image: projectStockrag,
+    github: "https://github.com/jjivandas/CSE-5914-Capstone",
+    demo: null,
+    featured: true,
   },
 ];
 
