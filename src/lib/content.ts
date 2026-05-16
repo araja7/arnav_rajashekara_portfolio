@@ -121,7 +121,7 @@ export const timeline = [
     year: "2026",
     title: "Midwest Political Science Association (MPSA) Conference Presentation",
     company: "Midwest Political Science Association",
-    description: "Finished writing and successfully defended undergraduate thesis: Inferring Agenda: An Unsupervised Approach to SCOTUS Issue Classification. Presented at the 2026 MPSA Conference in Chicago, and was nominated for best undergraduate presentation.",
+    description: "Finished writing and successfully defended undergraduate thesis: Inferring Agenda: An Unsupervised Approach to SCOTUS Issue Classification. Presented at the 2026 MPSA Conference in Chicago, and was nominated for best undergraduate presentation. Link to thesis: https://kb.osu.edu/handle/1811/107152",
     type: "work" as const,
   },
   {
