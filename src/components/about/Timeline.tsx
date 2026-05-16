@@ -56,6 +56,16 @@ export function Timeline() {
                   <p className="mt-2 text-muted-foreground text-sm">
                     {item.description}
                   </p>
+                  {item.link && (
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-2 inline-block text-sm font-medium text-primary hover:underline"
+                    >
+                      {item.linkLabel ?? "Learn more"}
+                    </a>
+                  )}
                 </div>
               </div>
 
