@@ -118,6 +118,13 @@ export const skills = [
 
 export const timeline = [
   {
+    year: "2026",
+    title: "Midwest Political Science Association (MPSA) Conference Presentation",
+    company: "Midwest Political Science Association",
+    description: "Finished writing and successfully defended undergraduate thesis: Inferring Agenda: An Unsupervised Approach to SCOTUS Issue Classification. Presented at the 2026 MPSA Conference in Chicago, and was nominated for best undergraduate presentation.",
+    type: "work" as const,
+  },
+  {
     year: "2025",
     title: "Systems & Analytics Engineer Intern",
     company: "American Honda Motor Company",
@@ -142,7 +149,7 @@ export const timeline = [
     year: "2024",
     title: "ML Research Assistant - Project Manager",
     company: "American Institutions & Methodologies (AIM) Lab, under Dr. Janet Box-Steffensmeier at the Ohio State University",
-    description: "Began leading a research team to develop an issue classification model that categorizes SCOTUS petitions into issue areas. Supporting author on multiple papers and currently writing undergraduate thesis.",
+    description: "Began leading a research team to develop an issue classification model that categorizes SCOTUS petitions into issue areas. Supporting author on multiple papers and started writing undergraduate thesis.",
     type: "work" as const,
   },
   {
