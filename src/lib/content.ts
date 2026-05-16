@@ -40,15 +40,10 @@ export const publications = [
     id: "undergrad-thesis-scotus-2026",
     title: "Inferring Agenda: An Unsupervised Approach to SCOTUS Issue Classification",
     type: "Undergraduate Thesis",
-    venue: "The Ohio State University · Knowledge Bank",
+    venue: "The Ohio State University",
     year: "2026",
     description:
-      "Develops an unsupervised approach to classifying U.S. Supreme Court petitions into issue areas, supporting agenda inference from SCOTUS filing text without labeled training data.",
-    highlights: [
-      "Successfully defended undergraduate thesis",
-      "Presented at the 2026 Midwest Political Science Association (MPSA) Conference in Chicago",
-      "Nominated for best undergraduate presentation",
-    ],
+      "Presents an end-to-end machine learning pipeline to process, embed, and cluster large-scale legal text data, addressing computational efficiency and interpretability challenges present in high-dimensional natural language data.",
     link: "https://kb.osu.edu/handle/1811/107152",
     linkLabel: "View thesis",
   },
