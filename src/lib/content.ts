@@ -204,7 +204,7 @@ The repo includes a one-shot cold-start orchestrator that sets up the Python ven
 Data pipeline coverage spans 7,138 EDGAR-listed companies across three Chroma collections (profiles, descriptions, annual snapshots), embedded with sentence-transformers/all-MiniLM-L6-v2. The RAG flow merges multi-collection search, formats a cited context blob, and maps LLM output to structured recommendations with EDGAR source URLs.`,
     techStack: ["Python", "FastAPI", "React", "ChromaDB", "Gemini", "Vite"],
     image: projectStockrag,
-    github: "https://github.com/jjivandas/CSE-5914-Capstone",
+    github: "https://github.com/araja7/StockRag",
     demo: null,
     featured: true,
   },
