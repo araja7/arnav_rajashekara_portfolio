@@ -221,22 +221,6 @@ export const timeline = [
 
 export const projects = [
   {
-    id: "gridsmart",
-    title: "GridSmart – Cost-Aware Energy Task Scheduler",
-    description:
-      "Full-stack tool that syncs household energy demand with real-time PJM grid pricing, using constraint-based scheduling to minimize cost and flatten load profiles.",
-    longDescription: `GridSmart addresses residential energy peaks by synchronizing high-load appliance runs with live Locational Marginal Prices from the PJM Interconnection. Users set earliest-start and must-finish-by windows; a sliding-window optimizer finds the lowest-cost schedule while respecting household kW limits across competing tasks.
-
-Core features include real-time PJM API ingestion with CSV fallback, greedy scheduling with min-heap task ordering, resource contention management to avoid exceeding max household draw, and a React dashboard with Recharts visualizations and savings reports versus a FIFO baseline.
-
-Built with a FastAPI backend (scheduler, grid service, caching, fail-safe mode) and a Vite + React frontend. Simulated tests on PJM Ohio Hub data showed 15–40% cost reductions by shifting load from afternoon peaks to overnight troughs.`,
-    techStack: ["Python", "FastAPI", "React", "Recharts", "PJM API", "Vite"],
-    image: projectGridsmart,
-    github: "https://github.com/araja7/GridSmart",
-    demo: null,
-    featured: true,
-  },
-  {
     id: "stockrag",
     title: "StockRAG",
     description:
@@ -249,6 +233,22 @@ Data pipeline coverage spans 7,138 EDGAR-listed companies across three Chroma co
     techStack: ["Python", "FastAPI", "React", "ChromaDB", "Gemini", "Vite"],
     image: projectStockrag,
     github: "https://github.com/araja7/StockRag",
+    demo: null,
+    featured: true,
+  },
+  {
+    id: "gridsmart",
+    title: "GridSmart – Cost-Aware Energy Task Scheduler",
+    description:
+      "Full-stack tool that syncs household energy demand with real-time PJM grid pricing, using constraint-based scheduling to minimize cost and flatten load profiles.",
+    longDescription: `GridSmart addresses residential energy peaks by synchronizing high-load appliance runs with live Locational Marginal Prices from the PJM Interconnection. Users set earliest-start and must-finish-by windows; a sliding-window optimizer finds the lowest-cost schedule while respecting household kW limits across competing tasks.
+
+Core features include real-time PJM API ingestion with CSV fallback, greedy scheduling with min-heap task ordering, resource contention management to avoid exceeding max household draw, and a React dashboard with Recharts visualizations and savings reports versus a FIFO baseline.
+
+Built with a FastAPI backend (scheduler, grid service, caching, fail-safe mode) and a Vite + React frontend. Simulated tests on PJM Ohio Hub data showed 15–40% cost reductions by shifting load from afternoon peaks to overnight troughs.`,
+    techStack: ["Python", "FastAPI", "React", "Recharts", "PJM API", "Vite"],
+    image: projectGridsmart,
+    github: "https://github.com/araja7/GridSmart",
     demo: null,
     featured: true,
   },
