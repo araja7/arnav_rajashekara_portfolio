@@ -240,11 +240,13 @@ export const projects = [
     id: "apexclip",
     title: "ApexClip",
     description:
-      "Automated sports highlight generator that uses computer vision to detect high-motion moments in raw footage and stitch them into short highlight reels.",
-    longDescription: `A solo project building an end-to-end video analysis pipeline with OpenCV and YOLOv8 object detection. The engine scans sports footage frame by frame, identifies exciting action segments via motion triggers and confidence thresholding, and exports seamless highlight clips.
+      "Automated sports highlight compiler that uses YOLOv8 object tracking and motion detection to extract exciting plays from raw game footage into a single highlight reel.",
+    longDescription: `A solo project that turns raw sports footage into a compiled highlight video without manual editing. ApexClip scans each frame with YOLOv8 and ByteTrack to track players and the ball, using per-object velocity to flag high-motion moments worth clipping.
 
-A multi-threaded temporal buffer layer stores frames in memory so the pipeline can slice clean segments around detected peaks without re-reading source video. Frame-by-frame filtering algorithms tune throughput while isolating action from low-motion filler.`,
-    techStack: ["Python", "OpenCV", "YOLOv8", "PyTorch"],
+PySceneDetect handles camera-cut detection so tracking state resets cleanly across broadcast angle changes. A temporal frame buffer stores pre-roll in memory, letting the engine capture context before each peak action without re-seeking the source video, then stitches post-play frames into the final reel.
+
+The pipeline outputs both a diagnostic stream with tracking overlays and the finished highlight compilation. Built with Python, OpenCV, Ultralytics YOLOv8, PySceneDetect, ByteTrack, and NumPy.`,
+    techStack: ["Python", "OpenCV", "YOLOv8", "ByteTrack", "PySceneDetect", "NumPy"],
     image: projectApexclip,
     github: "https://github.com/araja7/ApexClip",
     demo: null,
