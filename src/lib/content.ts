@@ -100,6 +100,7 @@ export const skills = [
       { name: "Node.js", icon: "nodejs" },
       { name: "Flask", icon: "flask" },
       { name: "FastAPI", icon: "fastapi" },
+      { name: "Pydantic", icon: "pydantic" },
       { name: "PostgreSQL", icon: "postgresql" },
     ],
   },
@@ -108,11 +109,14 @@ export const skills = [
     items: [
       { name: "PyTorch", icon: "pytorch" },
       { name: "TensorFlow", icon: "tensorflow" },
+      { name: "LangChain", icon: "langchain" },
       { name: "scikit-learn", icon: "sklearn" },
       { name: "Pandas", icon: "chart" },
       { name: "NumPy", icon: "numpy" },
       { name: "SciPy", icon: "scipy" },
       { name: "Matplotlib", icon: "matplotlib" },
+      { name: "Scrapy", icon: "scrapy" },
+      { name: "Playwright", icon: "playwright" },
       { name: "BeautifulSoup", icon: "beautifulsoup" },
     ],
   },
@@ -121,6 +125,8 @@ export const skills = [
     items: [
       { name: "AWS", icon: "aws" },
       { name: "Azure", icon: "azure" },
+      { name: "Supabase", icon: "supabase" },
+      { name: "Hetzner", icon: "hetzner" },
       { name: "Terraform", icon: "terraform" },
       { name: "Git", icon: "git" },
       { name: "Jenkins", icon: "jenkins" },
@@ -131,6 +137,7 @@ export const skills = [
   {
     category: "Testing",
     items: [
+      { name: "Pytest", icon: "pytest" },
       { name: "Cucumber", icon: "cucumber" },
       { name: "JUnit", icon: "junit" },
     ],
@@ -140,10 +147,18 @@ export const skills = [
 export const timeline = [
   {
     year: "2026",
-    title: "Began MEng CS Degree",
+    title: "Began MEng Computer Science Degree",
     company: "Cornell University",
-    description: "Began pursuing a Master of Engineering in Computer Science at Cornell University, Ithaca.",
+    description: "Began pursuing a Master of Engineering in Computer Science at Cornell University, Ithaca. Focus on Computing Systems.",
     type: "education" as const,
+  },
+  {
+    year: "2026",
+    title: "Founding Software Engineer Intern",
+    company: "AI Recruiting Stealth Startup",
+    description:
+      "Architected a concurrent data pipeline that reduced collection latency by ~90% across multiple platforms. Integrated local (Ollama/LLaMA3) and cloud (OpenAI) LLMs for structured data extraction, and built a resilient scraping system using Scrapy and Playwright.",
+    type: "work" as const,
   },
   {
     year: "2026",
