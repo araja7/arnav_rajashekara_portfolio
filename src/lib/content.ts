@@ -3,7 +3,8 @@
 // ============================================
 
 import projectGridsmart from "@/assets/project-robot.png";
-import projectStockrag from "@/assets/project-legal.png";
+import projectStockrag from "@/assets/project-stockrag.png";
+import projectApexclip from "@/assets/project-apexclip.png";
 
 export const siteConfig = {
   name: "Arnav Rajashekara",
@@ -235,6 +236,20 @@ export const timeline = [
 ];
 
 export const projects = [
+  {
+    id: "apexclip",
+    title: "ApexClip",
+    description:
+      "Automated sports highlight generator that uses computer vision to detect high-motion moments in raw footage and stitch them into short highlight reels.",
+    longDescription: `A solo project building an end-to-end video analysis pipeline with OpenCV and YOLOv8 object detection. The engine scans sports footage frame by frame, identifies exciting action segments via motion triggers and confidence thresholding, and exports seamless highlight clips.
+
+A multi-threaded temporal buffer layer stores frames in memory so the pipeline can slice clean segments around detected peaks without re-reading source video. Frame-by-frame filtering algorithms tune throughput while isolating action from low-motion filler.`,
+    techStack: ["Python", "OpenCV", "YOLOv8", "PyTorch"],
+    image: projectApexclip,
+    github: "https://github.com/araja7/ApexClip",
+    demo: null,
+    featured: true,
+  },
   {
     id: "stockrag",
     title: "StockRAG",
