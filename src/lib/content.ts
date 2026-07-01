@@ -2,7 +2,7 @@
 // PORTFOLIO CONTENT - EDIT ALL TEXT HERE
 // ============================================
 
-import projectGridsmart from "@/assets/project-robot.png";
+import projectGridsmart from "@/assets/project-gridsmart.png";
 import projectStockrag from "@/assets/project-stockrag.png";
 import projectApexclip from "@/assets/project-apexclip.png";
 
