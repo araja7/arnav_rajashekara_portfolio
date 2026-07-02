@@ -147,7 +147,7 @@ export const skills = [
 export const timeline = [
   {
     year: "2026",
-    title: "Began MEng Computer Science Degree",
+    title: "Started MEng CS Degree",
     company: "Cornell University",
     description: "Began pursuing a Master of Engineering in Computer Science at Cornell University, Ithaca. Focus on Computing Systems.",
     type: "education" as const,
@@ -227,7 +227,7 @@ export const timeline = [
   },
   {
     year: "2022",
-    title: "Started CSE + Statistics Degree",
+    title: "Started BS CSE + Statistics Degree",
     company: "The Ohio State University",
     description: "Began pursuing a Bachelor of Science in Computer Science & Engineering with a Minor in Statistics",
     type: "education" as const,
