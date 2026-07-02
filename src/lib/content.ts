@@ -66,8 +66,7 @@ export const aboutContent = {
   bio: [
     `When I'm not coding, you'll find me weightlifting, watching sports (Go Hawks!), reading, playing piano, 
     or exploring new technologies. I also love spending time with my friends and family.`,
-    `I love opportunities to apply my skills in software 
-    engineering and data science to build impactful products.`,
+    `I love opportunities to apply my skills in software engineering, machine learning, and statistics to build impactful products.`,
   ],
 };
 
