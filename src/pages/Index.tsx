@@ -8,7 +8,8 @@ const Index = () => {
     <>
       <Helmet>
         <title>{`${siteConfig.name} | ${siteConfig.title}`}</title>
-        <meta name="description" content={siteConfig.tagline} />
+        {/* <meta name="description" content={siteConfig.tagline} /> */}
+        <meta name="description" content={`${siteConfig.name} — ${siteConfig.title}`} />
       </Helmet>
       <Layout>
         <HeroSection />

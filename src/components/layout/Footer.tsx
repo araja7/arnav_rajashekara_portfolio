@@ -20,9 +20,9 @@ export function Footer() {
             <Link to="/" className="text-2xl font-bold">
               <span className="gradient-text">{siteConfig.name}</span>
             </Link>
-            <p className="text-muted-foreground text-sm max-w-xs">
+            {/* <p className="text-muted-foreground text-sm max-w-xs">
               {siteConfig.tagline}
-            </p>
+            </p> */}
           </div>
 
           {/* Navigation */}

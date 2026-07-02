@@ -88,14 +88,14 @@ export function HeroSection() {
           </motion.p>
 
           {/* Tagline */}
-          <motion.p
+          {/* <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto text-balance"
           >
             {siteConfig.tagline}
-          </motion.p>
+          </motion.p> */}
 
           {/* CTA Buttons */}
           <motion.div

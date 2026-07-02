@@ -9,7 +9,7 @@ import projectApexclip from "@/assets/project-apexclip.png";
 export const siteConfig = {
   name: "Arnav Rajashekara",
   title: "Software Engineer",
-  tagline: "Automate the ordinary. Engineer the impossible.",
+  // tagline: "Automate the ordinary. Engineer the impossible.",
   email: "arnavrajashekara2@gmail.com",
   location: "Seattle, WA",
   resumeUrl: "/arnav_rajashekara_resume.pdf",
