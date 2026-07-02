@@ -53,7 +53,7 @@ export const publications = [
 export const aboutContent = {
   headline: "About Me",
   intro: [
-    `I am a passionate fourth-year B.S. Computer Science & Engineering and Statistics student with a strong 
+    `I am a passionate Master of Engineering in Computer Science student at Cornell University with a strong 
     foundation in programming and a deep curiosity for cutting-edge technologies. 
     I am eager to explore the endless possibilities of the digital world and am committed to 
     continuous learning. I am enthusiastic about solving real-world problems through 
