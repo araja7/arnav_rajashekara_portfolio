@@ -149,7 +149,7 @@ export const timeline = [
     year: "2026",
     title: "Started M.Eng. CS Degree",
     company: "Cornell University",
-    description: "Began pursuing a Master of Engineering in Computer Science at Cornell University, Ithaca. Focus on Computing Systems.",
+    description: "Began pursuing a Master of Engineering in Computer Science at Cornell University, Ithaca.",
     type: "education" as const,
   },
   {
