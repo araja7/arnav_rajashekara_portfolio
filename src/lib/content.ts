@@ -157,7 +157,7 @@ export const timeline = [
     title: "Founding Software Engineer Intern",
     company: "AI Recruiting Stealth Startup",
     description:
-      "Architected a concurrent data pipeline that reduced collection latency by ~90% across multiple platforms. Integrated local (Ollama/LLaMA3) and cloud (OpenAI) LLMs for structured data extraction, and built a resilient scraping system using Scrapy and Playwright.",
+      "Played a pivotal role in an early stage recruiting startup that is creating a platform to provide job seekers with a smoother and more transparent job search experience.",
     type: "work" as const,
   },
   {
