@@ -155,9 +155,9 @@ export const timeline = [
   {
     year: "2026",
     title: "Founding Software Engineer Intern",
-    company: "AI Recruiting Stealth Startup",
+    company: "JobAiro - Recruiting/Job Search Startup",
     description:
-      "Played a pivotal role in an early stage recruiting startup that is creating a platform to provide job seekers with a smoother and more transparent job search experience.",
+      "Played a pivotal role in an early stage recruiting/job search startup that is creating a platform to provide job seekers with a smoother and more transparent job search experience.",
     type: "work" as const,
   },
   {
