@@ -199,7 +199,7 @@ export const timeline = [
   },
   {
     year: "2024",
-    title: "ML Research Assistant - Project Manager",
+    title: "ML Research Assistant - Team Lead",
     company: "American Institutions & Methodologies (AIM) Lab, under Dr. Janet Box-Steffensmeier at the Ohio State University",
     description: "Began leading a research team to develop an issue classification model that categorizes SCOTUS petitions into issue areas. Supporting author on multiple papers and started writing undergraduate thesis.",
     type: "work" as const,
