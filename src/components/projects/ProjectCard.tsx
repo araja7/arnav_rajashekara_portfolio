@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, FolderGit2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface ProjectCardProps {
@@ -9,7 +9,7 @@ interface ProjectCardProps {
     description: string;
     longDescription: string;
     techStack: string[];
-    image: string;
+    image: string | null;
     github: string;
     demo: string | null;
     featured: boolean;
@@ -29,11 +29,18 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       <div className="relative overflow-hidden rounded-2xl bg-card border border-border hover-lift">
         {/* Image container */}
         <div className="relative aspect-video overflow-hidden">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
+          {project.image ? (
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          ) : (
+            <div className="w-full h-full flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-primary/20 via-secondary to-card transition-transform duration-500 group-hover:scale-105">
+              <FolderGit2 size={48} className="text-primary" />
+              <span className="text-2xl font-semibold text-foreground">{project.title}</span>
+            </div>
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
           
           {/* Featured badge */}

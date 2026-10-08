@@ -5,6 +5,7 @@
 import projectGridsmart from "@/assets/project-gridsmart.png";
 import projectStockrag from "@/assets/project-stockrag.png";
 import projectApexclip from "@/assets/project-apexclip.png";
+import projectBumblebee from "@/assets/project-bumblebee.jpg";
 
 export const siteConfig = {
   name: "Arnav Rajashekara",
@@ -235,6 +236,22 @@ export const timeline = [
 ];
 
 export const projects = [
+  {
+    id: "bumblebee",
+    title: "Bumblebee",
+    description:
+      "Job-scouting agent that checks job boards every hour for new-grad software engineering roles and messages each new match by Discord.",
+    longDescription: `Named after the Autobot scout, Bumblebee polls Greenhouse, Lever, and Ashby boards for 1,000+ companies, plus the SimplifyJobs new-grad list, and filters postings by title keywords, target metros (Seattle, SF, NYC, Boston, Chicago), on-site or hybrid status, and required years of experience parsed from the job description.
+
+Matches are deduplicated in SQLite on canonical ATS job IDs, with a company + title + metro hash as a fallback for cross-source duplicates. Notifications go out through a pluggable notifier (Discord webhooks) with batching and a daily cap.
+
+A discovery job runs every six hours to grow the watched company list by mining public new-grad listings, hiring Y Combinator startups, and previously seen URLs, then probing likely ATS slugs and only accepting boards whose company name plausibly matches.`,
+    techStack: ["Python", "SQLite", "Greenhouse API", "Lever API", "Ashby API", "Discord"],
+    image: projectBumblebee,
+    github: "https://github.com/araja7/Bumblebee",
+    demo: null,
+    featured: true,
+  },
   {
     id: "apexclip",
     title: "ApexClip",
