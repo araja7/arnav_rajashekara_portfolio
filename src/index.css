@@ -25,6 +25,17 @@
     --bone: 40 26% 80%;
     --bone-dim: 38 12% 60%;
 
+    /* The map: the one sheet of parchment in the dark, inked by hand */
+    --parchment: 38 44% 74%;
+    --parchment-shade: 31 38% 50%;
+    --parchment-light: 44 64% 89%;
+    --scorch: 22 48% 13%;
+    --ink: 24 44% 11%;
+    --ink-faded: 25 32% 21%;
+    --ink-red: 5 60% 30%;
+    --parchment-fibre: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='f' filterUnits='userSpaceOnUse' x='0' y='0' width='240' height='240'><feTurbulence type='fractalNoise' baseFrequency='0.9 0.275' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.3  0 0 0 0 0.19  0 0 0 0 0.08  0 0 0 0.16 0'/></filter><rect width='100%' height='100%' filter='url(%23f)'/></svg>");
+    --parchment-mottle: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='750' height='750'><filter id='m' filterUnits='userSpaceOnUse' x='0' y='0' width='750' height='750'><feTurbulence type='fractalNoise' baseFrequency='0.008' numOctaves='4' seed='11' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.36  0 0 0 0 0.23  0 0 0 0 0.1  0.75 0 0 0 -0.3'/></filter><rect width='100%' height='100%' filter='url(%23m)'/></svg>");
+
     /* Burnished gilt, as on the films' title cards: a pale highlight across the top,
        a dark reflection through the middle, warm amber beneath. */
     --gilt-pale: 47 92% 88%;
@@ -265,6 +276,41 @@
   .gold-rule {
     height: 1px;
     background: linear-gradient(90deg, transparent, hsl(var(--gold-dim)) 12%, hsl(var(--gold)) 50%, hsl(var(--gold-dim)) 88%, transparent);
+  }
+
+  /* The map sheet: aged parchment lit from above, its edges scorched into the dark.
+     The ragged burn is the #map-burn displacement filter, set on this layer alone so
+     nothing drawn or written over it is distorted. */
+  .parchment {
+    background-color: hsl(var(--parchment));
+    background-image:
+      var(--parchment-fibre),
+      var(--parchment-mottle),
+      radial-gradient(ellipse 38% 16% at 24% 22%, hsl(var(--parchment-shade) / 0.2), transparent 70%),
+      radial-gradient(ellipse 30% 12% at 80% 58%, hsl(var(--parchment-shade) / 0.18), transparent 70%),
+      radial-gradient(ellipse 34% 10% at 30% 84%, hsl(var(--parchment-shade) / 0.16), transparent 70%),
+      radial-gradient(ellipse 110% 40% at 50% 0%, hsl(var(--parchment-light) / 0.5), transparent 70%),
+      radial-gradient(ellipse 130% 105% at 50% 48%, transparent 58%, hsl(var(--parchment-shade) / 0.9) 100%);
+    box-shadow:
+      inset 0 0 0 2px hsl(var(--void)),
+      inset 0 0 6px 3px hsl(var(--scorch)),
+      inset 0 0 22px 6px hsl(var(--scorch) / 0.75),
+      inset 0 0 80px 12px hsl(var(--scorch) / 0.35);
+    filter: url(#map-burn);
+  }
+
+  /* The map's folds and foxing: a sheet kept folded in quarters, spotted with age */
+  .map-folds {
+    background-image:
+      radial-gradient(circle at 14% 31%, hsl(var(--parchment-shade) / 0.32) 0, transparent 9px),
+      radial-gradient(circle at 83% 12%, hsl(var(--parchment-shade) / 0.26) 0, transparent 6px),
+      radial-gradient(circle at 71% 47%, hsl(var(--parchment-shade) / 0.24) 0, transparent 11px),
+      radial-gradient(circle at 22% 73%, hsl(var(--parchment-shade) / 0.28) 0, transparent 7px),
+      radial-gradient(circle at 88% 88%, hsl(var(--parchment-shade) / 0.3) 0, transparent 8px),
+      linear-gradient(90deg, transparent calc(50% - 3px), hsl(var(--scorch) / 0.1) calc(50% - 1px), hsl(var(--parchment-light) / 0.32) 50%, transparent calc(50% + 4px)),
+      linear-gradient(180deg, transparent calc(25% - 3px), hsl(var(--scorch) / 0.1) calc(25% - 1px), hsl(var(--parchment-light) / 0.3) 25%, transparent calc(25% + 4px)),
+      linear-gradient(180deg, transparent calc(50% - 3px), hsl(var(--scorch) / 0.1) calc(50% - 1px), hsl(var(--parchment-light) / 0.3) 50%, transparent calc(50% + 4px)),
+      linear-gradient(180deg, transparent calc(75% - 3px), hsl(var(--scorch) / 0.1) calc(75% - 1px), hsl(var(--parchment-light) / 0.3) 75%, transparent calc(75% + 4px));
   }
 
   /* A gold hairline frame with a second, finer line inside it */

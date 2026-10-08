@@ -12,6 +12,13 @@ colors:
   fire-deep: "hsl(11 79% 27%)"
   bone: "hsl(40 26% 80%)"
   bone-dim: "hsl(38 12% 60%)"
+  parchment: "hsl(38 44% 74%)"
+  parchment-shade: "hsl(31 38% 50%)"
+  parchment-light: "hsl(44 64% 89%)"
+  scorch: "hsl(22 48% 13%)"
+  ink: "hsl(24 44% 11%)"
+  ink-faded: "hsl(25 32% 21%)"
+  ink-red: "hsl(5 60% 30%)"
   border: "hsl(42 30% 18%)"
   input: "hsl(42 30% 22%)"
   destructive: "hsl(4 70% 50%)"
@@ -133,9 +140,9 @@ components:
 
 Every page opens like the opening sequence of the Peter Jackson Fellowship film: out of a black void, one fire-lit gold relic and engraved gold capitals rise into view. The ground is near-black with slow smoke drifting at two speeds over a faint warm grain; everything that matters is gold, cut into the dark and lit from the front by firelight. A single hot colour, fire orange, is held back for the Ring's inscription and for whatever is active or in focus.
 
-Density is cinematic, not editorial. Pages are a short sequence of scenes separated by long stretches of dark (128px to 176px between projects), each scene announced by a title card: gold Cinzel capitals, a small ring set between two gold hairlines. Prose sits in Spectral at a light weight in pale bone, the way the films set credits and captions under the titles. Projects play as letterboxed widescreen stills held in an amber grade until the visitor attends to them. Skills roll like end credits. The timeline runs as an ember thread.
+Density is cinematic, not editorial. Pages are a short sequence of scenes separated by long stretches of dark (128px to 176px between projects), each scene announced by a title card: gold Cinzel capitals, a small ring set between two gold hairlines. Prose sits in Spectral at a light weight in pale bone, the way the films set credits and captions under the titles. Projects play as letterboxed widescreen stills held in an amber grade until the visitor attends to them. Skills roll like end credits. The timeline is the one object in the dark that is not gold: a map of the journey on parchment, its edges scorched into the void.
 
-The theme is purely graphic. It lives in material, colour, type, imagery and motion, never in the words: every label, heading, nav item and button keeps its original wording. It draws only on the films, and only as homage: no logos, no real Tengwar, no film stills, no proprietary fonts. This is a single dark world with no light mode. It rejects the parchment-and-map fan page and the generic neon-on-black portfolio.
+The theme is purely graphic. It lives in material, colour, type, imagery and motion, never in the words: every label, heading, nav item and button keeps its original wording. It draws only on the films, and only as homage: no logos, no real Tengwar, no film stills, no proprietary fonts. This is a single dark world with no light mode. It rejects the parchment-and-map fan page and the generic neon-on-black portfolio: parchment exists only as the About timeline's map sheet (owner, 2026-10-08), never as a page ground or panel.
 
 **Key Characteristics:**
 - Black void ground with drifting smoke and warm grain, never a flat panel colour.
@@ -150,25 +157,33 @@ The theme is purely graphic. It lives in material, colour, type, imagery and mot
 A near-black warm void, three golds that behave like one lit metal, two bones for text, and one fire held in reserve. The HSL triplets in `src/index.css` are the normative source; every surface reads them through `hsl(var(--token))`.
 
 ### Primary
-- **Fire-Lit Gold** (gold): display type via the gilded treatment, gold rules, frame hairlines' highlight, primary button fill, credit labels, timeline years, company names in italic.
+- **Fire-Lit Gold** (gold): display type via the gilded treatment, gold rules, frame hairlines' highlight, primary button fill, credit labels, company names in italic.
 - **Firelight Highlight** (gold-bright): the lit edge of gold. Hover state for every gold control, current nav item, the bevel line in the gilded text shadow.
 - **Gold in Shadow** (gold-dim): the unlit side. Frame hairlines at rest, outline-button and roundel strokes at rest, input underlines, the gold rule's tapering ends, scrollbar thumb.
 
 ### Tertiary
 - **Inscription Fire** (fire): the Ring's inscription, the active nav underline (24px hairline), the focus outline and focused input underline, and the text caret. Nothing else.
-- **Ember** (fire-deep): firelight as light, never as paint. The glow pooling beneath the Ring, the warm halo inside the gilded text shadow, the soft glow under the hero button, and the hot origin of the timeline's ember thread.
+- **Ember** (fire-deep): firelight as light, never as paint. The glow pooling beneath the Ring, the warm halo inside the gilded text shadow, the soft glow under the hero button, and the firelight pooled above the timeline's map sheet.
 
 ### Neutral
 - **The Void** (void): page ground, button text on gold, input wells (at 70%), the inner gap of the double frame.
 - **Ash** (ash): framed panels (publication cards and the contact form at 60%), empty project stills.
 - **Raised Ash** (ash-raised): popovers, ghost-button hover, secondary surfaces.
-- **Pale Bone** (bone): primary reading text, skill names, timeline entry titles, lead paragraphs.
+- **Pale Bone** (bone): primary reading text, skill names, lead paragraphs.
 - **Weathered Bone** (bone-dim): secondary prose, subtitles in italic, nav links at rest, tech-stack credits, footer copy.
 - **Hairline Bronze** (border) and **Field Bronze** (input): the default border and input stroke for shadcn primitives.
 - **Ember Red** (destructive): the error toast only. A functional status colour, not part of the palette's voice.
 
+### The Map's Inks
+The timeline map is its own document with its own inks, held to that sheet alone.
+- **Parchment** (parchment), **Parchment Light** (parchment-light) and **Parchment Shade** (parchment-shade): the sheet, lit pale from above and darkening toward its edges, with fold creases catching the light, with fibre and mottle noise and three faint stains.
+- **Scorch** (scorch): the burnt band inside the sheet's ragged edge, deepening to void at the rim.
+- **Map Ink** (ink): years, entry titles, symbols, the neatline, ridges and woods (at 35% to 50% for terrain).
+- **Faded Ink** (ink-faded): entry descriptions.
+- **Red Ink** (ink-red): the inked road, company names, the thesis link, the compass's north point and the beacon's flame. It is a rubric ink, not the fire token, and never leaves the map.
+
 ### Named Rules
-**The Reserved Fire Rule.** Fire orange appears only in the Ring's inscription and on the active or focused state (current nav underline, focus outline, focused field underline, caret). It is never a fill, a heading colour, a decoration, or a hover state. Ember is light, not paint: it may glow, halo or seed the timeline thread, but never colours text or fills a shape.
+**The Reserved Fire Rule.** Fire orange appears only in the Ring's inscription and on the active or focused state (current nav underline, focus outline, focused field underline, caret). It is never a fill, a heading colour, a decoration, or a hover state. Ember is light, not paint: it may glow or halo, but never colours text or fills a shape.
 
 **The One Night Rule.** There is one world and it is dark. `color-scheme: dark`, no light mode, no theme toggle. New surfaces are designed on the void and nowhere else.
 
@@ -186,7 +201,7 @@ A near-black warm void, three golds that behave like one lit metal, two bones fo
 - **Display** (600, clamp(2.6rem, 8vw, 6rem), 0.95, 0.06em, uppercase, gilded): the home hero name only.
 - **Page Title** (600, clamp(2.5rem, 7vw, 5.5rem), 0.98, 0.06em, uppercase, gilded): the h1 title card on every inner route.
 - **Headline** (600, clamp(1.8rem, 4vw, 2.9rem), 0.98, 0.06em, uppercase, gilded): in-page section title cards.
-- **Title** (600, 1.9rem to 2.4rem, 1.04, 0.04em, uppercase, gilded): project titles. Publication titles use the same face in mixed case at 1.6rem to 2.2rem and 1.15 leading; timeline entries drop to bone Cinzel at 1.12rem to 1.3rem.
+- **Title** (600, 1.9rem to 2.4rem, 1.04, 0.04em, uppercase, gilded): project titles. Publication titles use the same face in mixed case at 1.6rem to 2.2rem and 1.15 leading; timeline entries drop to ink Cinzel at 1.12rem to 1.3rem on the map.
 - **Lead** (300 italic, 1.125rem to 1.25rem, relaxed): title-card subtitles and contact intro, in weathered bone. Project summaries use the upright 400 lead at 1.2rem to 1.3rem in pale bone.
 - **Body** (300, 1.0625rem base; 1.12rem with 1.8 to 1.85 leading for long passages): all prose, held to 65ch.
 - **Label** (600, 0.6rem to 0.72rem, 0.24em, uppercase, lining numerals): the credit treatment. Nav links, field labels, skill categories, tech stacks, footer headings, publication meta, small link actions.
@@ -221,7 +236,7 @@ Depth comes from light, not lift. The void is the floor, smoke drifts in front o
 
 ## Shapes
 
-Square cut throughout: the radius token is 0px, with a 1px small step. Buttons, fields, frames and stills have hard corners. Circles are reserved for marks derived from the Ring: the small ring between the title-card rules, the footer's social roundels, and the timeline's markers. Gold rules are 1px lines that taper to transparent at both ends. Project stills are cropped to a 2.39:1 letterbox and vignetted at the edges.
+Square cut throughout: the radius token is 0px, with a 1px small step. Buttons, fields, frames and stills have hard corners. Circles are reserved for marks derived from the Ring: the small ring between the title-card rules, the footer's social roundels, and the small gold Ring that travels the map's road. Gold rules are 1px lines that taper to transparent at both ends. Project stills are cropped to a 2.39:1 letterbox and vignetted at the edges.
 
 **The Square Cut Rule.** Corners are square. A round form must be read as the Ring or one of its echoes; nothing else is rounded.
 
@@ -261,8 +276,16 @@ The home hero's relic, modelled on the film's One Ring and rendered in three.js:
 ### Project Still
 A letterboxed 2.39:1 frame inside the double gold frame. The still is dark until it enters view, then cuts up into an amber grade (grayscale, sepia, 0.82 brightness, 1.35 saturation) and plays in true colour on hover or keyboard focus, over 1.6s. A vignette closes the edges. Below it, the project title card and credit-set tech stack sit beside the description.
 
-### End Credits and Ember Thread
-Skills roll centred like end credits: the category as a gold credit label, the names beneath in bone Cinzel, spaced rather than separated. The timeline groups by year (gilded, sticky) beside a 1px thread that runs from ember into gold-dim, with each entry marked by a gold-hairline roundel holding a line icon.
+### End Credits
+Skills roll centred like end credits: the category as a gold credit label, the names beneath in bone Cinzel, spaced rather than separated.
+
+### The Journey Map
+The About timeline, drawn like the films' map of Middle-earth: one parchment sheet in the void, newest year at the top. Its edge is torn and burnt by an SVG displacement filter (`#map-burn`) on the `.parchment` layer only, with a scorch band inside the edge and faint ember firelight pooled above it. The sheet carries quarter-fold creases and foxing (`.map-folds`), a double ink neatline inside the edge, and an original compass rose in the top corner.
+- **Regions:** each year is a region name in ink Cinzel, 1.75rem to 2.9rem at 0.42em tracking, beside a mountain range in two rows. Peaks have shouldered flanks, a ridge falling from the summit and streaks running down the shadowed face. Nearer peaks, trees and hills knock out the ones behind with a parchment wash at 60%. The road crosses each range through a pass, and the label and range swap sides from year to year.
+- **Country:** the open ground beside each place cycles through four landscapes: a wood with a river running out to the sheet's edge; downs with marsh tufts; a lake fed by a river beside a small wood; lone peaks below a wood. Rivers rise from the range above when one is there. Woods are rows of round crowns, the front row on trunks. Sparse hills and tufts are scattered over the rest of the sheet, kept clear of every word and of the road. Below the start of the journey, the western coast falls away to the south-west, with sea ripples along it and an island offshore.
+- **Places:** entries alternate left and right of the road (44% each on desktop; a single column with the road down the left on phones). Each place carries a hand-inked symbol in a parchment knockout: a tower for education, a town for work, a beacon on a hill for a win.
+- **The road:** a dashed path read from the laid-out places. Every bend leaves and arrives heading south, so the road only ever runs down the page, and between places it swings into the open ground behind the place it just left. All of the country is seeded, so it stays put on every visit.
+- **Motion:** the whole road is always visible in faint pencil. As the reader scrolls, red ink runs down it to 60% of the viewport, with the small gold Ring travelling at its head. Under reduced motion the road is fully inked and the Ring rests at the top.
 
 ## Do's and Don'ts
 
@@ -280,6 +303,6 @@ Skills roll centred like end credits: the category as a gold credit label, the n
 - **Don't** use franchise logos, real Tengwar or Black Speech inscriptions, film stills, character art or proprietary film fonts.
 - **Don't** use fire orange as a fill, heading colour, hover colour or decoration.
 - **Don't** add a light mode, a theme toggle or a light surface.
-- **Don't** add parchment, map textures or neon-on-black glows.
+- **Don't** add parchment or map textures anywhere but the About timeline's map sheet, and never neon-on-black glows.
 - **Don't** round corners or lift panels with drop shadows; a round form must read as the Ring.
 - **Don't** set prose in Cinzel or in gold.

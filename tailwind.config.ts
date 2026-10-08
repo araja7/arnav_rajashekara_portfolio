@@ -37,6 +37,12 @@ export default {
           DEFAULT: "hsl(var(--bone))",
           dim: "hsl(var(--bone-dim))",
         },
+        parchment: "hsl(var(--parchment))",
+        ink: {
+          DEFAULT: "hsl(var(--ink))",
+          faded: "hsl(var(--ink-faded))",
+          red: "hsl(var(--ink-red))",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

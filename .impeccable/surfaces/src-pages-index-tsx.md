@@ -13,7 +13,7 @@ Scope: every route (/, /about, /projects, /publications, /resume, /contact, 404)
 
 THESIS: Every page opens like the Fellowship prologue: out of a black void, one fire-lit gold relic (the Ring) and engraved gold capitals rise into view. It refuses the parchment-and-map fan page and the generic neon-on-black portfolio.
 
-OWN-WORLD: Void black (#060504) with slow smoke, ash panels (#12100d), solid fire-lit gold (#c9a24a, highlight #f2d27a, shadow #7d6630) for type, rules and frames; fire orange (#e0632a) reserved for the inscription and whatever is active or focused; pale bone text (#d8d0bf). Cinzel engraved capitals for titles and tracked small-cap labels like film title and credit cards; Spectral for prose. Gold hairline frames, letterboxed widescreen stills for projects, skills set as an end-credits roll, timeline as an ember thread.
+OWN-WORLD: Void black (#060504) with slow smoke, ash panels (#12100d), solid fire-lit gold (#c9a24a, highlight #f2d27a, shadow #7d6630) for type, rules and frames; fire orange (#e0632a) reserved for the inscription and whatever is active or focused; pale bone text (#d8d0bf). Cinzel engraved capitals for titles and tracked small-cap labels like film title and credit cards; Spectral for prose. Gold hairline frames, letterboxed widescreen stills for projects, skills set as an end-credits roll, timeline as a parchment journey map with a burnt edge (the only parchment on the site; owner, 2026-10-08).
 
 STORY: The visitor arrives in darkness, watches the Ring fall and its inscription ignite, reads "Hi, I'm Arnav" rise in gold, then moves to projects, about, publications, resume, or contact through gold title-card navigation.
 
