@@ -17,7 +17,7 @@ OWN-WORLD: Void black (#060504) with slow smoke, ash panels (#12100d), solid fir
 
 STORY: The visitor arrives in darkness, watches the Ring fall and its inscription ignite, reads "Hi, I'm Arnav" rise in gold, then moves to projects, about, publications, resume, or contact through gold title-card navigation.
 
-FIRST VIEWPORT: Home at 1440x900: black void, gold nav in tracked small caps on top. Centered upper half: the Ring (~280px) slowly turning, firelight pooling on smoke beneath it, its glyph inscription igniting in fire orange. Below: "Hi, I'm Arnav" in gold Cinzel at 6rem, the title in tracked small caps, then View Projects (gold) and Contact Me (gold outline). Signature interaction: arrival sequence (Ring falls and settles, inscription ignites in a sweep, title rises from black); the Ring tilts toward the pointer and its inscription brightens as the pointer nears.
+FIRST VIEWPORT: Home at 1440x900: black void, gold nav in tracked small caps on top. Centered upper half: the Ring held still at a fixed angle, firelight pooling on smoke beneath it, its glyph inscription igniting in fire orange. Below: "Hi, I'm Arnav" in gold Cinzel at 6rem, the title in tracked small caps, then View Projects (gold) and Contact Me (gold outline). Signature interaction: arrival sequence (Ring falls and settles, inscription glows up in fire, title rises from black). The Ring does not respond to the pointer (owner, 2026-10-08: too glitchy).
 
 FORM: The Prologue (films' opening sequence), position 1 on the ordered grounded list (IMPECCABLE'S PICK chosen by the owner over the rolled Meduseld); seed key 472018c7. Raises kept: flat layered depth (papercut), palette law with one reserved accent (arcade), fixed reading order (six-pack).
 

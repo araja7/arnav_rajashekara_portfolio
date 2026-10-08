@@ -43,15 +43,15 @@ const Contact = () => {
                 <div className="flex items-center gap-6">
                   <TheRing ignited className="h-20 w-20 shrink-0 drop-shadow-[0_10px_20px_hsl(0_0%_0%/0.8)]" />
                   <div>
-                    <p className="font-display text-xl font-semibold leading-snug tracking-[0.02em] text-gold">
-                      Looking forward to hearing from you!
+                    <p className="font-display text-xl font-semibold leading-snug tracking-[0.02em]">
+                      <span className="gilded">Looking forward to hearing from you!</span>
                     </p>
                     <p className="mt-1.5 italic text-bone-dim">I typically respond within 24-48 hours.</p>
                   </div>
                 </div>
 
                 <div>
-                  <h2 className="credit text-[0.7rem] text-gold">Contact Information</h2>
+                  <h2 className="credit gilt-label text-[0.7rem]">Contact Information</h2>
                   <dl className="mt-5">
                     {contactInfo.map((item) => (
                       <div key={item.label} className="flex items-center gap-4 border-b border-gold-dim/40 py-4 first:border-t">
@@ -80,7 +80,7 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <h2 className="credit text-[0.7rem] text-gold">Connect With Me</h2>
+                  <h2 className="credit gilt-label text-[0.7rem]">Connect With Me</h2>
                   <div className="mt-5 flex gap-3">
                     {socialInfo.map((social) => (
                       <a
@@ -89,7 +89,7 @@ const Contact = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={social.label}
-                        className="grid h-12 w-12 place-items-center rounded-full text-gold shadow-[inset_0_0_0_1px_hsl(var(--gold-dim))] transition-[color,box-shadow] hover:text-gold-bright hover:shadow-[inset_0_0_0_1px_hsl(var(--gold))]"
+                        className="grid h-12 w-12 place-items-center rounded-full gilt-edge text-gold-bright transition-[filter] hover:brightness-125"
                       >
                         <social.icon className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />
                       </a>

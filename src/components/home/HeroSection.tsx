@@ -1,24 +1,21 @@
-import { Suspense, lazy, useCallback, useEffect, useRef, useState } from "react";
+import { Suspense, lazy, useCallback, useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TheRing } from "@/components/prologue/TheRing";
-import type { RingPointer } from "@/components/prologue/GoldRing";
 import { siteConfig } from "@/lib/content";
 
 const GoldRing = lazy(() => import("@/components/prologue/GoldRing").then((m) => ({ default: m.GoldRing })));
 
 const ease = [0.16, 1, 0.3, 1] as const;
-const ringSize = "w-[clamp(250px,40vh,360px)]";
+// The Ring is seen at an angle, so its frame is wide: a 16:10 box that fits a phone.
+const ringBox = "aspect-[16/10] w-[min(clamp(300px,62vh,560px),calc(100vw_-_2rem))]";
 
 export function HeroSection() {
   const reduce = useReducedMotion();
   const [ignited, setIgnited] = useState(false);
   const [webglFailed, setWebglFailed] = useState(false);
-  const pointer = useRef<RingPointer>({ x: 0, y: 0, heat: 0 });
-  const sectionRef = useRef<HTMLElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
   const handleFail = useCallback(() => setWebglFailed(true), []);
 
   // The arrival: the Ring falls and settles, then its inscription catches fire.
@@ -31,28 +28,6 @@ export function HeroSection() {
     return () => window.clearTimeout(timer);
   }, [reduce]);
 
-  // The Ring leans toward the pointer, and burns brighter the closer it comes.
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section || reduce || window.matchMedia("(hover: none)").matches) return;
-    const onMove = (event: PointerEvent) => {
-      const ring = ringRef.current?.getBoundingClientRect();
-      if (!ring) return;
-      const dx = (event.clientX - (ring.left + ring.width / 2)) / (window.innerWidth / 2);
-      const dy = (event.clientY - (ring.top + ring.height / 2)) / (window.innerHeight / 2);
-      pointer.current = { x: dx, y: dy, heat: 1 - Math.min(1, Math.hypot(dx, dy) * 1.1) };
-    };
-    const onLeave = () => {
-      pointer.current = { x: 0, y: 0, heat: 0 };
-    };
-    section.addEventListener("pointermove", onMove);
-    section.addEventListener("pointerleave", onLeave);
-    return () => {
-      section.removeEventListener("pointermove", onMove);
-      section.removeEventListener("pointerleave", onLeave);
-    };
-  }, [reduce]);
-
   const rise = (delay: number) =>
     reduce
       ? {}
@@ -63,17 +38,13 @@ export function HeroSection() {
         };
 
   const fallback = (
-    <TheRing
-      ignited={ignited}
-      className={`${ringSize} aspect-square p-[11%] drop-shadow-[0_24px_40px_hsl(0_0%_0%/0.85)]`}
-    />
+    <div className={`${ringBox} flex items-center justify-center`}>
+      <TheRing ignited={ignited} className="aspect-square h-full p-[8%] drop-shadow-[0_24px_40px_hsl(0_0%_0%/0.85)]" />
+    </div>
   );
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-4 pb-16 pt-24"
-    >
+    <section className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-4 pb-16 pt-24">
       {/* Firelight pooling in the smoke beneath the Ring */}
       <div
         className="pointer-events-none absolute left-1/2 top-[40%] h-[40vh] w-[56vw] max-w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-[radial-gradient(closest-side,hsl(var(--fire-deep)/0.55),hsl(var(--fire-deep)/0.14)_55%,transparent)] blur-2xl transition-opacity duration-1000"
@@ -82,7 +53,6 @@ export function HeroSection() {
       />
 
       <motion.div
-        ref={ringRef}
         className="relative"
         {...(reduce
           ? {}
@@ -95,8 +65,8 @@ export function HeroSection() {
         {webglFailed ? (
           fallback
         ) : (
-          <Suspense fallback={fallback}>
-            <GoldRing ignited={ignited} pointer={pointer} onFail={handleFail} className={ringSize} />
+          <Suspense fallback={<div className={ringBox} />}>
+            <GoldRing ignited={ignited} onFail={handleFail} className={ringBox} />
           </Suspense>
         )}
       </motion.div>
@@ -104,9 +74,9 @@ export function HeroSection() {
       <div className="relative mt-4 text-center md:mt-6">
         <motion.h1
           {...rise(1.9)}
-          className="gilded text-[clamp(2.6rem,8vw,6rem)] font-semibold uppercase leading-[0.95] tracking-[0.06em]"
+          className="font-display text-[clamp(2.6rem,8vw,6rem)] font-semibold uppercase leading-[0.95] tracking-[0.06em]"
         >
-          Hi, I'm Arnav
+          <span className="gilded">Hi, I'm Arnav</span>
         </motion.h1>
         <motion.div {...rise(2.25)} className="mx-auto mt-6 flex max-w-2xl items-center justify-center gap-5">
           <span className="gold-rule hidden flex-1 sm:block" aria-hidden="true" />

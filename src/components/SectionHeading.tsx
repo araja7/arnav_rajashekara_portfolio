@@ -36,11 +36,11 @@ export function SectionHeading({ title, subtitle, as: Tag = "h2", centered = tru
       <MotionTag
         {...rise}
         className={cn(
-          "gilded font-semibold uppercase leading-[0.98] tracking-[0.06em]",
+          "font-display font-semibold uppercase leading-[0.98] tracking-[0.06em]",
           isPage ? "text-[clamp(2.5rem,7vw,5.5rem)]" : "text-[clamp(1.8rem,4vw,2.9rem)]"
         )}
       >
-        {title}
+        <span className="gilded">{title}</span>
       </MotionTag>
       <div className={cn("mt-6 flex items-center gap-3", centered && "justify-center")} aria-hidden="true">
         <span className={cn("gold-rule w-16 md:w-28", !centered && "hidden")} />

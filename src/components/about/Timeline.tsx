@@ -28,8 +28,8 @@ export function Timeline() {
       {stages.map((stage) => (
         <li key={stage.year} className="grid grid-cols-[3.4rem_1fr] gap-x-5 md:grid-cols-[8.5rem_1fr] md:gap-x-10">
           <div>
-            <span className="gilded sticky top-28 block pt-0.5 text-[1.3rem] md:text-[2.4rem] font-semibold leading-none">
-              {stage.year}
+            <span className="sticky top-28 block pt-0.5 font-display text-[1.3rem] md:text-[2.4rem] font-semibold leading-none">
+              <span className="gilded">{stage.year}</span>
             </span>
           </div>
 
@@ -47,7 +47,7 @@ export function Timeline() {
                   <h3 className="font-display text-[1.12rem] md:text-[1.3rem] font-semibold leading-snug tracking-[0.02em] text-bone">
                     {item.title}
                   </h3>
-                  <p className="mt-1.5 italic text-gold">{item.company}</p>
+                  <p className="mt-1.5 italic gilt-label">{item.company}</p>
                   <p className="mt-3 max-w-[65ch] leading-[1.75] text-bone-dim">{item.description}</p>
                   {"link" in item && item.link && (
                     <a

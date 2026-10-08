@@ -31,8 +31,8 @@ const NotFound = () => {
                 </span>
               </div>
               <div>
-                <h1 className="gilded mt-10 text-[clamp(1.9rem,4.5vw,3.4rem)] font-semibold uppercase leading-[1] tracking-[0.06em]">
-                  Page Not Found
+                <h1 className="mt-10 font-display text-[clamp(1.9rem,4.5vw,3.4rem)] font-semibold uppercase leading-[1] tracking-[0.06em]">
+                  <span className="gilded">Page Not Found</span>
                 </h1>
                 <p className="mx-auto mt-6 max-w-xl text-lg font-light italic text-bone-dim md:text-xl">
                   The page you're looking for doesn't exist or has been moved.

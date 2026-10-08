@@ -21,7 +21,7 @@ export function Footer() {
         </Link>
 
         <nav aria-label="Footer" className="mt-12">
-          <h2 className="credit text-[0.66rem] text-gold">Navigation</h2>
+          <h2 className="credit gilt-label text-[0.66rem]">Navigation</h2>
           <ul className="mt-4 flex flex-wrap items-center justify-center gap-x-8 gap-y-2">
             {navLinks.map((link) => (
               <li key={link.href} className="whitespace-nowrap">
@@ -34,7 +34,7 @@ export function Footer() {
         </nav>
 
         <div className="mt-12">
-          <h2 className="credit text-[0.66rem] text-gold">Connect</h2>
+          <h2 className="credit gilt-label text-[0.66rem]">Connect</h2>
           <div className="mt-5 flex justify-center gap-3">
             {socialIcons.map((social) => (
               <a
@@ -42,7 +42,7 @@ export function Footer() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="grid h-11 w-11 place-items-center rounded-full text-gold shadow-[inset_0_0_0_1px_hsl(var(--gold-dim))] transition-[color,box-shadow] hover:text-gold-bright hover:shadow-[inset_0_0_0_1px_hsl(var(--gold))]"
+                className="grid h-11 w-11 place-items-center rounded-full gilt-edge text-gold-bright transition-[filter] hover:brightness-125"
                 aria-label={social.label}
               >
                 <social.icon size={17} strokeWidth={1.5} />

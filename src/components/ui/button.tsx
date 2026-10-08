@@ -9,14 +9,14 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-gold text-void hover:bg-gold-bright",
+        default: "gilt-plate text-void hover:brightness-110",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "bg-transparent text-gold shadow-[inset_0_0_0_1px_hsl(var(--gold-dim))] hover:text-gold-bright hover:shadow-[inset_0_0_0_1px_hsl(var(--gold))]",
+        outline: "gilt-label gilt-edge hover:brightness-125",
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "text-bone hover:bg-ash-raised hover:text-gold-bright",
-        link: "text-gold underline-offset-4 hover:underline",
-        hero: "bg-gold text-void shadow-[0_10px_30px_-12px_hsl(var(--fire-deep))] hover:bg-gold-bright",
-        heroOutline: "bg-transparent text-gold shadow-[inset_0_0_0_1px_hsl(var(--gold-dim))] hover:text-gold-bright hover:shadow-[inset_0_0_0_1px_hsl(var(--gold))]",
+        link: "gilt-label underline-offset-4 hover:underline",
+        hero: "gilt-plate text-void hover:brightness-110",
+        heroOutline: "gilt-label gilt-edge hover:brightness-125",
       },
       size: {
         default: "h-10 px-4 py-2",

@@ -25,6 +25,23 @@
     --bone: 40 26% 80%;
     --bone-dim: 38 12% 60%;
 
+    /* Burnished gilt, as on the films' title cards: a pale highlight across the top,
+       a dark reflection through the middle, warm amber beneath. */
+    --gilt-pale: 47 92% 88%;
+    --gilt-rich: 40 72% 54%;
+    --gilt-deep: 32 74% 27%;
+    --gilt-shade: 35 64% 40%;
+    --gilt: linear-gradient(
+      180deg,
+      hsl(var(--gilt-pale)) 24%,
+      hsl(var(--gold-bright)) 38%,
+      hsl(var(--gilt-rich)) 48%,
+      hsl(var(--gilt-deep)) 55%,
+      hsl(var(--gilt-rich)) 62%,
+      hsl(var(--gold-bright)) 70%,
+      hsl(var(--gilt-shade)) 80%
+    );
+
     /* shadcn semantic mapping */
     --background: var(--void);
     --foreground: var(--bone);
@@ -127,14 +144,113 @@
 }
 
 @layer components {
-  /* Gold capitals cut into the dark, lit from the front by firelight */
+  /* Burnished gold capitals out of the dark, glowing with firelight. Set on inline
+     text: each line gets its own sweep of gilt. The glow is a filter (a text-shadow
+     would paint over clipped gilt), so animate filters on a parent, not on this. */
   .gilded {
     font-family: 'Cinzel', serif;
     color: hsl(var(--gold));
-    text-shadow:
-      0 1px 0 hsl(var(--gold-bright) / 0.35),
-      0 -1px 0 hsl(var(--void)),
-      0 10px 30px hsl(var(--fire-deep) / 0.35);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    filter: drop-shadow(0 1px 0 hsl(var(--void))) drop-shadow(0 0 0.4em hsl(var(--fire-deep) / 0.5));
+  }
+  @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    .gilded {
+      background-image: var(--gilt);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .gilded::selection {
+      -webkit-text-fill-color: hsl(var(--void));
+    }
+  }
+
+  /* A burnished gold plate, bevelled light above and dark below, for filled buttons */
+  .gilt-plate {
+    background-image: linear-gradient(
+      180deg,
+      hsl(var(--gilt-pale)) 0%,
+      hsl(var(--gold-bright)) 20%,
+      hsl(var(--gilt-rich)) 60%,
+      hsl(var(--gilt-shade)) 100%
+    );
+    box-shadow:
+      inset 0 1px 0 hsl(var(--gilt-pale) / 0.9),
+      inset 0 -1px 0 hsl(var(--gilt-deep)),
+      0 10px 30px -12px hsl(var(--fire-deep));
+  }
+
+  /* Gilt for a single line of label text centred in its box (buttons, actions);
+     icons drawn in currentColor take the bright gold. */
+  .gilt-label {
+    color: hsl(var(--gold-bright));
+  }
+  @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    .gilt-label {
+      background-image: var(--gilt);
+      background-size: 100% 1.4em;
+      background-position: center;
+      background-repeat: no-repeat;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  /* The drop cap: one capital in gilt, its sweep fitted to the letter itself. A real
+     element, since browsers ignore clipped backgrounds on ::first-letter. */
+  .gilt-initial {
+    color: hsl(var(--gold));
+    filter: drop-shadow(0 1px 0 hsl(var(--void))) drop-shadow(0 0 0.3em hsl(var(--fire-deep) / 0.5));
+  }
+  @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    .gilt-initial {
+      background-image: linear-gradient(
+        180deg,
+        hsl(var(--gilt-pale)) 22%,
+        hsl(var(--gold-bright)) 38%,
+        hsl(var(--gilt-rich)) 50%,
+        hsl(var(--gilt-deep)) 60%,
+        hsl(var(--gilt-rich)) 72%,
+        hsl(var(--gold-bright)) 84%,
+        hsl(var(--gilt-shade)) 100%
+      );
+      background-repeat: no-repeat;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  /* A hairline frame of polished gold, catching the light along one diagonal */
+  .gilt-edge {
+    position: relative;
+  }
+  .gilt-edge::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(
+      115deg,
+      hsl(var(--gilt-shade)) 0%,
+      hsl(var(--gold-bright)) 28%,
+      hsl(var(--gilt-pale)) 42%,
+      hsl(var(--gilt-rich)) 58%,
+      hsl(var(--gilt-deep)) 82%,
+      hsl(var(--gilt-shade)) 100%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+    opacity: 0.8;
+    pointer-events: none;
+    transition: opacity 200ms ease-out;
+  }
+  .gilt-edge:hover::before {
+    opacity: 1;
   }
 
   /* Small tracked capitals, as on the films' title and credit cards */

@@ -48,12 +48,16 @@ export function Navbar() {
                   <Link
                     to={link.href}
                     aria-current={current ? "page" : undefined}
-                    className={cn(
-                      "credit relative block px-3 py-2 text-[0.7rem] transition-colors",
-                      current ? "text-gold-bright" : "text-bone-dim hover:text-gold"
-                    )}
+                    className="credit group/tab relative block px-3 py-2 text-[0.7rem]"
                   >
-                    {link.name}
+                    <span
+                      className={cn(
+                        "gilded transition-opacity duration-200 ease-out",
+                        current ? "opacity-100" : "opacity-[0.62] group-hover/tab:opacity-100"
+                      )}
+                    >
+                      {link.name}
+                    </span>
                     <span
                       className={cn(
                         "absolute left-1/2 -bottom-0.5 h-px -translate-x-1/2 bg-fire transition-[width] duration-300",
@@ -69,7 +73,7 @@ export function Navbar() {
 
           <button
             type="button"
-            className="lg:hidden grid h-10 w-10 place-items-center text-gold shadow-[inset_0_0_0_1px_hsl(var(--gold-dim))]"
+            className="lg:hidden grid h-10 w-10 place-items-center gilt-edge text-gold-bright"
             onClick={() => setIsMenuOpen((open) => !open)}
             aria-expanded={isMenuOpen}
             aria-controls="main-menu"
@@ -99,12 +103,9 @@ export function Navbar() {
                     <Link
                       to={link.href}
                       aria-current={current ? "page" : undefined}
-                      className={cn(
-                        "block py-3.5 font-display text-xl uppercase tracking-[0.14em]",
-                        current ? "text-gold-bright" : "text-bone-dim"
-                      )}
+                      className="block py-3.5 font-display text-xl uppercase tracking-[0.14em]"
                     >
-                      {link.name}
+                      <span className={cn("gilded", !current && "opacity-[0.62]")}>{link.name}</span>
                     </Link>
                   </li>
                 );

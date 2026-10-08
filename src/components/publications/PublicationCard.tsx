@@ -21,9 +21,9 @@ export function PublicationCard({ publication }: PublicationCardProps) {
     <article aria-labelledby={`publication-${publication.id}`} className="gold-frame bg-ash/60 px-7 py-10 md:px-14 md:py-14">
       <h2
         id={`publication-${publication.id}`}
-        className="gilded text-[1.6rem] md:text-[2.2rem] font-semibold leading-[1.15] tracking-[0.02em]"
+        className="font-display text-[1.6rem] md:text-[2.2rem] font-semibold leading-[1.15] tracking-[0.02em]"
       >
-        {publication.title}
+        <span className="gilded">{publication.title}</span>
       </h2>
       <p className="mt-5 text-lg italic text-bone">{publication.venue}</p>
       <p className="credit mt-2 text-[0.66rem] text-bone-dim">
@@ -45,7 +45,7 @@ export function PublicationCard({ publication }: PublicationCardProps) {
           href={publication.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="credit mt-9 inline-flex h-11 items-center gap-2 bg-gold px-6 text-[0.68rem] text-void transition-colors hover:bg-gold-bright"
+          className="credit mt-9 inline-flex h-11 items-center gap-2 gilt-plate px-6 text-[0.68rem] text-void transition-[filter] hover:brightness-110"
         >
           {publication.linkLabel ?? "View publication"}
           <ExternalLink size={14} />

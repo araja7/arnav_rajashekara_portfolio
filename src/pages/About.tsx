@@ -27,15 +27,17 @@ const About = () => {
               <div className="lg:col-span-7">
                 <div className="max-w-[65ch] space-y-6 text-[1.12rem] leading-[1.85] text-bone">
                   {aboutContent.intro.map((paragraph, index) => (
-                    <p
-                      key={index}
-                      className={
-                        index === 0
-                          ? "first-letter:float-left first-letter:mr-3 first-letter:mt-1.5 first-letter:font-display first-letter:text-[4.4rem] first-letter:font-semibold first-letter:leading-[0.78] first-letter:text-gold"
-                          : undefined
-                      }
-                    >
-                      {paragraph}
+                    <p key={index}>
+                      {index === 0 ? (
+                        <>
+                          <span className="gilt-initial float-left mr-3 mt-[calc(0.375rem-0.2em)] pt-[0.2em] font-display text-[4.4rem] font-semibold leading-[0.78]">
+                            {paragraph.charAt(0)}
+                          </span>
+                          {paragraph.slice(1)}
+                        </>
+                      ) : (
+                        paragraph
+                      )}
                     </p>
                   ))}
                 </div>

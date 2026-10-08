@@ -56,9 +56,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className="lg:col-span-5">
           <h3
             id={`project-${project.id}`}
-            className="gilded text-[1.9rem] md:text-[2.4rem] font-semibold uppercase leading-[1.04] tracking-[0.04em]"
+            className="font-display text-[1.9rem] md:text-[2.4rem] font-semibold uppercase leading-[1.04] tracking-[0.04em]"
           >
-            {project.title}
+            <span className="gilded">{project.title}</span>
           </h3>
           <ul className="mt-5 flex flex-wrap gap-x-6 gap-y-2" aria-label="Tech stack">
             {project.techStack.map((tech) => (
@@ -72,7 +72,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="credit inline-flex h-11 items-center gap-2 px-5 text-[0.68rem] text-gold shadow-[inset_0_0_0_1px_hsl(var(--gold-dim))] transition-[color,box-shadow] hover:text-gold-bright hover:shadow-[inset_0_0_0_1px_hsl(var(--gold))]"
+              className="credit inline-flex h-11 items-center gap-2 px-5 text-[0.68rem] gilt-label gilt-edge transition-[filter] hover:brightness-125"
             >
               <Github size={15} strokeWidth={1.5} />
               Code
@@ -82,7 +82,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 href={project.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="credit inline-flex h-11 items-center gap-2 px-5 text-[0.68rem] text-gold shadow-[inset_0_0_0_1px_hsl(var(--gold-dim))] transition-[color,box-shadow] hover:text-gold-bright hover:shadow-[inset_0_0_0_1px_hsl(var(--gold))]"
+                className="credit inline-flex h-11 items-center gap-2 px-5 text-[0.68rem] gilt-label gilt-edge transition-[filter] hover:brightness-125"
               >
                 <ExternalLink size={15} strokeWidth={1.5} />
                 Demo

@@ -6,7 +6,7 @@ export function SkillsGrid() {
     <dl className="space-y-12 text-center md:space-y-14">
       {skills.map((category) => (
         <div key={category.category}>
-          <dt className="credit text-[0.7rem] text-gold">{category.category}</dt>
+          <dt className="credit gilt-label text-[0.7rem]">{category.category}</dt>
           <dd className="mx-auto mt-4 max-w-3xl">
             <ul className="flex flex-wrap items-center justify-center gap-x-7 gap-y-2.5 md:gap-x-9">
               {category.items.map((skill) => (

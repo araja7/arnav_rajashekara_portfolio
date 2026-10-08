@@ -64,7 +64,7 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="gold-frame space-y-8 bg-ash/60 p-7 md:p-11">
       <div className="space-y-2.5">
-        <Label htmlFor="name" className="credit text-[0.66rem] text-gold">{contactContent.formLabels.name}</Label>
+        <Label htmlFor="name" className="credit gilt-label text-[0.66rem]">{contactContent.formLabels.name}</Label>
         <Input
           id="name"
           name="name"
@@ -77,7 +77,7 @@ export function ContactForm() {
       </div>
 
       <div className="space-y-2.5">
-        <Label htmlFor="email" className="credit text-[0.66rem] text-gold">{contactContent.formLabels.email}</Label>
+        <Label htmlFor="email" className="credit gilt-label text-[0.66rem]">{contactContent.formLabels.email}</Label>
         <Input
           id="email"
           name="email"
@@ -90,7 +90,7 @@ export function ContactForm() {
       </div>
 
       <div className="space-y-2.5">
-        <Label htmlFor="message" className="credit text-[0.66rem] text-gold">{contactContent.formLabels.message}</Label>
+        <Label htmlFor="message" className="credit gilt-label text-[0.66rem]">{contactContent.formLabels.message}</Label>
         <Textarea
           id="message"
           name="message"

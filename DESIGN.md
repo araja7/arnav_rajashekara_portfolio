@@ -201,14 +201,16 @@ A near-black warm void, three golds that behave like one lit metal, two bones fo
 
 A centred, single-column-first cinema frame. The container centres at a 1400px maximum with 16px, 24px and 32px side gutters at base, sm and lg. Content then narrows to a measure suited to the scene: max-w-3xl for credits and the resume frame, max-w-4xl for publications, max-w-5xl for the home sections, max-w-6xl for the projects reel and the about and contact splits. Inner pages start below the fixed 64px (76px at md) nav and open with a title card carrying 64px to 96px of space beneath it.
 
-Rhythm is long and theatrical. Projects are separated by 128px (176px at md); stacked blocks use 48px; prose paragraphs 24px. Where a scene splits, it does so at lg on a 12-column grid (5/7 for a project's title column and its description) or as 1fr / 1.3fr. Below lg everything returns to one column, and the nav collapses to a full-width curtain menu. The hero always fills the small viewport height (100svh) with the Ring at clamp(250px, 40vh, 360px).
+Rhythm is long and theatrical. Projects are separated by 128px (176px at md); stacked blocks use 48px; prose paragraphs 24px. Where a scene splits, it does so at lg on a 12-column grid (5/7 for a project's title column and its description) or as 1fr / 1.3fr. Below lg everything returns to one column, and the nav collapses to a full-width curtain menu. The hero always fills the small viewport height (100svh) with the Ring held in a 16:10 frame, min(clamp(300px, 62vh, 560px), 100vw - 2rem) wide.
 
 ## Elevation & Depth
 
 Depth comes from light, not lift. The void is the floor, smoke drifts in front of it at two speeds behind a radial mask, and firelight pools in the smoke beneath the Ring. Panels do not float: they are framed in gold hairlines drawn as inset box shadows, so the frame sits inside the edge and the panel stays flush with the dark. The only cast shadows belong to objects that occupy space (the Ring) or to firelight (the soft ember glow under the hero button).
 
 ### Shadow Vocabulary
-- **Gilded Light** (`text-shadow: 0 1px 0 hsl(var(--gold-bright) / 0.35), 0 -1px 0 hsl(var(--void)), 0 10px 30px hsl(var(--fire-deep) / 0.35)`): every gold title, as if the capitals were cut and lit from below.
+- **Gilded Light** (`filter: drop-shadow(0 1px 0 hsl(var(--void))) drop-shadow(0 0 0.4em hsl(var(--fire-deep) / 0.5))`): every gold title, a cut edge and a warm firelight glow. It is a filter, not a text-shadow, because a text-shadow paints over clipped gilt.
+
+**The Burnished Gilt Rule.** Gold type is metal, not paint, as on the films' title cards: `--gilt` sweeps each line from a pale highlight (gilt-pale) through gold-bright and gilt-rich to a dark reflection band (gilt-deep) through the middle of the capitals, then back up to bright and down to amber (gilt-shade). `.gilded` sets it on inline text so every line gets its own sweep; headings that animate `filter` carry it on an inner span. `.gilt-label` fits the same sweep to one centred line (buttons, credit labels, nav tabs, company names), and `.gilt-initial` to the About drop cap. Filled buttons are `.gilt-plate` (pale top, rich middle, amber base, bevelled with a pale inset line above and a dark one below); outline buttons and icon roundels take `.gilt-edge`, a hairline of polished gold catching light along one diagonal.
 - **Double Gold Frame** (`box-shadow: inset 0 0 0 1px hsl(var(--gold-dim)), inset 0 0 0 5px hsl(var(--void)), inset 0 0 0 6px hsl(var(--gold-dim) / 0.5)`): framed panels, project stills, the portrait and resume frames.
 - **Gold Hairline** (`box-shadow: inset 0 0 0 1px hsl(var(--gold-dim))`, hover `hsl(var(--gold))`): outline buttons, code and demo links, social roundels, the mobile menu button.
 - **Ember Glow** (`box-shadow: 0 10px 30px -12px hsl(var(--fire-deep))`): the hero primary button only.
@@ -229,8 +231,9 @@ Square cut throughout: the radius token is 0px, with a 1px small step. Buttons, 
 Solid gold ingots and gold hairline outlines, set in credit capitals.
 - **Shape:** square corners (0px).
 - **Primary:** gold fill with void text, Cinzel 600 uppercase at 0.2em. Hero size is 56px tall with 36px side padding and carries the ember glow.
-- **Hover / Focus:** fill brightens to gold-bright over 200ms ease-out; focus shows a 2px fire ring offset from the void.
-- **Outline:** transparent with a gold-dim inset hairline and gold text; on hover the hairline and text brighten.
+- **Fill:** the burnished gilt plate, with void text.
+- **Hover / Focus:** the plate brightens (brightness 1.1) over 200ms ease-out; focus shows a 2px fire ring offset from the void.
+- **Outline:** transparent with a polished gilt hairline (gilt-edge) and gilt text; on hover both brighten.
 - **Ghost:** bone text that brightens to gold-bright on a raised-ash ground.
 - **Link-style actions** (code, demo, view publication, learn more) reuse the credit label at 0.64rem to 0.68rem, 44px tall, as outline or gold-fill variants.
 
@@ -247,13 +250,13 @@ Solid gold ingots and gold hairline outlines, set in credit capitals.
 - **Disabled:** 50% opacity while submitting.
 
 ### Navigation
-Gold title-card navigation. The wordmark is the small SVG Ring plus the name in gilded Cinzel at 0.16em. Links are credit labels in weathered bone that warm to gold on hover; the current page is gold-bright with a 24px fire underline that grows from the centre. Transparent over the hero, the bar turns void at 90% with backdrop blur and a gold rule beneath once the page scrolls. Below lg a square hairline menu button opens a curtain (clip-path reveal, 350ms) of Cinzel links at 1.25rem.
+Gold title-card navigation. The wordmark is the small SVG Ring plus the name in gilded Cinzel at 0.16em. Links are credit labels in burnished gilt, dimmed to 62% at rest and full on hover; the current page is full gilt with a 24px fire underline that grows from the centre. Transparent over the hero, the bar turns void at 90% with backdrop blur and a gold rule beneath once the page scrolls. Below lg a square hairline menu button opens a curtain (clip-path reveal, 350ms) of Cinzel links at 1.25rem.
 
 ### Title Card
 The page and section header: gilded Cinzel capitals rising out of black (lift 14px, blur 8px to 0, 1.1 to 1.2s), then a small gold ring between two tapering gold rules, then an optional italic Spectral subtitle in weathered bone.
 
 ### The Ring
-The home hero's relic, rendered in three.js as a physically based gold band (metalness 1, roughness 0.16) under a warm key light and an ember point light. Its inscription is an emissive canvas that ignites in fire orange as a sweep after the fall, flickers, and burns brighter as the pointer nears; the Ring tilts toward the pointer. The flat SVG Ring stands in for small uses (nav, contact, 404) and whenever WebGL fails. The inscription is invented line work, never a real script.
+The home hero's relic, modelled on the film's One Ring and rendered in three.js: a plain, heavy comfort-fit band (about a quarter as wide as the finger hole, domed outside and gently rounded inside) in mirror-polished yellow gold (metalness 1, roughness 0.11) reflecting a dark, fire-lit room. It holds one fixed pose, seen from a little above with the front of the band toward the viewer, and never follows the pointer. When cold it is plain; after the fall its inscription shows in fire on both the outside and the inside of the band, fading up all at once as metal heats, with a red bloom, an orange glow and a pale molten core, and a faint flicker. The flat SVG Ring stands in for small uses (nav, contact, 404) and whenever WebGL fails. The letters are written in the manner of the Ring's calligraphy (slanted broad-nib stems, bows and marks above) as random sequences, so they never spell the real inscription.
 
 ### Project Still
 A letterboxed 2.39:1 frame inside the double gold frame. The still is dark until it enters view, then cuts up into an amber grade (grayscale, sepia, 0.82 brightness, 1.35 saturation) and plays in true colour on hover or keyboard focus, over 1.6s. A vignette closes the edges. Below it, the project title card and credit-set tech stack sit beside the description.
