@@ -1,142 +1,131 @@
-import { motion } from "framer-motion";
-import { ArrowRight, Download } from "lucide-react";
+import { Suspense, lazy, useCallback, useEffect, useRef, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { TheRing } from "@/components/prologue/TheRing";
+import type { RingPointer } from "@/components/prologue/GoldRing";
 import { siteConfig } from "@/lib/content";
 
+const GoldRing = lazy(() => import("@/components/prologue/GoldRing").then((m) => ({ default: m.GoldRing })));
+
+const ease = [0.16, 1, 0.3, 1] as const;
+const ringSize = "w-[clamp(250px,40vh,360px)]";
+
 export function HeroSection() {
+  const reduce = useReducedMotion();
+  const [ignited, setIgnited] = useState(false);
+  const [webglFailed, setWebglFailed] = useState(false);
+  const pointer = useRef<RingPointer>({ x: 0, y: 0, heat: 0 });
+  const sectionRef = useRef<HTMLElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
+  const handleFail = useCallback(() => setWebglFailed(true), []);
+
+  // The arrival: the Ring falls and settles, then its inscription catches fire.
+  useEffect(() => {
+    if (reduce) {
+      setIgnited(true);
+      return;
+    }
+    const timer = window.setTimeout(() => setIgnited(true), 1500);
+    return () => window.clearTimeout(timer);
+  }, [reduce]);
+
+  // The Ring leans toward the pointer, and burns brighter the closer it comes.
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section || reduce || window.matchMedia("(hover: none)").matches) return;
+    const onMove = (event: PointerEvent) => {
+      const ring = ringRef.current?.getBoundingClientRect();
+      if (!ring) return;
+      const dx = (event.clientX - (ring.left + ring.width / 2)) / (window.innerWidth / 2);
+      const dy = (event.clientY - (ring.top + ring.height / 2)) / (window.innerHeight / 2);
+      pointer.current = { x: dx, y: dy, heat: 1 - Math.min(1, Math.hypot(dx, dy) * 1.1) };
+    };
+    const onLeave = () => {
+      pointer.current = { x: 0, y: 0, heat: 0 };
+    };
+    section.addEventListener("pointermove", onMove);
+    section.addEventListener("pointerleave", onLeave);
+    return () => {
+      section.removeEventListener("pointermove", onMove);
+      section.removeEventListener("pointerleave", onLeave);
+    };
+  }, [reduce]);
+
+  const rise = (delay: number) =>
+    reduce
+      ? {}
+      : {
+          initial: { opacity: 0, y: 18, filter: "blur(8px)" },
+          animate: { opacity: 1, y: 0, filter: "blur(0px)" },
+          transition: { duration: 1.4, delay, ease },
+        };
+
+  const fallback = (
+    <TheRing
+      ignited={ignited}
+      className={`${ringSize} aspect-square p-[11%] drop-shadow-[0_24px_40px_hsl(0_0%_0%/0.85)]`}
+    />
+  );
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(var(--primary)/0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,hsl(var(--accent)/0.08),transparent_50%)]" />
-        
-        {/* Grid pattern */}
-        <div 
-          className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]"
-          style={{
-            backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
-              linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
-            backgroundSize: '60px 60px',
-          }}
-        />
-        
-        {/* Floating orbs */}
-        <motion.div
-          animate={{
-            y: [0, -20, 0],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute top-1/4 left-1/4 w-72 h-72 bg-primary/20 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            y: [0, 20, 0],
-            scale: [1, 0.9, 1],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl"
-        />
-      </div>
+    <section
+      ref={sectionRef}
+      className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-4 pb-16 pt-24"
+    >
+      {/* Firelight pooling in the smoke beneath the Ring */}
+      <div
+        className="pointer-events-none absolute left-1/2 top-[40%] h-[40vh] w-[56vw] max-w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-[radial-gradient(closest-side,hsl(var(--fire-deep)/0.55),hsl(var(--fire-deep)/0.14)_55%,transparent)] blur-2xl transition-opacity duration-1000"
+        style={{ opacity: ignited ? 1 : 0.2 }}
+        aria-hidden="true"
+      />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium border border-primary/20">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-              </span>
-              Available for opportunities
-            </span>
-          </motion.div>
+      <motion.div
+        ref={ringRef}
+        className="relative"
+        {...(reduce
+          ? {}
+          : {
+              initial: { opacity: 0, y: -140, scale: 0.55 },
+              animate: { opacity: 1, y: 0, scale: 1 },
+              transition: { duration: 1.6, ease },
+            })}
+      >
+        {webglFailed ? (
+          fallback
+        ) : (
+          <Suspense fallback={fallback}>
+            <GoldRing ignited={ignited} pointer={pointer} onFail={handleFail} className={ringSize} />
+          </Suspense>
+        )}
+      </motion.div>
 
-          {/* Main heading */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="mt-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight"
-          >
-            Hi, I'm{" "}
-            <span className="gradient-text">Arnav</span>
-          </motion.h1>
-
-          {/* Title */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-4 text-xl sm:text-2xl text-muted-foreground font-medium"
-          >
+      <div className="relative mt-4 text-center md:mt-6">
+        <motion.h1
+          {...rise(1.9)}
+          className="gilded text-[clamp(2.6rem,8vw,6rem)] font-semibold uppercase leading-[0.95] tracking-[0.06em]"
+        >
+          Hi, I'm Arnav
+        </motion.h1>
+        <motion.div {...rise(2.25)} className="mx-auto mt-6 flex max-w-2xl items-center justify-center gap-5">
+          <span className="gold-rule hidden flex-1 sm:block" aria-hidden="true" />
+          <p className="credit whitespace-nowrap text-[0.62rem] tracking-[0.14em] text-bone sm:text-[0.72rem] sm:tracking-[0.24em] md:text-sm">
             {siteConfig.title}
-          </motion.p>
-
-          {/* Tagline */}
-          {/* <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto text-balance"
-          >
-            {siteConfig.tagline}
-          </motion.p> */}
-
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <Button asChild variant="hero" size="xl">
-              <Link to="/projects">
-                View Projects
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-            <Button asChild variant="heroOutline" size="xl">
-              <Link to="/contact">
-                Contact Me
-              </Link>
-            </Button>
-          </motion.div>
-
-          {/* Scroll indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          >
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center p-1"
-            >
-              <motion.div
-                animate={{ y: [0, 12, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                className="w-1.5 h-3 bg-muted-foreground/50 rounded-full"
-              />
-            </motion.div>
-          </motion.div>
-        </div>
+          </p>
+          <span className="gold-rule hidden flex-1 sm:block" aria-hidden="true" />
+        </motion.div>
+        <motion.div {...rise(2.55)} className="mt-11 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <Button asChild variant="hero" size="xl">
+            <Link to="/projects">
+              View Projects
+              <ArrowRight />
+            </Link>
+          </Button>
+          <Button asChild variant="heroOutline" size="xl">
+            <Link to="/contact">Contact Me</Link>
+          </Button>
+        </motion.div>
       </div>
     </section>
   );

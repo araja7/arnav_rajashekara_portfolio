@@ -1,5 +1,4 @@
 import { Helmet } from "react-helmet-async";
-import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SkillsGrid } from "@/components/about/SkillsGrid";
@@ -14,72 +13,53 @@ const About = () => {
         <meta name="description" content={aboutContent.intro.join(" ")} />
       </Helmet>
       <Layout>
-        <section className="pt-32 pb-20">
+        <section className="pt-32 md:pt-44 pb-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Header - title only*/}
-            <SectionHeading title={aboutContent.headline} />
+            <SectionHeading as="h1" title={aboutContent.headline} />
 
-            {/* Family photo */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="flex justify-center mb-12"
-            >
-              <img
-                src="/family_photo.jpg"
-                alt="Family"
-                className="rounded-lg object-cover w-full max-w-md sm:max-w-lg md:max-w-xl shadow-lg"
-              />
-            </motion.div>
+            <div className="mx-auto grid max-w-6xl grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
+              <figure className="lg:col-span-5 lg:sticky lg:top-28">
+                <div className="gold-frame p-3">
+                  <img src="/family_photo.jpg" alt="Family" className="block w-full object-cover" />
+                </div>
+              </figure>
 
-            {/* Bio */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex flex-col lg:flex-row gap-10 lg:gap-12 items-start mb-20"
-            >
-              <div className="flex-1 min-w-0">
-                <div className="prose prose-lg dark:prose-invert text-left max-w-2xl">
+              <div className="lg:col-span-7">
+                <div className="max-w-[65ch] space-y-6 text-[1.12rem] leading-[1.85] text-bone">
                   {aboutContent.intro.map((paragraph, index) => (
-                    <p key={index} className="text-muted-foreground leading-relaxed mb-4">
+                    <p
+                      key={index}
+                      className={
+                        index === 0
+                          ? "first-letter:float-left first-letter:mr-3 first-letter:mt-1.5 first-letter:font-display first-letter:text-[4.4rem] first-letter:font-semibold first-letter:leading-[0.78] first-letter:text-gold"
+                          : undefined
+                      }
+                    >
                       {paragraph}
                     </p>
                   ))}
                 </div>
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="prose prose-lg dark:prose-invert text-left max-w-2xl">
+                <div className="my-10 flex items-center gap-3" aria-hidden="true">
+                  <span className="gold-rule flex-1" />
+                  <span className="h-2.5 w-2.5 rounded-full shadow-[inset_0_0_0_1.5px_hsl(var(--gold))]" />
+                  <span className="gold-rule flex-1" />
+                </div>
+                <div className="max-w-[65ch] space-y-6 text-[1.12rem] leading-[1.85] text-bone-dim">
                   {aboutContent.bio.map((paragraph, index) => (
-                    <p key={index} className="text-muted-foreground leading-relaxed mb-4">
-                      {paragraph}
-                    </p>
+                    <p key={index}>{paragraph}</p>
                   ))}
                 </div>
-              </div>
-            </motion.div>
-
-            {/* Skills Section */}
-            <div className="mb-20">
-              <SectionHeading
-                title="Skills & Technologies"
-                subtitle="Technologies I work with to build amazing products"
-              />
-              <div className="max-w-4xl mx-auto">
-                <SkillsGrid />
               </div>
             </div>
 
-            {/* Timeline Section */}
-            <div>
-              <SectionHeading
-                title="Experience & Journey"
-                subtitle="Milestones that shaped my career"
-              />
-              <div className="max-w-4xl mx-auto">
-                <Timeline />
-              </div>
+            <div className="mx-auto mt-36 max-w-5xl">
+              <SectionHeading title="Skills & Technologies" subtitle="Technologies I work with to build amazing products" />
+              <SkillsGrid />
+            </div>
+
+            <div className="mx-auto mt-36 max-w-5xl">
+              <SectionHeading title="Experience & Journey" subtitle="Milestones that shaped my career" />
+              <Timeline />
             </div>
           </div>
         </section>

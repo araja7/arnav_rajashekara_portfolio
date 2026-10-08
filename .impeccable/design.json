@@ -1,0 +1,484 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-08T18:25:48+00:00",
+  "title": "Design System: Arnav Rajashekara",
+  "extensions": {
+    "colorMeta": {
+      "void": {
+        "role": "neutral",
+        "displayName": "The Void",
+        "canonical": "hsl(30 20% 2%)",
+        "hexApprox": "#060504",
+        "cssVar": "--void",
+        "tonalRamp": [
+          "hsl(30 20% 15%)",
+          "hsl(30 20% 26%)",
+          "hsl(30 20% 37%)",
+          "hsl(30 20% 48%)",
+          "hsl(30 20% 59%)",
+          "hsl(30 20% 70%)",
+          "hsl(30 20% 82%)",
+          "hsl(30 20% 95%)"
+        ]
+      },
+      "ash": {
+        "role": "neutral",
+        "displayName": "Ash",
+        "canonical": "hsl(36 16% 6%)",
+        "hexApprox": "#12100d",
+        "cssVar": "--ash",
+        "tonalRamp": [
+          "hsl(36 16% 15%)",
+          "hsl(36 16% 26%)",
+          "hsl(36 16% 37%)",
+          "hsl(36 16% 48%)",
+          "hsl(36 16% 59%)",
+          "hsl(36 16% 70%)",
+          "hsl(36 16% 82%)",
+          "hsl(36 16% 95%)"
+        ]
+      },
+      "ash-raised": {
+        "role": "neutral",
+        "displayName": "Raised Ash",
+        "canonical": "hsl(34 14% 9%)",
+        "hexApprox": "#1a1714",
+        "cssVar": "--ash-raised",
+        "tonalRamp": [
+          "hsl(34 14% 15%)",
+          "hsl(34 14% 26%)",
+          "hsl(34 14% 37%)",
+          "hsl(34 14% 48%)",
+          "hsl(34 14% 59%)",
+          "hsl(34 14% 70%)",
+          "hsl(34 14% 82%)",
+          "hsl(34 14% 95%)"
+        ]
+      },
+      "gold": {
+        "role": "primary",
+        "displayName": "Fire-Lit Gold",
+        "canonical": "hsl(42 54% 54%)",
+        "hexApprox": "#c9a34a",
+        "cssVar": "--gold",
+        "tonalRamp": [
+          "hsl(42 54% 15%)",
+          "hsl(42 54% 26%)",
+          "hsl(42 54% 37%)",
+          "hsl(42 54% 48%)",
+          "hsl(42 54% 59%)",
+          "hsl(42 54% 70%)",
+          "hsl(42 54% 82%)",
+          "hsl(42 54% 95%)"
+        ]
+      },
+      "gold-bright": {
+        "role": "primary",
+        "displayName": "Firelight Highlight",
+        "canonical": "hsl(44 81% 71%)",
+        "hexApprox": "#f1d179",
+        "cssVar": "--gold-bright",
+        "tonalRamp": [
+          "hsl(44 81% 15%)",
+          "hsl(44 81% 26%)",
+          "hsl(44 81% 37%)",
+          "hsl(44 81% 48%)",
+          "hsl(44 81% 59%)",
+          "hsl(44 81% 70%)",
+          "hsl(44 81% 82%)",
+          "hsl(44 81% 95%)"
+        ]
+      },
+      "gold-dim": {
+        "role": "primary",
+        "displayName": "Gold in Shadow",
+        "canonical": "hsl(42 44% 34%)",
+        "hexApprox": "#7d6631",
+        "cssVar": "--gold-dim",
+        "tonalRamp": [
+          "hsl(42 44% 15%)",
+          "hsl(42 44% 26%)",
+          "hsl(42 44% 37%)",
+          "hsl(42 44% 48%)",
+          "hsl(42 44% 59%)",
+          "hsl(42 44% 70%)",
+          "hsl(42 44% 82%)",
+          "hsl(42 44% 95%)"
+        ]
+      },
+      "fire": {
+        "role": "tertiary",
+        "displayName": "Inscription Fire",
+        "canonical": "hsl(19 74% 52%)",
+        "hexApprox": "#df632a",
+        "cssVar": "--fire",
+        "tonalRamp": [
+          "hsl(19 74% 15%)",
+          "hsl(19 74% 26%)",
+          "hsl(19 74% 37%)",
+          "hsl(19 74% 48%)",
+          "hsl(19 74% 59%)",
+          "hsl(19 74% 70%)",
+          "hsl(19 74% 82%)",
+          "hsl(19 74% 95%)"
+        ]
+      },
+      "fire-deep": {
+        "role": "tertiary",
+        "displayName": "Ember",
+        "canonical": "hsl(11 79% 27%)",
+        "hexApprox": "#7b220e",
+        "cssVar": "--fire-deep",
+        "tonalRamp": [
+          "hsl(11 79% 15%)",
+          "hsl(11 79% 26%)",
+          "hsl(11 79% 37%)",
+          "hsl(11 79% 48%)",
+          "hsl(11 79% 59%)",
+          "hsl(11 79% 70%)",
+          "hsl(11 79% 82%)",
+          "hsl(11 79% 95%)"
+        ]
+      },
+      "bone": {
+        "role": "neutral",
+        "displayName": "Pale Bone",
+        "canonical": "hsl(40 26% 80%)",
+        "hexApprox": "#d9d0bf",
+        "cssVar": "--bone",
+        "tonalRamp": [
+          "hsl(40 26% 15%)",
+          "hsl(40 26% 26%)",
+          "hsl(40 26% 37%)",
+          "hsl(40 26% 48%)",
+          "hsl(40 26% 59%)",
+          "hsl(40 26% 70%)",
+          "hsl(40 26% 82%)",
+          "hsl(40 26% 95%)"
+        ]
+      },
+      "bone-dim": {
+        "role": "neutral",
+        "displayName": "Weathered Bone",
+        "canonical": "hsl(38 12% 60%)",
+        "hexApprox": "#a59c8d",
+        "cssVar": "--bone-dim",
+        "tonalRamp": [
+          "hsl(38 12% 15%)",
+          "hsl(38 12% 26%)",
+          "hsl(38 12% 37%)",
+          "hsl(38 12% 48%)",
+          "hsl(38 12% 59%)",
+          "hsl(38 12% 70%)",
+          "hsl(38 12% 82%)",
+          "hsl(38 12% 95%)"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Hairline Bronze",
+        "canonical": "hsl(42 30% 18%)",
+        "hexApprox": "#3c3320",
+        "cssVar": "--border",
+        "tonalRamp": [
+          "hsl(42 30% 15%)",
+          "hsl(42 30% 26%)",
+          "hsl(42 30% 37%)",
+          "hsl(42 30% 48%)",
+          "hsl(42 30% 59%)",
+          "hsl(42 30% 70%)",
+          "hsl(42 30% 82%)",
+          "hsl(42 30% 95%)"
+        ]
+      },
+      "input": {
+        "role": "neutral",
+        "displayName": "Field Bronze",
+        "canonical": "hsl(42 30% 22%)",
+        "hexApprox": "#493f27",
+        "cssVar": "--input",
+        "tonalRamp": [
+          "hsl(42 30% 15%)",
+          "hsl(42 30% 26%)",
+          "hsl(42 30% 37%)",
+          "hsl(42 30% 48%)",
+          "hsl(42 30% 59%)",
+          "hsl(42 30% 70%)",
+          "hsl(42 30% 82%)",
+          "hsl(42 30% 95%)"
+        ]
+      },
+      "destructive": {
+        "role": "status",
+        "displayName": "Ember Red",
+        "canonical": "hsl(4 70% 50%)",
+        "hexApprox": "#d93226",
+        "cssVar": "--destructive",
+        "tonalRamp": [
+          "hsl(4 70% 15%)",
+          "hsl(4 70% 26%)",
+          "hsl(4 70% 37%)",
+          "hsl(4 70% 48%)",
+          "hsl(4 70% 59%)",
+          "hsl(4 70% 70%)",
+          "hsl(4 70% 82%)",
+          "hsl(4 70% 95%)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Home hero name only; uppercase, gilded."
+      },
+      "page-title": {
+        "displayName": "Page Title",
+        "purpose": "h1 title card on every inner route; uppercase, gilded."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "In-page section title cards; uppercase, gilded."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Project titles (uppercase, gilded); publication titles in mixed case at 1.6rem to 2.2rem."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Italic subtitles under title cards, in weathered bone."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Base prose at weight 300 in bone."
+      },
+      "body-long": {
+        "displayName": "Body Long",
+        "purpose": "Long passages, held to 65ch."
+      },
+      "label": {
+        "displayName": "Credit Label",
+        "purpose": "All small labels: uppercase Cinzel 600 at 0.24em, lining numerals; 0.6rem to 0.72rem."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "shadcn button text; 0.75rem to 1rem by size."
+      }
+    },
+    "shadows": [
+      {
+        "name": "gilded-light",
+        "value": "0 1px 0 hsl(var(--gold-bright) / 0.35), 0 -1px 0 hsl(var(--void)), 0 10px 30px hsl(var(--fire-deep) / 0.35)",
+        "purpose": "text-shadow on every gold title."
+      },
+      {
+        "name": "double-gold-frame",
+        "value": "inset 0 0 0 1px hsl(var(--gold-dim)), inset 0 0 0 5px hsl(var(--void)), inset 0 0 0 6px hsl(var(--gold-dim) / 0.5)",
+        "purpose": "Framed panels, project stills, portrait and resume frames."
+      },
+      {
+        "name": "gold-hairline",
+        "value": "inset 0 0 0 1px hsl(var(--gold-dim))",
+        "purpose": "Outline buttons, link actions, roundels at rest; hover swaps to hsl(var(--gold))."
+      },
+      {
+        "name": "ember-glow",
+        "value": "0 10px 30px -12px hsl(var(--fire-deep))",
+        "purpose": "Hero primary button only."
+      },
+      {
+        "name": "object-shadow",
+        "value": "drop-shadow(0 24px 40px hsl(0 0% 0% / 0.85))",
+        "purpose": "The SVG Ring as a physical object."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-prologue",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "All entrances, the Ring's fall, the inscription sweep, the mobile menu curtain."
+      },
+      {
+        "name": "rise-from-black",
+        "value": "opacity 0 to 1, translateY 14-18px to 0, blur 8px to 0 over 1.1-1.4s",
+        "purpose": "Title cards and hero copy entering; staggered 1.9s, 2.25s, 2.55s on home."
+      },
+      {
+        "name": "ring-fall",
+        "value": "translateY -140px and scale 0.55 to rest over 1.6s; inscription ignites at 1.5s",
+        "purpose": "Home arrival sequence."
+      },
+      {
+        "name": "inscription-sweep",
+        "value": "stroke-dashoffset 1300ms ease-prologue",
+        "purpose": "SVG Ring inscription burning in."
+      },
+      {
+        "name": "still-grade",
+        "value": "filter 1600ms ease-out",
+        "purpose": "Project still from dark to amber grade on entry, to true colour on hover or focus."
+      },
+      {
+        "name": "smoke-drift",
+        "value": "26s and 38s ease-in-out infinite, translate3d ±3% and scale 1.08",
+        "purpose": "Two smoke layers behind every page."
+      },
+      {
+        "name": "state",
+        "value": "200ms ease-out (buttons), 300ms (nav colour, underline width, bar fill)",
+        "purpose": "Hover, current and scrolled states."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "all animation and transition durations collapse to 0.001ms; content starts lit and ignited",
+        "purpose": "prefers-reduced-motion: reduce."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      },
+      {
+        "name": "container-2xl",
+        "value": "1400px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Hero Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Gold ingot for the leading action; hero size with ember glow.",
+      "html": "<button class=\"ds-btn-primary\">View Projects <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></button>",
+      "css": "@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Spectral:ital,wght@0,300;1,300&display=swap');:host{--void:30 20% 2%;--ash:36 16% 6%;--ash-raised:34 14% 9%;--gold:42 54% 54%;--gold-bright:44 81% 71%;--gold-dim:42 44% 34%;--fire:19 74% 52%;--fire-deep:11 79% 27%;--bone:40 26% 80%;--bone-dim:38 12% 60%;} .ds-btn-primary{display:inline-flex;align-items:center;gap:8px;height:56px;padding:0 36px;border:0;border-radius:0;background:hsl(var(--gold));color:hsl(var(--void));font-family:'Cinzel',serif;font-weight:600;font-size:1rem;letter-spacing:.2em;text-transform:uppercase;box-shadow:0 10px 30px -12px hsl(var(--fire-deep));cursor:pointer;transition:background-color .2s ease-out,box-shadow .2s ease-out}.ds-btn-primary:hover{background:hsl(var(--gold-bright))}.ds-btn-primary:focus-visible{outline:none;box-shadow:0 0 0 2px hsl(var(--void)),0 0 0 4px hsl(var(--fire))}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Gold hairline outline for the secondary action.",
+      "html": "<button class=\"ds-btn-outline\">Contact Me</button>",
+      "css": "@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Spectral:ital,wght@0,300;1,300&display=swap');:host{--void:30 20% 2%;--ash:36 16% 6%;--ash-raised:34 14% 9%;--gold:42 54% 54%;--gold-bright:44 81% 71%;--gold-dim:42 44% 34%;--fire:19 74% 52%;--fire-deep:11 79% 27%;--bone:40 26% 80%;--bone-dim:38 12% 60%;} .ds-btn-outline{display:inline-flex;align-items:center;height:56px;padding:0 36px;border:0;border-radius:0;background:transparent;color:hsl(var(--gold));font-family:'Cinzel',serif;font-weight:600;font-size:1rem;letter-spacing:.2em;text-transform:uppercase;box-shadow:inset 0 0 0 1px hsl(var(--gold-dim));cursor:pointer;transition:color .2s ease-out,box-shadow .2s ease-out}.ds-btn-outline:hover{color:hsl(var(--gold-bright));box-shadow:inset 0 0 0 1px hsl(var(--gold))}.ds-btn-outline:focus-visible{outline:none;box-shadow:inset 0 0 0 1px hsl(var(--gold)),0 0 0 2px hsl(var(--void)),0 0 0 4px hsl(var(--fire))}"
+    },
+    {
+      "name": "Underline Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Void well with a gold-dim underline that turns fire on focus; credit label above.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Name</span><input class=\"ds-input\" placeholder=\"John Doe\"></label>",
+      "css": "@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Spectral:ital,wght@0,300;1,300&display=swap');:host{--void:30 20% 2%;--ash:36 16% 6%;--ash-raised:34 14% 9%;--gold:42 54% 54%;--gold-bright:44 81% 71%;--gold-dim:42 44% 34%;--fire:19 74% 52%;--fire-deep:11 79% 27%;--bone:40 26% 80%;--bone-dim:38 12% 60%;} .ds-field{display:flex;flex-direction:column;gap:10px}.ds-field-label{font-family:'Cinzel',serif;font-weight:600;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:hsl(var(--gold))}.ds-input{height:48px;padding:0 16px;border:0;border-bottom:1px solid hsl(var(--gold-dim));border-radius:0;background:hsl(var(--void)/.7);color:hsl(var(--bone));font-family:'Spectral',Georgia,serif;font-weight:300;font-size:1.125rem;caret-color:hsl(var(--fire));outline:none}.ds-input::placeholder{color:hsl(var(--bone-dim)/.8)}.ds-input:focus-visible{border-bottom-color:hsl(var(--fire))}"
+    },
+    {
+      "name": "Credit Nav",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Tracked credit labels; current page in gold-bright over a fire hairline.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-link\" href=\"#\">Home</a><a class=\"ds-nav-link is-current\" aria-current=\"page\" href=\"#\">Projects</a><a class=\"ds-nav-link\" href=\"#\">Contact</a></nav>",
+      "css": "@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Spectral:ital,wght@0,300;1,300&display=swap');:host{--void:30 20% 2%;--ash:36 16% 6%;--ash-raised:34 14% 9%;--gold:42 54% 54%;--gold-bright:44 81% 71%;--gold-dim:42 44% 34%;--fire:19 74% 52%;--fire-deep:11 79% 27%;--bone:40 26% 80%;--bone-dim:38 12% 60%;} .ds-nav{display:flex;gap:8px;background:hsl(var(--void));padding:16px}.ds-nav-link{position:relative;padding:8px 12px;font-family:'Cinzel',serif;font-weight:600;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:hsl(var(--bone-dim));text-decoration:none;transition:color .2s}.ds-nav-link:hover{color:hsl(var(--gold))}.ds-nav-link::after{content:'';position:absolute;left:50%;bottom:-2px;height:1px;width:0;transform:translateX(-50%);background:hsl(var(--fire));transition:width .3s}.ds-nav-link.is-current{color:hsl(var(--gold-bright))}.ds-nav-link.is-current::after{width:24px}.ds-nav-link:focus-visible{outline:1px solid hsl(var(--fire));outline-offset:4px}"
+    },
+    {
+      "name": "Framed Panel",
+      "kind": "card",
+      "refersTo": "card-frame",
+      "description": "Ash panel inside the double gold frame, title card above a gold rule.",
+      "html": "<article class=\"ds-card\"><h3 class=\"ds-card-title\">Publication Title</h3><p class=\"ds-card-venue\">Venue of record</p><div class=\"ds-rule\"></div><p class=\"ds-card-body\">A short description set in Spectral at a light weight, held to a readable measure.</p></article>",
+      "css": "@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Spectral:ital,wght@0,300;1,300&display=swap');:host{--void:30 20% 2%;--ash:36 16% 6%;--ash-raised:34 14% 9%;--gold:42 54% 54%;--gold-bright:44 81% 71%;--gold-dim:42 44% 34%;--fire:19 74% 52%;--fire-deep:11 79% 27%;--bone:40 26% 80%;--bone-dim:38 12% 60%;} .ds-card{padding:40px 28px;background:hsl(var(--ash)/.6);box-shadow:inset 0 0 0 1px hsl(var(--gold-dim)),inset 0 0 0 5px hsl(var(--void)),inset 0 0 0 6px hsl(var(--gold-dim)/.5);color:hsl(var(--bone));max-width:640px}.ds-card-title{margin:0;font-family:'Cinzel',serif;font-weight:600;font-size:1.6rem;line-height:1.15;letter-spacing:.02em;color:hsl(var(--gold));text-shadow:0 1px 0 hsl(var(--gold-bright)/.35),0 -1px 0 hsl(var(--void)),0 10px 30px hsl(var(--fire-deep)/.35)}.ds-card-venue{margin:20px 0 0;font-family:'Spectral',serif;font-style:italic;font-size:1.125rem}.ds-rule{height:1px;margin:32px 0;opacity:.6;background:linear-gradient(90deg,transparent,hsl(var(--gold-dim)) 12%,hsl(var(--gold)) 50%,hsl(var(--gold-dim)) 88%,transparent)}.ds-card-body{margin:0;font-family:'Spectral',serif;font-weight:300;font-size:1.12rem;line-height:1.8}"
+    },
+    {
+      "name": "Title Card",
+      "kind": "custom",
+      "refersTo": "typography.headline",
+      "description": "Gilded Cinzel capitals over a small ring between two tapering gold rules.",
+      "html": "<header class=\"ds-title\"><h2 class=\"ds-title-h\">Projects</h2><div class=\"ds-title-mark\"><span class=\"ds-title-rule\"></span><span class=\"ds-title-ring\"></span><span class=\"ds-title-rule\"></span></div><p class=\"ds-title-sub\">A subtitle in italic Spectral.</p></header>",
+      "css": "@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Spectral:ital,wght@0,300;1,300&display=swap');:host{--void:30 20% 2%;--ash:36 16% 6%;--ash-raised:34 14% 9%;--gold:42 54% 54%;--gold-bright:44 81% 71%;--gold-dim:42 44% 34%;--fire:19 74% 52%;--fire-deep:11 79% 27%;--bone:40 26% 80%;--bone-dim:38 12% 60%;} .ds-title{text-align:center;background:hsl(var(--void));padding:32px}.ds-title-h{margin:0;font-family:'Cinzel',serif;font-weight:600;font-size:2.4rem;line-height:.98;letter-spacing:.06em;text-transform:uppercase;color:hsl(var(--gold));text-shadow:0 1px 0 hsl(var(--gold-bright)/.35),0 -1px 0 hsl(var(--void)),0 10px 30px hsl(var(--fire-deep)/.35)}.ds-title-mark{margin-top:24px;display:flex;align-items:center;justify-content:center;gap:12px}.ds-title-rule{width:112px;height:1px;background:linear-gradient(90deg,transparent,hsl(var(--gold-dim)) 12%,hsl(var(--gold)) 50%,hsl(var(--gold-dim)) 88%,transparent)}.ds-title-ring{width:10px;height:10px;border-radius:9999px;box-shadow:inset 0 0 0 1.5px hsl(var(--gold))}.ds-title-sub{margin:24px auto 0;max-width:42rem;font-family:'Spectral',serif;font-style:italic;font-weight:300;font-size:1.25rem;color:hsl(var(--bone-dim))}"
+    },
+    {
+      "name": "Project Still",
+      "kind": "custom",
+      "refersTo": "card-frame",
+      "description": "Letterboxed 2.39:1 still in the double frame; amber grade at rest, true colour on hover or focus.",
+      "html": "<a class=\"ds-still\" href=\"#\"><span class=\"ds-still-img\"></span><span class=\"ds-still-vignette\"></span></a>",
+      "css": "@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Spectral:ital,wght@0,300;1,300&display=swap');:host{--void:30 20% 2%;--ash:36 16% 6%;--ash-raised:34 14% 9%;--gold:42 54% 54%;--gold-bright:44 81% 71%;--gold-dim:42 44% 34%;--fire:19 74% 52%;--fire-deep:11 79% 27%;--bone:40 26% 80%;--bone-dim:38 12% 60%;} .ds-still{display:block;padding:12px;max-width:560px;box-shadow:inset 0 0 0 1px hsl(var(--gold-dim)),inset 0 0 0 5px hsl(var(--void)),inset 0 0 0 6px hsl(var(--gold-dim)/.5);position:relative}.ds-still-img{display:block;aspect-ratio:2.39/1;background:linear-gradient(120deg,#2b4a6b,#7a9cc0 45%,#d8c6a0);filter:grayscale(1) sepia(1) brightness(.82) contrast(1.08) saturate(1.35);transition:filter 1.6s ease-out}.ds-still:hover .ds-still-img,.ds-still:focus-visible .ds-still-img{filter:none}.ds-still-vignette{position:absolute;inset:12px;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,hsl(var(--void)/.75))}.ds-still:focus-visible{outline:1px solid hsl(var(--fire));outline-offset:4px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Prologue",
+    "overview": "**Creative North Star: \"The Prologue\"**\n\nEvery page opens like the opening sequence of the Peter Jackson Fellowship film: out of a black void, one fire-lit gold relic and engraved gold capitals rise into view. The ground is near-black with slow smoke drifting at two speeds over a faint warm grain; everything that matters is gold, cut into the dark and lit from the front by firelight. A single hot colour, fire orange, is held back for the Ring's inscription and for whatever is active or in focus.\n\nDensity is cinematic, not editorial. Pages are a short sequence of scenes separated by long stretches of dark (128px to 176px between projects), each scene announced by a title card: gold Cinzel capitals, a small ring set between two gold hairlines. Prose sits in Spectral at a light weight in pale bone, the way the films set credits and captions under the titles. Projects play as letterboxed widescreen stills held in an amber grade until the visitor attends to them. Skills roll like end credits. The timeline runs as an ember thread.\n\nThe theme is purely graphic. It lives in material, colour, type, imagery and motion, never in the words: every label, heading, nav item and button keeps its original wording. It draws only on the films, and only as homage: no logos, no real Tengwar, no film stills, no proprietary fonts. This is a single dark world with no light mode. It rejects the parchment-and-map fan page and the generic neon-on-black portfolio.",
+    "keyCharacteristics": [
+      "Black void ground with drifting smoke and warm grain, never a flat panel colour.",
+      "Solid fire-lit gold for display type, rules, frames and primary actions.",
+      "One reserved accent, fire orange, for the inscription and the active or focused state only.",
+      "Cinzel engraved capitals for titles and tracked credit-card labels; Spectral for all prose.",
+      "Square corners and gold hairline frames; circles belong only to Ring-derived marks.",
+      "Motion rises out of black (blur, lift, fade) on a long cinematic ease."
+    ],
+    "rules": [
+      {
+        "name": "The Reserved Fire Rule",
+        "body": "Fire orange appears only in the Ring's inscription and on the active or focused state (current nav underline, focus outline, focused field underline, caret). It is never a fill, a heading colour, a decoration, or a hover state. Ember is light, not paint: it may glow, halo or seed the timeline thread, but never colours text or fills a shape.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Night Rule",
+        "body": "There is one world and it is dark. `color-scheme: dark`, no light mode, no theme toggle. New surfaces are designed on the void and nowhere else.",
+        "section": "colors"
+      },
+      {
+        "name": "The Gold Is Metal Rule",
+        "body": "The three golds are one material under one light: bright is the lit edge, dim is the shadow side. Reach for gold-bright only for hover, current or highlight, and gold-dim only for strokes and rules at rest.",
+        "section": "colors"
+      },
+      {
+        "name": "The Title Card Rule",
+        "body": "Gold Cinzel capitals with the gilded light (bevel highlight above, void cut below, ember halo) are for titles. Prose is always Spectral, never Cinzel and never gold.",
+        "section": "typography"
+      },
+      {
+        "name": "The Credit Rule",
+        "body": "Every small label is the credit treatment: Cinzel 600, uppercase, 0.24em tracking. Tracking may tighten to 0.14em only where a single line would otherwise wrap on narrow screens.",
+        "section": "typography"
+      },
+      {
+        "name": "The Lit-Not-Lifted Rule",
+        "body": "Cards and panels carry no drop shadow. Depth is the gold frame, the smoke, and firelight. A new surface that needs separation gets a gold hairline or a gold rule, not elevation.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Square Cut Rule",
+        "body": "Corners are square. A round form must be read as the Ring or one of its echoes; nothing else is rounded.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "**Do** keep every label, heading, nav item and button in its original wording; the theme is carried by material, colour, type, imagery and motion alone.",
+      "**Do** draw only on the Peter Jackson films, and only as homage built from original material.",
+      "**Do** keep fire orange to the inscription and the active or focused state, and use ember only as light.",
+      "**Do** set every title in gilded Cinzel capitals and every small label in the 0.24em credit treatment.",
+      "**Do** separate surfaces with gold hairline frames and tapering gold rules, square-cornered.",
+      "**Do** present project imagery letterboxed at 2.39:1, amber-graded at rest and in true colour on hover or focus.",
+      "**Do** bring new content in by rising out of black on the cubic-bezier(0.16, 1, 0.3, 1) ease, and drop the motion entirely under reduced motion."
+    ],
+    "donts": [
+      "**Don't** write themed copy: no franchise names, quotes, invented kickers or Middle-earth phrasing in text.",
+      "**Don't** use franchise logos, real Tengwar or Black Speech inscriptions, film stills, character art or proprietary film fonts.",
+      "**Don't** use fire orange as a fill, heading colour, hover colour or decoration.",
+      "**Don't** add a light mode, a theme toggle or a light surface.",
+      "**Don't** add parchment, map textures or neon-on-black glows.",
+      "**Don't** round corners or lift panels with drop shadows; a round form must read as the Ring.",
+      "**Don't** set prose in Cinzel or in gold."
+    ]
+  }
+}

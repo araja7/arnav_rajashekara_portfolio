@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
-import { ExternalLink, Github, FolderGit2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ExternalLink, Github } from "lucide-react";
+import { useLit } from "@/hooks/use-lit";
+import { cn } from "@/lib/utils";
 
 interface ProjectCardProps {
   project: {
@@ -17,53 +17,83 @@ interface ProjectCardProps {
   index: number;
 }
 
-export function ProjectCard({ project, index }: ProjectCardProps) {
+/** A project as a scene: a widescreen still that fades up out of black, then its title card. */
+export function ProjectCard({ project }: ProjectCardProps) {
+  const { ref, lit } = useLit<HTMLElement>(0.25);
+
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative"
-    >
-      <div className="relative overflow-hidden rounded-2xl bg-card border border-border hover-lift">
-        {/* Image container */}
-        <div className="relative aspect-video overflow-hidden">
+    <article ref={ref} aria-labelledby={`project-${project.id}`} className="group">
+      <div className="gold-frame relative p-2 md:p-3">
+        <div className="relative overflow-hidden bg-void">
           {project.image ? (
             <img
               src={project.image}
-              alt={project.title}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              alt={`${project.title} preview`}
+              loading="lazy"
+              className={cn(
+                "aspect-[2.39/1] w-full object-cover transition-[filter,transform] duration-[1600ms] ease-out",
+                lit
+                  ? "scale-100 grayscale sepia brightness-[0.82] contrast-[1.08] saturate-[1.35] group-hover:grayscale-0 group-hover:sepia-0 group-hover:brightness-100 group-hover:contrast-100 group-hover:saturate-100 group-focus-within:grayscale-0 group-focus-within:sepia-0 group-focus-within:brightness-100 group-focus-within:contrast-100 group-focus-within:saturate-100"
+                  : "scale-[1.04] grayscale sepia brightness-[0.15] saturate-[1.35]"
+              )}
             />
           ) : (
-            <div className="w-full h-full flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-primary/20 via-secondary to-card transition-transform duration-500 group-hover:scale-105">
-              <FolderGit2 size={48} className="text-primary" />
-              <span className="text-2xl font-semibold text-foreground">{project.title}</span>
-            </div>
+            <div className="aspect-[2.39/1] w-full bg-ash" />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
-          
-          {/* Featured badge */}
+          <div
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,hsl(var(--void)/0.75))]"
+            aria-hidden="true"
+          />
           {project.featured && (
-            <div className="absolute top-4 right-4">
-              <span className="px-3 py-1 rounded-full bg-primary text-primary-foreground text-xs font-medium shadow-lg">
-                Featured
-              </span>
-            </div>
+            <span className="credit absolute left-4 top-3 text-[0.62rem] text-gold-bright [text-shadow:0_1px_6px_hsl(0_0%_0%)] md:left-6 md:top-4">
+              Featured
+            </span>
           )}
         </div>
+      </div>
 
-        {/* Content */}
-        <div className="p-6">
-          <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
+      <div className="mt-10 grid grid-cols-1 gap-8 md:mt-12 lg:grid-cols-12 lg:gap-14">
+        <div className="lg:col-span-5">
+          <h3
+            id={`project-${project.id}`}
+            className="gilded text-[1.9rem] md:text-[2.4rem] font-semibold uppercase leading-[1.04] tracking-[0.04em]"
+          >
             {project.title}
           </h3>
-          
-          <p className="mt-3 text-foreground/90 text-sm leading-relaxed font-medium">
-            {project.description}
-          </p>
+          <ul className="mt-5 flex flex-wrap gap-x-6 gap-y-2" aria-label="Tech stack">
+            {project.techStack.map((tech) => (
+              <li key={tech} className="credit whitespace-nowrap text-[0.64rem] text-bone-dim">
+                {tech}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="credit inline-flex h-11 items-center gap-2 px-5 text-[0.68rem] text-gold shadow-[inset_0_0_0_1px_hsl(var(--gold-dim))] transition-[color,box-shadow] hover:text-gold-bright hover:shadow-[inset_0_0_0_1px_hsl(var(--gold))]"
+            >
+              <Github size={15} strokeWidth={1.5} />
+              Code
+            </a>
+            {project.demo && (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="credit inline-flex h-11 items-center gap-2 px-5 text-[0.68rem] text-gold shadow-[inset_0_0_0_1px_hsl(var(--gold-dim))] transition-[color,box-shadow] hover:text-gold-bright hover:shadow-[inset_0_0_0_1px_hsl(var(--gold))]"
+              >
+                <ExternalLink size={15} strokeWidth={1.5} />
+                Demo
+              </a>
+            )}
+          </div>
+        </div>
 
-          <div className="mt-4 space-y-3 text-muted-foreground text-sm leading-relaxed">
+        <div className="lg:col-span-7">
+          <p className="text-[1.2rem] md:text-[1.3rem] font-normal leading-relaxed text-bone">{project.description}</p>
+          <div className="mt-6 space-y-5 leading-[1.8] text-bone-dim">
             {project.longDescription
               .trim()
               .split(/\n\n+/)
@@ -71,46 +101,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 <p key={paragraphIndex}>{paragraph.trim()}</p>
               ))}
           </div>
-
-          {/* Tech stack */}
-          <div className="mt-5 flex flex-wrap gap-2">
-            {project.techStack.map((tech) => (
-              <span
-                key={tech}
-                className="px-2 py-1 rounded-md bg-secondary text-secondary-foreground text-xs font-medium"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-
-          {/* Actions */}
-          <div className="mt-6 flex items-center gap-3">
-            <Button asChild variant="default" size="sm">
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Github size={16} />
-                Code
-              </a>
-            </Button>
-            {project.demo && (
-              <Button asChild variant="outline" size="sm">
-                <a
-                  href={project.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <ExternalLink size={16} />
-                  Demo
-                </a>
-              </Button>
-            )}
-          </div>
         </div>
       </div>
-    </motion.article>
+    </article>
   );
 }

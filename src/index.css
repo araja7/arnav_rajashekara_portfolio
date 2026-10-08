@@ -1,113 +1,72 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================
+   THE PROLOGUE
+   A black void, fire-lit gold, and one reserved
+   colour: fire, for the inscription and for
+   whatever is active or in focus.
+   ============================================ */
+
 @layer base {
   :root {
-    --background: 270 20% 98%;
-    --foreground: 270 50% 8%;
+    /* Raw materials */
+    --void: 30 20% 2%;
+    --ash: 36 16% 6%;
+    --ash-raised: 34 14% 9%;
+    --gold: 42 54% 54%;
+    --gold-bright: 44 81% 71%;
+    --gold-dim: 42 44% 34%;
+    --fire: 19 74% 52%;
+    --fire-deep: 11 79% 27%;
+    --bone: 40 26% 80%;
+    --bone-dim: 38 12% 60%;
 
-    --card: 270 20% 100%;
-    --card-foreground: 270 50% 8%;
+    /* shadcn semantic mapping */
+    --background: var(--void);
+    --foreground: var(--bone);
 
-    --popover: 270 20% 100%;
-    --popover-foreground: 270 50% 8%;
+    --card: var(--ash);
+    --card-foreground: var(--bone);
 
-    --primary: 270 70% 55%;
-    --primary-foreground: 0 0% 100%;
+    --popover: var(--ash-raised);
+    --popover-foreground: var(--bone);
 
-    --secondary: 270 20% 94%;
-    --secondary-foreground: 270 50% 8%;
+    --primary: var(--gold);
+    --primary-foreground: var(--void);
 
-    --muted: 270 15% 94%;
-    --muted-foreground: 270 10% 45%;
+    --secondary: var(--ash-raised);
+    --secondary-foreground: var(--bone);
 
-    --accent: 280 80% 60%;
-    --accent-foreground: 0 0% 100%;
+    --muted: var(--ash);
+    --muted-foreground: var(--bone-dim);
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --accent: var(--fire);
+    --accent-foreground: var(--void);
 
-    --border: 270 15% 88%;
-    --input: 270 15% 88%;
-    --ring: 270 70% 55%;
+    --destructive: 4 70% 50%;
+    --destructive-foreground: var(--bone);
 
-    --radius: 0.75rem;
+    --border: 42 30% 18%;
+    --input: 42 30% 22%;
+    --ring: var(--fire);
 
-    /* Custom design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(270 70% 55%) 0%, hsl(290 80% 60%) 100%);
-    --gradient-secondary: linear-gradient(135deg, hsl(290 80% 65%) 0%, hsl(320 70% 60%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(270 50% 8% / 0.02) 0%, hsl(270 70% 55% / 0.08) 100%);
-    
-    --shadow-sm: 0 1px 2px hsl(270 50% 8% / 0.05);
-    --shadow-md: 0 4px 12px hsl(270 50% 8% / 0.08);
-    --shadow-lg: 0 12px 40px hsl(270 50% 8% / 0.12);
-    --shadow-glow: 0 0 40px hsl(270 70% 55% / 0.25);
-    
-    --glass-bg: hsl(270 20% 100% / 0.7);
-    --glass-border: hsl(270 15% 88% / 0.5);
+    --radius: 0px;
 
-    --sidebar-background: 270 20% 98%;
-    --sidebar-foreground: 270 30% 30%;
-    --sidebar-primary: 270 50% 8%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 270 20% 94%;
-    --sidebar-accent-foreground: 270 50% 8%;
-    --sidebar-border: 270 15% 88%;
-    --sidebar-ring: 270 70% 55%;
-  }
+    --sidebar-background: var(--void);
+    --sidebar-foreground: var(--bone);
+    --sidebar-primary: var(--gold);
+    --sidebar-primary-foreground: var(--void);
+    --sidebar-accent: var(--ash-raised);
+    --sidebar-accent-foreground: var(--bone);
+    --sidebar-border: 42 30% 18%;
+    --sidebar-ring: var(--fire);
 
-  .dark {
-    --background: 270 30% 4%;
-    --foreground: 270 10% 95%;
-
-    --card: 270 30% 7%;
-    --card-foreground: 270 10% 95%;
-
-    --popover: 270 30% 7%;
-    --popover-foreground: 270 10% 95%;
-
-    --primary: 270 70% 60%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 270 30% 12%;
-    --secondary-foreground: 270 10% 95%;
-
-    --muted: 270 25% 12%;
-    --muted-foreground: 270 15% 60%;
-
-    --accent: 280 80% 65%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 270 10% 95%;
-
-    --border: 270 25% 15%;
-    --input: 270 25% 15%;
-    --ring: 270 70% 60%;
-
-    --gradient-primary: linear-gradient(135deg, hsl(270 70% 60%) 0%, hsl(290 80% 65%) 100%);
-    --gradient-secondary: linear-gradient(135deg, hsl(290 80% 70%) 0%, hsl(320 70% 65%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(270 30% 4%) 0%, hsl(270 70% 60% / 0.12) 100%);
-    
-    --shadow-sm: 0 1px 2px hsl(0 0% 0% / 0.3);
-    --shadow-md: 0 4px 12px hsl(0 0% 0% / 0.4);
-    --shadow-lg: 0 12px 40px hsl(0 0% 0% / 0.5);
-    --shadow-glow: 0 0 60px hsl(270 70% 60% / 0.3);
-    
-    --glass-bg: hsl(270 30% 7% / 0.85);
-    --glass-border: hsl(270 25% 15% / 0.6);
-
-    --sidebar-background: 270 30% 4%;
-    --sidebar-foreground: 270 10% 90%;
-    --sidebar-primary: 270 70% 60%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 270 30% 12%;
-    --sidebar-accent-foreground: 270 10% 95%;
-    --sidebar-border: 270 25% 15%;
-    --sidebar-ring: 270 70% 60%;
+    /* Smoke: soft fractal noise, warm, barely there */
+    --smoke-grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.62  0 0 0 0 0.46  0 0 0 0 0.26  0 0 0 0.045 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   }
 }
 
@@ -118,69 +77,102 @@
 
   html {
     scroll-behavior: smooth;
+    scrollbar-color: hsl(var(--gold-dim)) hsl(var(--void));
+    scrollbar-width: thin;
+    color-scheme: dark;
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground font-serif antialiased;
+    font-size: 1.0625rem;
+    font-weight: 300;
+    background-color: hsl(var(--void));
+    background-image: var(--smoke-grain);
+    caret-color: hsl(var(--fire));
+  }
+
+  ::selection {
+    background: hsl(var(--gold));
+    color: hsl(var(--void));
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--void));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--gold-dim));
+    border: 3px solid hsl(var(--void));
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--gold));
+  }
+
+  :focus-visible {
+    outline: 1px solid hsl(var(--fire));
+    outline-offset: 4px;
+  }
+
+  a {
+    text-underline-offset: 0.25em;
+    text-decoration-thickness: 1px;
+  }
+
+  h1, h2, h3 {
+    text-wrap: balance;
   }
 }
 
 @layer components {
-  .glass-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
+  /* Gold capitals cut into the dark, lit from the front by firelight */
+  .gilded {
+    font-family: 'Cinzel', serif;
+    color: hsl(var(--gold));
+    text-shadow:
+      0 1px 0 hsl(var(--gold-bright) / 0.35),
+      0 -1px 0 hsl(var(--void)),
+      0 10px 30px hsl(var(--fire-deep) / 0.35);
   }
 
-  .gradient-text {
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  /* Small tracked capitals, as on the films' title and credit cards */
+  .credit {
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-weight: 600;
+    font-variant-numeric: lining-nums;
   }
 
-  .gradient-border {
-    position: relative;
+  .gold-rule {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--gold-dim)) 12%, hsl(var(--gold)) 50%, hsl(var(--gold-dim)) 88%, transparent);
   }
 
-  .gradient-border::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: var(--gradient-primary);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
+  /* A gold hairline frame with a second, finer line inside it */
+  .gold-frame {
+    box-shadow:
+      inset 0 0 0 1px hsl(var(--gold-dim)),
+      inset 0 0 0 5px hsl(var(--void)),
+      inset 0 0 0 6px hsl(var(--gold-dim) / 0.5);
   }
+}
 
-  .hover-lift {
-    @apply transition-all duration-300 ease-out;
-  }
-
-  .hover-lift:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-  }
-
+@layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
 
-@layer utilities {
-  .animation-delay-150 {
-    animation-delay: 150ms;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-  .animation-delay-300 {
-    animation-delay: 300ms;
-  }
-  .animation-delay-450 {
-    animation-delay: 450ms;
-  }
-  .animation-delay-600 {
-    animation-delay: 600ms;
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
   }
 }
