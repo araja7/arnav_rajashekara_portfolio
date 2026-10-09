@@ -1,6 +1,8 @@
+import { useRef } from "react";
+import { useInView } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import { useLit } from "@/hooks/use-lit";
-import { cn } from "@/lib/utils";
+import { scenes } from "./scenes";
 
 interface ProjectCardProps {
   project: {
@@ -9,7 +11,6 @@ interface ProjectCardProps {
     description: string;
     longDescription: string;
     techStack: string[];
-    image: string | null;
     github: string;
     demo: string | null;
     featured: boolean;
@@ -17,38 +18,22 @@ interface ProjectCardProps {
   index: number;
 }
 
-/** A project as a scene: a widescreen still that fades up out of black, then its title card. */
+/** A project as a scene: a widescreen etching that rises out of black and catches fire, then its title card. */
 export function ProjectCard({ project }: ProjectCardProps) {
   const { ref, lit } = useLit<HTMLElement>(0.25);
+  const plate = useRef<HTMLDivElement>(null);
+  const playing = useInView(plate);
+  const Scene = scenes[project.id];
 
   return (
     <article ref={ref} aria-labelledby={`project-${project.id}`} className="group">
       <div className="gold-frame relative p-2 md:p-3">
-        <div className="relative overflow-hidden bg-void">
-          {project.image ? (
-            <img
-              src={project.image}
-              alt={`${project.title} preview`}
-              loading="lazy"
-              className={cn(
-                "aspect-[2.39/1] w-full object-cover transition-[filter,transform] duration-[1600ms] ease-out",
-                lit
-                  ? "scale-100 grayscale sepia brightness-[0.82] contrast-[1.08] saturate-[1.35] group-hover:grayscale-0 group-hover:sepia-0 group-hover:brightness-100 group-hover:contrast-100 group-hover:saturate-100 group-focus-within:grayscale-0 group-focus-within:sepia-0 group-focus-within:brightness-100 group-focus-within:contrast-100 group-focus-within:saturate-100"
-                  : "scale-[1.04] grayscale sepia brightness-[0.15] saturate-[1.35]"
-              )}
-            />
-          ) : (
-            <div className="aspect-[2.39/1] w-full bg-ash" />
-          )}
+        <div ref={plate} className="relative aspect-[2.39/1] overflow-hidden bg-void">
+          {Scene && <Scene lit={lit} playing={playing} />}
           <div
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,hsl(var(--void)/0.75))]"
             aria-hidden="true"
           />
-          {project.featured && (
-            <span className="credit absolute left-4 top-3 text-[0.62rem] text-gold-bright [text-shadow:0_1px_6px_hsl(0_0%_0%)] md:left-6 md:top-4">
-              Featured
-            </span>
-          )}
         </div>
       </div>
 
