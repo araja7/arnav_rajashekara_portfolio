@@ -1,6 +1,6 @@
 # Arnav Rajashekara - Portfolio
 
-A modern, responsive portfolio website showcasing my work, skills, and experience as a Software Engineer and Data Scientist.
+A modern, responsive portfolio website showcasing my work, skills, and experience as a Software Engineer
 
 ## Features
 
