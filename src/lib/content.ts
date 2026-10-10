@@ -60,8 +60,11 @@ export const aboutContent = {
     That question has fueled me ever since, as I aim to be at the forefront of the efforts to find out.`,],
           
   bio: [
-    `When I'm not coding, you'll find me weightlifting, watching sports (Go Hawks!), reading, playing piano, 
-    or exploring new technologies. I also love spending time with my friends and family.`,
+    `When I'm not coding, you'll find me weightlifting, watching sports (Go Hawks, Kraken, Mariners, Buckeyes, and 
+    Blazers until the Sonics come back haha), reading, playing piano, or exploring new technologies. I'm a 
+    huge fan of Lord of the Rings, Star Wars, Transformers, and Marvel/DC. Some of my favorite TV shows 
+    include Avatar the Last Airbender, Game of Thrones, Friends, Attack on Titan, and How I Met Your Mother, 
+    I also love spending time with my friends and family.`,
     `I love opportunities to apply my skills in software engineering, machine learning, and statistics to build impactful products.`,
   ],
 };
