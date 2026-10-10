@@ -18,13 +18,35 @@ const About = () => {
             <SectionHeading as="h1" title={aboutContent.headline} />
 
             <div className="mx-auto grid max-w-6xl grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
-              <figure className="lg:col-span-5 lg:sticky lg:top-28">
-                <div className="gold-frame p-3">
+              <div className="space-y-4 sm:space-y-5 lg:col-span-6 lg:sticky lg:top-28">
+                <figure className="gold-frame p-3">
                   <img src="/family_photo.jpg" alt="Family" className="block w-full object-cover" />
+                </figure>
+                <div className="grid grid-cols-2 gap-4 sm:gap-5">
+                  <figure className="gold-frame p-3">
+                    <img
+                      src="/gym_photo.jpg"
+                      alt="Arnav posing in the gym"
+                      width={1500}
+                      height={2000}
+                      loading="lazy"
+                      className="block aspect-[3/4] w-full object-cover"
+                    />
+                  </figure>
+                  <figure className="gold-frame p-3">
+                    <img
+                      src="/lake_photo.jpg"
+                      alt="Arnav standing on a trail above a deep blue lake ringed by cliffs"
+                      width={1500}
+                      height={2000}
+                      loading="lazy"
+                      className="block aspect-[3/4] w-full object-cover"
+                    />
+                  </figure>
                 </div>
-              </figure>
+              </div>
 
-              <div className="lg:col-span-7">
+              <div className="lg:col-span-6">
                 <div className="max-w-[65ch] space-y-6 text-[1.12rem] leading-[1.85] text-bone">
                   {aboutContent.intro.map((paragraph, index) => (
                     <p key={index}>
