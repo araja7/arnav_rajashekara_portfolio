@@ -65,7 +65,7 @@ export const aboutContent = {
     huge fan of Lord of the Rings, Star Wars, Transformers, and Marvel/DC. Some of my favorite TV shows 
     include Avatar the Last Airbender, Game of Thrones, Friends, Attack on Titan, and How I Met Your Mother, 
     I also love spending time with my friends and family.`,
-    `I love opportunities to apply my skills in software engineering, machine learning, and statistics to build impactful products.`,
+    `I welcome opportunities to apply my technical skills to build impactful products.`,
   ],
 };
 
