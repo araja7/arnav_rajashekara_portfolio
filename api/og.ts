@@ -14,7 +14,7 @@ const ROUTE_META: Record<string, Meta> = {
   "/": {
     title: "Arnav Rajashekara | Software Engineer - Systems & Data",
     description:
-      "Portfolio of Arnav Rajashekara, a Software Engineer and M.Eng. Computer Science student at Cornell University who is constantly building.",
+      "Portfolio of Arnav Rajashekara. Builder and operator at heart.",
   },
   "/about": {
     title: "About | Arnav Rajashekara",
