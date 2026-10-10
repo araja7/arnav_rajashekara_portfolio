@@ -6,6 +6,7 @@ type Meta = {
 };
 
 const DEFAULT_SITE_URL = "https://arnav-rajashekara-portfolio.vercel.app";
+const IMAGE_ALT = "A gold ring with a burning inscription above the name Arnav Rajashekara";
 
 const ROUTE_META: Record<string, Meta> = {
   "/": {
@@ -73,7 +74,7 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
     } satisfies Meta);
 
   const pageUrl = `${siteUrl}${cleanPath === "/" ? "" : cleanPath}`;
-  const imageUrl = `${siteUrl}/tab_image.jpg`;
+  const imageUrl = `${siteUrl}/og-image.jpg`;
 
   res.setHeader("Content-Type", "text/html; charset=utf-8");
   res.setHeader("Cache-Control", "public, max-age=0, s-maxage=86400, stale-while-revalidate=604800");
@@ -93,12 +94,16 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
     <meta property="og:description" content="${escapeHtml(meta.description)}" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="${escapeHtml(imageUrl)}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="${escapeHtml(IMAGE_ALT)}" />
     <meta property="og:url" content="${escapeHtml(pageUrl)}" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${escapeHtml(meta.title)}" />
     <meta name="twitter:description" content="${escapeHtml(meta.description)}" />
     <meta name="twitter:image" content="${escapeHtml(imageUrl)}" />
+    <meta name="twitter:image:alt" content="${escapeHtml(IMAGE_ALT)}" />
 
     <meta http-equiv="refresh" content="0; url=${escapeHtml(pageUrl)}" />
   </head>
