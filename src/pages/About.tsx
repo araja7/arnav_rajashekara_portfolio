@@ -68,7 +68,7 @@ const About = () => {
                   <span className="h-2.5 w-2.5 rounded-full shadow-[inset_0_0_0_1.5px_hsl(var(--gold))]" />
                   <span className="gold-rule flex-1" />
                 </div>
-                <div className="max-w-[65ch] space-y-6 text-[1.12rem] leading-[1.85] text-bone-dim">
+                <div className="max-w-[65ch] space-y-6 text-[1.12rem] leading-[1.85] text-bone">
                   {aboutContent.bio.map((paragraph, index) => (
                     <p key={index}>{paragraph}</p>
                   ))}
