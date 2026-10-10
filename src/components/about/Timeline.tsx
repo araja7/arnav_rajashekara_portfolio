@@ -438,27 +438,36 @@ function useChart(sheetRef: RefObject<HTMLDivElement>) {
   return chart;
 }
 
-/** Ink the road down to wherever the reader has scrolled, with the Ring travelling at its head. */
+/** Ink the road down to wherever the reader has scrolled, with the Ring travelling at its head.
+ *  The road only runs down the page, so the inked stretch is everything above the Ring: it is revealed by sliding a
+ *  clip over a finished drawing, and the Ring is moved by transform, so scrolling never repaints the map itself. */
 function useJourney(
   chart: Chart | null,
   sheetRef: RefObject<HTMLDivElement>,
   roadRef: RefObject<SVGPathElement>,
-  inkRef: RefObject<SVGPathElement>,
-  ringRef: RefObject<SVGGElement>,
+  revealRef: RefObject<HTMLDivElement>,
+  inkRef: RefObject<SVGSVGElement>,
+  ringRef: RefObject<SVGSVGElement>,
   still: boolean
 ) {
   useEffect(() => {
     const sheet = sheetRef.current;
     const road = roadRef.current;
+    const reveal = revealRef.current;
     const ink = inkRef.current;
     const ring = ringRef.current;
-    if (!chart?.road || !sheet || !road || !ink || !ring) return;
+    if (!chart?.road || !sheet || !road || !reveal || !ink || !ring) return;
 
     const total = road.getTotalLength();
     const step = 6;
     const n = Math.max(1, Math.ceil(total / step));
+    const xs = new Float32Array(n + 1);
     const ys = new Float32Array(n + 1);
-    for (let i = 0; i <= n; i++) ys[i] = road.getPointAtLength(Math.min(i * step, total)).y;
+    for (let i = 0; i <= n; i++) {
+      const p = road.getPointAtLength(Math.min(i * step, total));
+      xs[i] = p.x;
+      ys[i] = p.y;
+    }
 
     const lengthAt = (y: number) => {
       if (y <= ys[0]) return 0;
@@ -474,15 +483,20 @@ function useJourney(
       return Math.min(total, (lo + f) * step);
     };
 
-    const place = (len: number) => {
-      const p = road.getPointAtLength(len);
-      ring.setAttribute("transform", `translate(${r1(p.x)} ${r1(p.y)})`);
+    const h = chart.h;
+    const place = (len: number, inked: number) => {
+      const at = Math.min(n, len / step);
+      const i = Math.min(n - 1, Math.floor(at));
+      const f = at - i;
+      const x = xs[i] + (xs[i + 1] - xs[i]) * f;
+      const y = ys[i] + (ys[i + 1] - ys[i]) * f;
+      ring.style.transform = `translate3d(${r1(x - 12)}px, ${r1(y - 12)}px, 0)`;
+      reveal.style.transform = `translate3d(0, ${r1(inked - h)}px, 0)`;
+      ink.style.transform = `translate3d(0, ${r1(h - inked)}px, 0)`;
     };
-    ink.style.strokeDasharray = `${total} ${total}`;
 
     if (still) {
-      ink.style.strokeDashoffset = "0";
-      place(0);
+      place(0, h);
       return;
     }
 
@@ -492,8 +506,10 @@ function useJourney(
     const tick = () => {
       const next = shown < 0 ? target : shown + (target - shown) * 0.12;
       shown = Math.abs(target - next) < 0.5 ? target : next;
-      ink.style.strokeDashoffset = String(total - shown);
-      place(shown);
+      const at = Math.min(n, shown / step);
+      const i = Math.min(n - 1, Math.floor(at));
+      const inked = shown <= 0 ? 0 : shown >= total ? h : ys[i] + (ys[i + 1] - ys[i]) * (at - i);
+      place(shown, inked);
       frame = shown === target ? 0 : requestAnimationFrame(tick);
     };
     const follow = () => {
@@ -509,7 +525,7 @@ function useJourney(
       window.removeEventListener("scroll", follow);
       window.removeEventListener("resize", follow);
     };
-  }, [chart, sheetRef, roadRef, inkRef, ringRef, still]);
+  }, [chart, sheetRef, roadRef, revealRef, inkRef, ringRef, still]);
 }
 
 /** The years as a map of the journey: a road inked back from now to the start, through each place on the way. */
@@ -517,11 +533,12 @@ export function Timeline() {
   const stages = groupByYear(timeline);
   const sheetRef = useRef<HTMLDivElement>(null);
   const roadRef = useRef<SVGPathElement>(null);
-  const inkRef = useRef<SVGPathElement>(null);
-  const ringRef = useRef<SVGGElement>(null);
+  const revealRef = useRef<HTMLDivElement>(null);
+  const inkRef = useRef<SVGSVGElement>(null);
+  const ringRef = useRef<SVGSVGElement>(null);
   const still = useReducedMotion() ?? false;
   const chart = useChart(sheetRef);
-  useJourney(chart, sheetRef, roadRef, inkRef, ringRef, still);
+  useJourney(chart, sheetRef, roadRef, revealRef, inkRef, ringRef, still);
 
   let n = 0;
 
@@ -541,44 +558,70 @@ export function Timeline() {
       <div aria-hidden="true" className="absolute inset-[15px] -z-10 border border-ink/20 md:inset-[35px]" />
 
       {chart && (
-        <svg
-          aria-hidden="true"
-          width={chart.w}
-          height={chart.h}
-          viewBox={`0 0 ${chart.w} ${chart.h}`}
-          className="pointer-events-none absolute inset-0 -z-10 overflow-visible"
-        >
-          <defs>
-            <mask id="road-inked" maskUnits="userSpaceOnUse" x={0} y={0} width={chart.w} height={chart.h}>
-              <path ref={inkRef} d={chart.road} fill="none" stroke="white" strokeWidth={8} />
-            </mask>
-            <linearGradient id="ring-gilt" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stopColor="hsl(var(--gilt-pale))" />
-              <stop offset="0.35" stopColor="hsl(var(--gold-bright))" />
-              <stop offset="0.55" stopColor="hsl(var(--gilt-deep))" />
-              <stop offset="0.75" stopColor="hsl(var(--gilt-rich))" />
-              <stop offset="1" stopColor="hsl(var(--gilt-shade))" />
-            </linearGradient>
-          </defs>
-          <g strokeLinecap="round" strokeLinejoin="round">
-            {chart.marks.map((mark, i) => (
-              <path
-                key={i}
-                d={mark.d}
-                fill={mark.fill ? "hsl(var(--parchment) / 0.6)" : "none"}
-                stroke={mark.stroke === false ? "none" : `hsl(var(--ink) / ${mark.tone})`}
-                strokeWidth={mark.width}
-                strokeDasharray={mark.dash}
-              />
-            ))}
-          </g>
-          <path ref={roadRef} d={chart.road} fill="none" stroke="hsl(var(--ink) / 0.22)" strokeWidth={1.2} strokeDasharray="7 6" strokeLinecap="round" />
-          <path d={chart.road} fill="none" stroke="hsl(var(--ink-red))" strokeWidth={1.8} strokeDasharray="7 6" strokeLinecap="round" mask="url(#road-inked)" />
-          <g ref={ringRef} style={{ filter: "drop-shadow(0 2px 1.5px hsl(var(--scorch) / 0.55))" }}>
+        <>
+          <svg
+            aria-hidden="true"
+            width={chart.w}
+            height={chart.h}
+            viewBox={`0 0 ${chart.w} ${chart.h}`}
+            className="pointer-events-none absolute inset-0 -z-10 overflow-visible"
+          >
+            <g strokeLinecap="round" strokeLinejoin="round">
+              {chart.marks.map((mark, i) => (
+                <path
+                  key={i}
+                  d={mark.d}
+                  fill={mark.fill ? "hsl(var(--parchment) / 0.6)" : "none"}
+                  stroke={mark.stroke === false ? "none" : `hsl(var(--ink) / ${mark.tone})`}
+                  strokeWidth={mark.width}
+                  strokeDasharray={mark.dash}
+                />
+              ))}
+            </g>
+            <path ref={roadRef} d={chart.road} fill="none" stroke="hsl(var(--ink) / 0.22)" strokeWidth={1.2} strokeDasharray="7 6" strokeLinecap="round" />
+          </svg>
+
+          {/* The inked road, slid under a clip of the same height; starts fully hidden until the journey places it. */}
+          <div
+            ref={revealRef}
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 top-0 -z-10 overflow-hidden will-change-transform"
+            style={{ height: chart.h, transform: "translate3d(0, -100%, 0)" }}
+          >
+            <svg
+              ref={inkRef}
+              width={chart.w}
+              height={chart.h}
+              viewBox={`0 0 ${chart.w} ${chart.h}`}
+              className="absolute left-0 top-0 will-change-transform"
+              style={{ transform: "translate3d(0, 100%, 0)" }}
+            >
+              <path d={chart.road} fill="none" stroke="hsl(var(--ink-red))" strokeWidth={1.8} strokeDasharray="7 6" strokeLinecap="round" />
+            </svg>
+          </div>
+
+          <svg
+            ref={ringRef}
+            aria-hidden="true"
+            width={24}
+            height={24}
+            viewBox="-12 -12 24 24"
+            className="pointer-events-none absolute left-0 top-0 -z-10 overflow-visible will-change-transform"
+            style={{ filter: "drop-shadow(0 2px 1.5px hsl(var(--scorch) / 0.55))" }}
+          >
+            <defs>
+              <linearGradient id="ring-gilt" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stopColor="hsl(var(--gilt-pale))" />
+                <stop offset="0.35" stopColor="hsl(var(--gold-bright))" />
+                <stop offset="0.55" stopColor="hsl(var(--gilt-deep))" />
+                <stop offset="0.75" stopColor="hsl(var(--gilt-rich))" />
+                <stop offset="1" stopColor="hsl(var(--gilt-shade))" />
+              </linearGradient>
+            </defs>
             <circle r={7} fill="none" stroke="url(#ring-gilt)" strokeWidth={3.4} />
             <circle r={8.6} fill="none" stroke="hsl(var(--gilt-pale) / 0.5)" strokeWidth={0.5} />
-          </g>
-        </svg>
+          </svg>
+        </>
       )}
 
       <Compass className="absolute left-8 top-10 hidden w-[4.5rem] text-ink/70 md:block" />
