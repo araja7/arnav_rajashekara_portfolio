@@ -1,101 +1,23 @@
-import { motion } from "framer-motion";
-import { 
-  Code2, Database, Server, Brain, MessageSquare, 
-  BarChart3, Container, Cloud, Boxes, Palette,
-  FileCode, Terminal, Layers, Cpu, GitBranch,
-  Github, Send, Webhook, CheckSquare2, FileText,
-  BookOpen, LineChart, FlaskConical, Circle,
-  TestTube, Calculator, Rss, Zap, Rocket,
-  Grid3x3, Settings, Cog, Radio
-} from "lucide-react";
 import { skills } from "@/lib/content";
 
-const iconMap: Record<string, any> = {
-  python: FileCode,
-  java: Code2,
-  javascript: Code2,
-  typescript: Code2,
-  c: Terminal,
-  html: Code2,
-  database: Database,
-  r: Code2,
-  matlab: Calculator,
-  assembly: Terminal,
-  react: Boxes,
-  nextjs: Layers,
-  tailwind: Palette,
-  rss: Radio,
-  nodejs: Server,
-  flask: FlaskConical,
-  fastapi: Zap,
-  pydantic: CheckSquare2,
-  postgresql: Database,
-  pytorch: Cpu,
-  tensorflow: Cpu,
-  langchain: MessageSquare,
-  openai: Brain,
-  ollama: Cpu,
-  sklearn: Brain,
-  chart: BarChart3,
-  numpy: Grid3x3,
-  scipy: Calculator,
-  matplotlib: LineChart,
-  scrapy: Webhook,
-  playwright: Rocket,
-  beautifulsoup: FlaskConical,
-  aws: Cloud,
-  azure: Cloud,
-  supabase: Database,
-  hetzner: Server,
-  terraform: Layers,
-  git: GitBranch,
-  jenkins: Settings,
-  kubernetes: Container,
-  docker: Container,
-  cucumber: FlaskConical,
-  pytest: TestTube,
-  junit: TestTube,
-};
-
+/** Skills set like the end credits: the role in small gold capitals, the names beneath, spaced not separated. */
 export function SkillsGrid() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {skills.map((category, categoryIndex) => (
-        <motion.div
-          key={category.category}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
-          className="p-6 rounded-2xl bg-card border border-border hover-lift"
-        >
-          <h3 className="text-lg font-semibold text-foreground mb-4">
-            {category.category}
-          </h3>
-          <div className="flex flex-wrap gap-3">
-            {category.items.map((skill, skillIndex) => {
-              const Icon = iconMap[skill.icon] || Code2;
-              return (
-                <motion.div
-                  key={skill.name}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ 
-                    duration: 0.3, 
-                    delay: categoryIndex * 0.1 + skillIndex * 0.05 
-                  }}
-                  whileHover={{ scale: 1.05 }}
-                  className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary text-secondary-foreground text-sm font-medium"
-                >
-                  <Icon size={16} className="text-primary" />
+    <dl className="space-y-12 text-center md:space-y-14">
+      {skills.map((category) => (
+        <div key={category.category}>
+          <dt className="credit gilt-label text-[0.7rem]">{category.category}</dt>
+          <dd className="mx-auto mt-4 max-w-3xl">
+            <ul className="flex flex-wrap items-center justify-center gap-x-7 gap-y-2.5 md:gap-x-9">
+              {category.items.map((skill) => (
+                <li key={skill.name} className="whitespace-nowrap font-display text-[1.05rem] md:text-[1.15rem] tracking-[0.04em] text-bone">
                   {skill.name}
-                </motion.div>
-              );
-            })}
-          </div>
-        </motion.div>
+                </li>
+              ))}
+            </ul>
+          </dd>
+        </div>
       ))}
-    </div>
+    </dl>
   );
 }

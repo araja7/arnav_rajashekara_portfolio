@@ -15,14 +15,15 @@ const Projects = () => {
         />
       </Helmet>
       <Layout>
-        <section className="pt-32 pb-20">
+        <section className="pt-32 md:pt-44 pb-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeading
+              as="h1"
               title="Featured Projects"
               subtitle="A collection of projects showcasing impactful technical solutions to real-world problems."
             />
 
-            <div className="flex flex-col gap-10 max-w-3xl mx-auto">
+            <div className="mx-auto flex max-w-6xl flex-col gap-32 md:gap-44">
               {projects.map((project, index) => (
                 <ProjectCard key={project.id} project={project} index={index} />
               ))}

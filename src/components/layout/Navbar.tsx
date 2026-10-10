@@ -2,121 +2,119 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { TheRing } from "@/components/prologue/TheRing";
 import { navLinks, siteConfig } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
-    setIsMobileMenuOpen(false);
+    setIsMenuOpen(false);
   }, [location.pathname]);
 
+  const solid = isScrolled || isMenuOpen;
+
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+    <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "glass-card border-b border-border/50 shadow-glass"
-          : "bg-transparent"
+        "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
+        solid ? "bg-void/90 backdrop-blur-md" : "bg-transparent"
       )}
     >
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <Link
-            to="/"
-            className="text-xl md:text-2xl font-bold tracking-tight hover:opacity-80 transition-opacity"
-          >
-            <span className="gradient-text">{siteConfig.name}</span>
+      <nav className="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main">
+        <div className="flex h-16 md:h-[76px] items-center justify-between">
+          <Link to="/" className="group flex items-center gap-3">
+            <TheRing className="h-7 w-7 transition-[filter] group-hover:brightness-125" />
+            <span className="gilded text-[0.95rem] md:text-base font-semibold uppercase tracking-[0.16em]">
+              {siteConfig.name}
+            </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                to={link.href}
-                className={cn(
-                  "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200",
-                  location.pathname === link.href
-                    ? "text-primary bg-primary/10"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                )}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <div className="ml-2">
-              <ThemeToggle />
-            </div>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="flex items-center gap-2 md:hidden">
-            <ThemeToggle />
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-            </Button>
-          </div>
-        </div>
-      </nav>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden glass-card border-t border-border/50"
-          >
-            <div className="container mx-auto px-4 py-4 space-y-1">
-              {navLinks.map((link, index) => (
-                <motion.div
-                  key={link.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                >
+          <ul className="hidden lg:flex items-center gap-2">
+            {navLinks.map((link) => {
+              const current = location.pathname === link.href;
+              return (
+                <li key={link.href}>
                   <Link
                     to={link.href}
-                    className={cn(
-                      "block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200",
-                      location.pathname === link.href
-                        ? "text-primary bg-primary/10"
-                        : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                    )}
+                    aria-current={current ? "page" : undefined}
+                    className="credit group/tab relative block px-3 py-2 text-[0.7rem]"
                   >
-                    {link.name}
+                    <span
+                      className={cn(
+                        "gilded transition-opacity duration-200 ease-out",
+                        current ? "opacity-100" : "opacity-[0.62] group-hover/tab:opacity-100"
+                      )}
+                    >
+                      {link.name}
+                    </span>
+                    <span
+                      className={cn(
+                        "absolute left-1/2 -bottom-0.5 h-px -translate-x-1/2 bg-fire transition-[width] duration-300",
+                        current ? "w-6" : "w-0"
+                      )}
+                      aria-hidden="true"
+                    />
                   </Link>
-                </motion.div>
-              ))}
-            </div>
+                </li>
+              );
+            })}
+          </ul>
+
+          <button
+            type="button"
+            className="lg:hidden grid h-10 w-10 place-items-center gilt-edge text-gold-bright"
+            onClick={() => setIsMenuOpen((open) => !open)}
+            aria-expanded={isMenuOpen}
+            aria-controls="main-menu"
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
+      </nav>
+      <div className={cn("gold-rule transition-opacity duration-300", solid ? "opacity-60" : "opacity-0")} aria-hidden="true" />
+
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            id="main-menu"
+            initial={{ opacity: 0, clipPath: "inset(0 0 100% 0)" }}
+            animate={{ opacity: 1, clipPath: "inset(0 0 0% 0)" }}
+            exit={{ opacity: 0, clipPath: "inset(0 0 100% 0)" }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:hidden bg-void/[0.97]"
+          >
+            <ul className="container mx-auto px-4 py-6 text-center">
+              {navLinks.map((link) => {
+                const current = location.pathname === link.href;
+                return (
+                  <li key={link.href}>
+                    <Link
+                      to={link.href}
+                      aria-current={current ? "page" : undefined}
+                      className="block py-3.5 font-display text-xl uppercase tracking-[0.14em]"
+                    >
+                      <span className={cn("gilded", !current && "opacity-[0.62]")}>{link.name}</span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+            <div className="gold-rule opacity-60" aria-hidden="true" />
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 }

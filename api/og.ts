@@ -6,15 +6,20 @@ type Meta = {
 };
 
 const DEFAULT_SITE_URL = "https://arnav-rajashekara-portfolio.vercel.app";
+const IMAGE_ALT = "A gold ring with a burning inscription above the name Arnav Rajashekara";
 
+// Mirrors each page's <Helmet> tags (text from src/lib/content.ts) so link previews
+// match what the site itself says. Keep the two in step.
 const ROUTE_META: Record<string, Meta> = {
   "/": {
-    title: "Arnav Rajashekara | Software Engineer & Data Scientist",
-    description: "Building intelligent systems, one line of code at a time.",
+    title: "Arnav Rajashekara | Software Engineer - Systems & Data",
+    description:
+      "Portfolio of Arnav Rajashekara, a Software Engineer and M.Eng. Computer Science student at Cornell University who is constantly building.",
   },
   "/about": {
     title: "About | Arnav Rajashekara",
-    description: "Learn more about Arnav Rajashekara — background, skills, and experience.",
+    description:
+      "I am a passionate Master of Engineering in Computer Science student at Cornell University with strong fundamentals and a deep curiosity for cutting-edge technologies.",
   },
   "/projects": {
     title: "Projects | Arnav Rajashekara",
@@ -22,7 +27,7 @@ const ROUTE_META: Record<string, Meta> = {
   },
   "/publications": {
     title: "Publications | Arnav Rajashekara",
-    description: "Research output, thesis work, and academic writing by Arnav Rajashekara.",
+    description: "Research output and academic writing.",
   },
   "/resume": {
     title: "Resume | Arnav Rajashekara",
@@ -30,7 +35,8 @@ const ROUTE_META: Record<string, Meta> = {
   },
   "/contact": {
     title: "Contact | Arnav Rajashekara",
-    description: "Get in touch with Arnav Rajashekara.",
+    description:
+      "I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology. Feel free to reach out!",
   },
 };
 
@@ -65,15 +71,10 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
   // Strip query/hash if someone passes full path-like string.
   const cleanPath = path.split("?")[0]?.split("#")[0] || "/";
 
-  const meta: Meta =
-    ROUTE_META[cleanPath] ??
-    ({
-      title: "Arnav Rajashekara | Software Engineer & Data Scientist",
-      description: "Building intelligent systems, one line of code at a time.",
-    } satisfies Meta);
+  const meta: Meta = ROUTE_META[cleanPath] ?? ROUTE_META["/"];
 
   const pageUrl = `${siteUrl}${cleanPath === "/" ? "" : cleanPath}`;
-  const imageUrl = `${siteUrl}/tab_image.jpg`;
+  const imageUrl = `${siteUrl}/og-image.jpg`;
 
   res.setHeader("Content-Type", "text/html; charset=utf-8");
   res.setHeader("Cache-Control", "public, max-age=0, s-maxage=86400, stale-while-revalidate=604800");
@@ -93,12 +94,16 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
     <meta property="og:description" content="${escapeHtml(meta.description)}" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="${escapeHtml(imageUrl)}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="${escapeHtml(IMAGE_ALT)}" />
     <meta property="og:url" content="${escapeHtml(pageUrl)}" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${escapeHtml(meta.title)}" />
     <meta name="twitter:description" content="${escapeHtml(meta.description)}" />
     <meta name="twitter:image" content="${escapeHtml(imageUrl)}" />
+    <meta name="twitter:image:alt" content="${escapeHtml(IMAGE_ALT)}" />
 
     <meta http-equiv="refresh" content="0; url=${escapeHtml(pageUrl)}" />
   </head>

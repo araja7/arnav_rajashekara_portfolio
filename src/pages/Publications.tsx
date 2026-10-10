@@ -12,14 +12,15 @@ const Publications = () => {
         <meta name="description" content={publicationsContent.subtitle} />
       </Helmet>
       <Layout>
-        <section className="pt-32 pb-20">
+        <section className="pt-32 md:pt-44 pb-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeading
+              as="h1"
               title={publicationsContent.headline}
               subtitle={publicationsContent.subtitle}
             />
 
-            <div className="flex flex-col gap-6 max-w-3xl mx-auto">
+            <div className="mx-auto flex max-w-4xl flex-col gap-16">
               {publications.map((publication, index) => (
                 <PublicationCard
                   key={publication.id}

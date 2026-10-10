@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Send, Loader2, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -63,16 +62,9 @@ export function ContactForm() {
   };
 
   return (
-    <motion.form
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      onSubmit={handleSubmit}
-      className="space-y-6 p-6 md:p-8 rounded-2xl bg-card border border-border"
-    >
-      <div className="space-y-2">
-        <Label htmlFor="name">{contactContent.formLabels.name}</Label>
+    <form onSubmit={handleSubmit} className="gold-frame space-y-8 bg-ash/60 p-7 md:p-11">
+      <div className="space-y-2.5">
+        <Label htmlFor="name" className="credit gilt-label text-[0.66rem]">{contactContent.formLabels.name}</Label>
         <Input
           id="name"
           name="name"
@@ -80,12 +72,12 @@ export function ContactForm() {
           placeholder="John Doe"
           required
           disabled={isSubmitting}
-          className="h-12"
+          className="h-12 rounded-none border-0 border-b border-gold-dim bg-void/70 px-4 text-lg md:text-lg text-bone placeholder:text-bone-dim/80 focus-visible:border-fire focus-visible:ring-0 focus-visible:ring-offset-0"
         />
       </div>
 
-      <div className="space-y-2">
-        <Label htmlFor="email">{contactContent.formLabels.email}</Label>
+      <div className="space-y-2.5">
+        <Label htmlFor="email" className="credit gilt-label text-[0.66rem]">{contactContent.formLabels.email}</Label>
         <Input
           id="email"
           name="email"
@@ -93,12 +85,12 @@ export function ContactForm() {
           placeholder="john@example.com"
           required
           disabled={isSubmitting}
-          className="h-12"
+          className="h-12 rounded-none border-0 border-b border-gold-dim bg-void/70 px-4 text-lg md:text-lg text-bone placeholder:text-bone-dim/80 focus-visible:border-fire focus-visible:ring-0 focus-visible:ring-offset-0"
         />
       </div>
 
-      <div className="space-y-2">
-        <Label htmlFor="message">{contactContent.formLabels.message}</Label>
+      <div className="space-y-2.5">
+        <Label htmlFor="message" className="credit gilt-label text-[0.66rem]">{contactContent.formLabels.message}</Label>
         <Textarea
           id="message"
           name="message"
@@ -106,14 +98,14 @@ export function ContactForm() {
           required
           disabled={isSubmitting}
           rows={5}
-          className="resize-none"
+          className="resize-none rounded-none border-0 border-b border-gold-dim bg-void/70 px-4 py-3 text-lg text-bone placeholder:text-bone-dim/80 focus-visible:border-fire focus-visible:ring-0 focus-visible:ring-offset-0"
         />
       </div>
 
       <Button
         type="submit"
         variant="hero"
-        size="lg"
+        size="xl"
         disabled={isSubmitting || isSubmitted}
         className="w-full"
       >
@@ -134,6 +126,6 @@ export function ContactForm() {
           </>
         )}
       </Button>
-    </motion.form>
+    </form>
   );
 }

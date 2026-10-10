@@ -1,113 +1,102 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================
+   THE PROLOGUE
+   A black void, fire-lit gold, and one reserved
+   colour: fire, for the inscription and for
+   whatever is active or in focus.
+   ============================================ */
+
 @layer base {
   :root {
-    --background: 270 20% 98%;
-    --foreground: 270 50% 8%;
+    /* Raw materials */
+    --void: 30 20% 2%;
+    --ash: 36 16% 6%;
+    --ash-raised: 34 14% 9%;
+    --gold: 42 54% 54%;
+    --gold-bright: 44 81% 71%;
+    --gold-dim: 42 44% 34%;
+    --fire: 19 74% 52%;
+    --fire-deep: 11 79% 27%;
+    --fire-core: 34 100% 72%;
+    --fire-white: 42 100% 87%;
+    --bone: 40 26% 80%;
+    --bone-dim: 38 12% 60%;
 
-    --card: 270 20% 100%;
-    --card-foreground: 270 50% 8%;
+    /* The map: the one sheet of parchment in the dark, inked by hand */
+    --parchment: 38 44% 74%;
+    --parchment-shade: 31 38% 50%;
+    --parchment-light: 44 64% 89%;
+    --scorch: 22 48% 13%;
+    --ink: 24 44% 11%;
+    --ink-faded: 25 32% 21%;
+    --ink-red: 5 60% 30%;
+    --parchment-fibre: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='f' filterUnits='userSpaceOnUse' x='0' y='0' width='240' height='240'><feTurbulence type='fractalNoise' baseFrequency='0.9 0.275' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.3  0 0 0 0 0.19  0 0 0 0 0.08  0 0 0 0.16 0'/></filter><rect width='100%' height='100%' filter='url(%23f)'/></svg>");
+    --parchment-mottle: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='750' height='750'><filter id='m' filterUnits='userSpaceOnUse' x='0' y='0' width='750' height='750'><feTurbulence type='fractalNoise' baseFrequency='0.008' numOctaves='4' seed='11' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.36  0 0 0 0 0.23  0 0 0 0 0.1  0.75 0 0 0 -0.3'/></filter><rect width='100%' height='100%' filter='url(%23m)'/></svg>");
 
-    --popover: 270 20% 100%;
-    --popover-foreground: 270 50% 8%;
+    /* Burnished gilt, as on the films' title cards: a pale highlight across the top,
+       a dark reflection through the middle, warm amber beneath. */
+    --gilt-pale: 47 92% 88%;
+    --gilt-rich: 40 72% 54%;
+    --gilt-deep: 32 74% 27%;
+    --gilt-shade: 35 64% 40%;
+    --gilt: linear-gradient(
+      180deg,
+      hsl(var(--gilt-pale)) 24%,
+      hsl(var(--gold-bright)) 38%,
+      hsl(var(--gilt-rich)) 48%,
+      hsl(var(--gilt-deep)) 55%,
+      hsl(var(--gilt-rich)) 62%,
+      hsl(var(--gold-bright)) 70%,
+      hsl(var(--gilt-shade)) 80%
+    );
 
-    --primary: 270 70% 55%;
-    --primary-foreground: 0 0% 100%;
+    /* shadcn semantic mapping */
+    --background: var(--void);
+    --foreground: var(--bone);
 
-    --secondary: 270 20% 94%;
-    --secondary-foreground: 270 50% 8%;
+    --card: var(--ash);
+    --card-foreground: var(--bone);
 
-    --muted: 270 15% 94%;
-    --muted-foreground: 270 10% 45%;
+    --popover: var(--ash-raised);
+    --popover-foreground: var(--bone);
 
-    --accent: 280 80% 60%;
-    --accent-foreground: 0 0% 100%;
+    --primary: var(--gold);
+    --primary-foreground: var(--void);
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --secondary: var(--ash-raised);
+    --secondary-foreground: var(--bone);
 
-    --border: 270 15% 88%;
-    --input: 270 15% 88%;
-    --ring: 270 70% 55%;
+    --muted: var(--ash);
+    --muted-foreground: var(--bone-dim);
 
-    --radius: 0.75rem;
+    --accent: var(--fire);
+    --accent-foreground: var(--void);
 
-    /* Custom design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(270 70% 55%) 0%, hsl(290 80% 60%) 100%);
-    --gradient-secondary: linear-gradient(135deg, hsl(290 80% 65%) 0%, hsl(320 70% 60%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(270 50% 8% / 0.02) 0%, hsl(270 70% 55% / 0.08) 100%);
-    
-    --shadow-sm: 0 1px 2px hsl(270 50% 8% / 0.05);
-    --shadow-md: 0 4px 12px hsl(270 50% 8% / 0.08);
-    --shadow-lg: 0 12px 40px hsl(270 50% 8% / 0.12);
-    --shadow-glow: 0 0 40px hsl(270 70% 55% / 0.25);
-    
-    --glass-bg: hsl(270 20% 100% / 0.7);
-    --glass-border: hsl(270 15% 88% / 0.5);
+    --destructive: 4 70% 50%;
+    --destructive-foreground: var(--bone);
 
-    --sidebar-background: 270 20% 98%;
-    --sidebar-foreground: 270 30% 30%;
-    --sidebar-primary: 270 50% 8%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 270 20% 94%;
-    --sidebar-accent-foreground: 270 50% 8%;
-    --sidebar-border: 270 15% 88%;
-    --sidebar-ring: 270 70% 55%;
-  }
+    --border: 42 30% 18%;
+    --input: 42 30% 22%;
+    --ring: var(--fire);
 
-  .dark {
-    --background: 270 30% 4%;
-    --foreground: 270 10% 95%;
+    --radius: 0px;
 
-    --card: 270 30% 7%;
-    --card-foreground: 270 10% 95%;
+    --sidebar-background: var(--void);
+    --sidebar-foreground: var(--bone);
+    --sidebar-primary: var(--gold);
+    --sidebar-primary-foreground: var(--void);
+    --sidebar-accent: var(--ash-raised);
+    --sidebar-accent-foreground: var(--bone);
+    --sidebar-border: 42 30% 18%;
+    --sidebar-ring: var(--fire);
 
-    --popover: 270 30% 7%;
-    --popover-foreground: 270 10% 95%;
-
-    --primary: 270 70% 60%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 270 30% 12%;
-    --secondary-foreground: 270 10% 95%;
-
-    --muted: 270 25% 12%;
-    --muted-foreground: 270 15% 60%;
-
-    --accent: 280 80% 65%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 270 10% 95%;
-
-    --border: 270 25% 15%;
-    --input: 270 25% 15%;
-    --ring: 270 70% 60%;
-
-    --gradient-primary: linear-gradient(135deg, hsl(270 70% 60%) 0%, hsl(290 80% 65%) 100%);
-    --gradient-secondary: linear-gradient(135deg, hsl(290 80% 70%) 0%, hsl(320 70% 65%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(270 30% 4%) 0%, hsl(270 70% 60% / 0.12) 100%);
-    
-    --shadow-sm: 0 1px 2px hsl(0 0% 0% / 0.3);
-    --shadow-md: 0 4px 12px hsl(0 0% 0% / 0.4);
-    --shadow-lg: 0 12px 40px hsl(0 0% 0% / 0.5);
-    --shadow-glow: 0 0 60px hsl(270 70% 60% / 0.3);
-    
-    --glass-bg: hsl(270 30% 7% / 0.85);
-    --glass-border: hsl(270 25% 15% / 0.6);
-
-    --sidebar-background: 270 30% 4%;
-    --sidebar-foreground: 270 10% 90%;
-    --sidebar-primary: 270 70% 60%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 270 30% 12%;
-    --sidebar-accent-foreground: 270 10% 95%;
-    --sidebar-border: 270 25% 15%;
-    --sidebar-ring: 270 70% 60%;
+    /* Smoke: soft fractal noise, warm, barely there */
+    --smoke-grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.62  0 0 0 0 0.46  0 0 0 0 0.26  0 0 0 0.045 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   }
 }
 
@@ -118,69 +107,341 @@
 
   html {
     scroll-behavior: smooth;
+    scrollbar-color: hsl(var(--gold-dim)) hsl(var(--void));
+    scrollbar-width: thin;
+    color-scheme: dark;
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground font-serif antialiased;
+    font-size: 1.0625rem;
+    font-weight: 300;
+    background-color: hsl(var(--void));
+    background-image: var(--smoke-grain);
+    caret-color: hsl(var(--fire));
+  }
+
+  ::selection {
+    background: hsl(var(--gold));
+    color: hsl(var(--void));
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--void));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--gold-dim));
+    border: 3px solid hsl(var(--void));
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--gold));
+  }
+
+  :focus-visible {
+    outline: 1px solid hsl(var(--fire));
+    outline-offset: 4px;
+  }
+
+  a {
+    text-underline-offset: 0.25em;
+    text-decoration-thickness: 1px;
+  }
+
+  h1, h2, h3 {
+    text-wrap: balance;
   }
 }
 
 @layer components {
-  .glass-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
+  /* Burnished gold capitals out of the dark, glowing with firelight. Set on inline
+     text: each line gets its own sweep of gilt. The glow is a filter (a text-shadow
+     would paint over clipped gilt), so animate filters on a parent, not on this. */
+  .gilded {
+    font-family: 'Cinzel', serif;
+    color: hsl(var(--gold));
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    filter: drop-shadow(0 1px 0 hsl(var(--void))) drop-shadow(0 0 0.4em hsl(var(--fire-deep) / 0.5));
+  }
+  @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    .gilded {
+      background-image: var(--gilt);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .gilded::selection {
+      -webkit-text-fill-color: hsl(var(--void));
+    }
   }
 
-  .gradient-text {
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  /* A burnished gold plate, bevelled light above and dark below, for filled buttons */
+  .gilt-plate {
+    background-image: linear-gradient(
+      180deg,
+      hsl(var(--gilt-pale)) 0%,
+      hsl(var(--gold-bright)) 20%,
+      hsl(var(--gilt-rich)) 60%,
+      hsl(var(--gilt-shade)) 100%
+    );
+    box-shadow:
+      inset 0 1px 0 hsl(var(--gilt-pale) / 0.9),
+      inset 0 -1px 0 hsl(var(--gilt-deep)),
+      0 10px 30px -12px hsl(var(--fire-deep));
   }
 
-  .gradient-border {
+  /* Gilt for a single line of label text centred in its box (buttons, actions);
+     icons drawn in currentColor take the bright gold. */
+  .gilt-label {
+    color: hsl(var(--gold-bright));
+  }
+  @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    .gilt-label {
+      background-image: var(--gilt);
+      background-size: 100% 1.4em;
+      background-position: center;
+      background-repeat: no-repeat;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  /* The drop cap: one capital in gilt, its sweep fitted to the letter itself. A real
+     element, since browsers ignore clipped backgrounds on ::first-letter. */
+  .gilt-initial {
+    color: hsl(var(--gold));
+    filter: drop-shadow(0 1px 0 hsl(var(--void))) drop-shadow(0 0 0.3em hsl(var(--fire-deep) / 0.5));
+  }
+  @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    .gilt-initial {
+      background-image: linear-gradient(
+        180deg,
+        hsl(var(--gilt-pale)) 22%,
+        hsl(var(--gold-bright)) 38%,
+        hsl(var(--gilt-rich)) 50%,
+        hsl(var(--gilt-deep)) 60%,
+        hsl(var(--gilt-rich)) 72%,
+        hsl(var(--gold-bright)) 84%,
+        hsl(var(--gilt-shade)) 100%
+      );
+      background-repeat: no-repeat;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  /* A hairline frame of polished gold, catching the light along one diagonal */
+  .gilt-edge {
     position: relative;
   }
-
-  .gradient-border::before {
-    content: '';
+  .gilt-edge::before {
+    content: "";
     position: absolute;
     inset: 0;
-    border-radius: inherit;
     padding: 1px;
-    background: var(--gradient-primary);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    border-radius: inherit;
+    background: linear-gradient(
+      115deg,
+      hsl(var(--gilt-shade)) 0%,
+      hsl(var(--gold-bright)) 28%,
+      hsl(var(--gilt-pale)) 42%,
+      hsl(var(--gilt-rich)) 58%,
+      hsl(var(--gilt-deep)) 82%,
+      hsl(var(--gilt-shade)) 100%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
-    mask-composite: exclude;
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+    opacity: 0.8;
     pointer-events: none;
+    transition: opacity 200ms ease-out;
+  }
+  .gilt-edge:hover::before {
+    opacity: 1;
   }
 
-  .hover-lift {
-    @apply transition-all duration-300 ease-out;
+  /* Small tracked capitals, as on the films' title and credit cards */
+  .credit {
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-weight: 600;
+    font-variant-numeric: lining-nums;
   }
 
-  .hover-lift:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+  .gold-rule {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--gold-dim)) 12%, hsl(var(--gold)) 50%, hsl(var(--gold-dim)) 88%, transparent);
   }
 
+  /* The map sheet: aged parchment lit from above, its edges scorched into the dark.
+     The ragged burn is the #map-burn displacement filter, set on this layer alone so
+     nothing drawn or written over it is distorted. */
+  .parchment {
+    background-color: hsl(var(--parchment));
+    background-image:
+      var(--parchment-fibre),
+      var(--parchment-mottle),
+      radial-gradient(ellipse 38% 16% at 24% 22%, hsl(var(--parchment-shade) / 0.2), transparent 70%),
+      radial-gradient(ellipse 30% 12% at 80% 58%, hsl(var(--parchment-shade) / 0.18), transparent 70%),
+      radial-gradient(ellipse 34% 10% at 30% 84%, hsl(var(--parchment-shade) / 0.16), transparent 70%),
+      radial-gradient(ellipse 110% 40% at 50% 0%, hsl(var(--parchment-light) / 0.5), transparent 70%),
+      radial-gradient(ellipse 130% 105% at 50% 48%, transparent 58%, hsl(var(--parchment-shade) / 0.9) 100%);
+    box-shadow:
+      inset 0 0 0 2px hsl(var(--void)),
+      inset 0 0 6px 3px hsl(var(--scorch)),
+      inset 0 0 22px 6px hsl(var(--scorch) / 0.75),
+      inset 0 0 80px 12px hsl(var(--scorch) / 0.35);
+    filter: url(#map-burn);
+  }
+
+  /* The map's folds and foxing: a sheet kept folded in quarters, spotted with age */
+  .map-folds {
+    background-image:
+      radial-gradient(circle at 14% 31%, hsl(var(--parchment-shade) / 0.32) 0, transparent 9px),
+      radial-gradient(circle at 83% 12%, hsl(var(--parchment-shade) / 0.26) 0, transparent 6px),
+      radial-gradient(circle at 71% 47%, hsl(var(--parchment-shade) / 0.24) 0, transparent 11px),
+      radial-gradient(circle at 22% 73%, hsl(var(--parchment-shade) / 0.28) 0, transparent 7px),
+      radial-gradient(circle at 88% 88%, hsl(var(--parchment-shade) / 0.3) 0, transparent 8px),
+      linear-gradient(90deg, transparent calc(50% - 3px), hsl(var(--scorch) / 0.1) calc(50% - 1px), hsl(var(--parchment-light) / 0.32) 50%, transparent calc(50% + 4px)),
+      linear-gradient(180deg, transparent calc(25% - 3px), hsl(var(--scorch) / 0.1) calc(25% - 1px), hsl(var(--parchment-light) / 0.3) 25%, transparent calc(25% + 4px)),
+      linear-gradient(180deg, transparent calc(50% - 3px), hsl(var(--scorch) / 0.1) calc(50% - 1px), hsl(var(--parchment-light) / 0.3) 50%, transparent calc(50% + 4px)),
+      linear-gradient(180deg, transparent calc(75% - 3px), hsl(var(--scorch) / 0.1) calc(75% - 1px), hsl(var(--parchment-light) / 0.3) 75%, transparent calc(75% + 4px));
+  }
+
+  /* The project etchings: gold line work rising out of the void, then its fire catching.
+     A flame is three nested moves so the transforms never fight: catch (once, from its
+     root), flare (while the visitor attends) and flicker (always, while on screen). */
+  .etching .etch-lines {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 1600ms cubic-bezier(0.16, 1, 0.3, 1), transform 1600ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .etching[data-lit] .etch-lines {
+    opacity: 1;
+    transform: none;
+  }
+  .etch-pool {
+    mix-blend-mode: screen;
+    opacity: 0;
+    transition: opacity 1400ms ease-out var(--d, 0ms);
+  }
+  .etching[data-lit] .etch-pool {
+    opacity: 0.7;
+  }
+  .etch-flame,
+  .etch-flare,
+  .etch-flicker {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+  }
+  .etch-flame {
+    opacity: 0;
+    transform: scale(0.05);
+    transition: transform 1100ms cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0ms), opacity 250ms ease-out var(--d, 0ms);
+  }
+  .etching[data-lit] .etch-flame {
+    opacity: 1;
+    transform: none;
+  }
+  .etch-flare {
+    transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .etch-flicker {
+    animation: etch-flicker 1.9s ease-in-out infinite alternate;
+  }
+  .etch-spark {
+    fill: hsl(var(--fire-core));
+    opacity: 0;
+    animation: etch-spark 3.2s ease-out infinite;
+  }
+  .etch-smoke {
+    opacity: 0;
+    transition: opacity 2400ms ease-out var(--d, 0ms);
+  }
+  .etching[data-lit] .etch-smoke {
+    opacity: 0.4;
+  }
+  .etch-sway {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: etch-sway 7s ease-in-out infinite alternate;
+  }
+  .etch-ember {
+    opacity: 0;
+    transition: opacity 900ms ease-out var(--d, 0ms);
+  }
+  .etching[data-lit] .etch-ember {
+    opacity: 1;
+  }
+  .etch-ember > path:first-child {
+    animation: etch-smoulder 2.8s ease-in-out infinite alternate;
+  }
+  .group:is(:hover, :focus-within) .etching[data-lit] .etch-pool {
+    opacity: 1;
+    transition-delay: 0ms;
+    transition-duration: 600ms;
+  }
+  .group:is(:hover, :focus-within) .etch-flare {
+    transform: scale(1.25);
+  }
+  .etching:not([data-playing]) * {
+    animation-play-state: paused;
+  }
+
+  @keyframes etch-flicker {
+    0% { transform: scale(1, 1) skewX(0deg); }
+    30% { transform: scale(0.93, 1.08) skewX(-4deg); }
+    55% { transform: scale(1.05, 0.93) skewX(2deg); }
+    80% { transform: scale(0.97, 1.05) skewX(-2deg); }
+    100% { transform: scale(1.02, 0.97) skewX(3deg); }
+  }
+  @keyframes etch-spark {
+    0% { opacity: 0; transform: translate(0, 0); }
+    12% { opacity: 1; }
+    100% { opacity: 0; transform: translate(var(--drift), var(--rise)); }
+  }
+  @keyframes etch-sway {
+    from { transform: skewX(-5deg) scaleY(0.96); }
+    to { transform: skewX(4deg) scaleY(1.03); }
+  }
+  @keyframes etch-smoulder {
+    from { opacity: 0.55; }
+    to { opacity: 1; }
+  }
+
+  /* A gold hairline frame with a second, finer line inside it */
+  .gold-frame {
+    box-shadow:
+      inset 0 0 0 1px hsl(var(--gold-dim)),
+      inset 0 0 0 5px hsl(var(--void)),
+      inset 0 0 0 6px hsl(var(--gold-dim) / 0.5);
+  }
+}
+
+@layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
 
-@layer utilities {
-  .animation-delay-150 {
-    animation-delay: 150ms;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-  .animation-delay-300 {
-    animation-delay: 300ms;
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
   }
-  .animation-delay-450 {
-    animation-delay: 450ms;
-  }
-  .animation-delay-600 {
-    animation-delay: 600ms;
+  /* The etchings arrive whole: no staggered catching. */
+  .etching * {
+    transition-delay: 0ms !important;
   }
 }

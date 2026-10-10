@@ -1,5 +1,4 @@
 import { Helmet } from "react-helmet-async";
-import { motion } from "framer-motion";
 import { Download, ExternalLink } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -17,21 +16,16 @@ const Resume = () => {
         />
       </Helmet>
       <Layout>
-        <section className="pt-32 pb-20">
+        <section className="pt-32 md:pt-44 pb-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeading
+              as="h1"
               title="Resume"
               subtitle="View my professional experience and qualifications"
             />
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="max-w-4xl mx-auto"
-            >
-              {/* Download buttons */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+            <div className="mx-auto max-w-4xl">
+              <div className="mb-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Button asChild variant="hero" size="lg">
                   <a href={siteConfig.resumeUrl} download>
                     <Download />
@@ -46,16 +40,17 @@ const Resume = () => {
                 </Button>
               </div>
 
-              {/* PDF Viewer */}
-              <div className="relative aspect-[8.5/11] w-full max-w-3xl mx-auto rounded-2xl overflow-hidden bg-card border border-border">
-                <embed
-                  src={`${siteConfig.resumeUrl}#toolbar=0&navpanes=0&scrollbar=0`}
-                  type="application/pdf"
-                  className="w-full h-full"
-                  title="Resume PDF"
-                />
+              <div className="gold-frame mx-auto max-w-3xl p-3 md:p-4">
+                <div className="relative aspect-[8.5/11] w-full overflow-hidden bg-bone">
+                  <embed
+                    src={`${siteConfig.resumeUrl}#toolbar=0&navpanes=0&scrollbar=0`}
+                    type="application/pdf"
+                    className="h-full w-full"
+                    title="Resume PDF"
+                  />
+                </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
       </Layout>

@@ -2,11 +2,6 @@
 // PORTFOLIO CONTENT - EDIT ALL TEXT HERE
 // ============================================
 
-import projectGridsmart from "@/assets/project-gridsmart.png";
-import projectStockrag from "@/assets/project-stockrag.png";
-import projectApexclip from "@/assets/project-apexclip.png";
-import projectBumblebee from "@/assets/project-bumblebee.jpg";
-
 export const siteConfig = {
   name: "Arnav Rajashekara",
   title: "Software Engineer - Systems & Data",
@@ -247,7 +242,6 @@ Matches are deduplicated in SQLite on canonical ATS job IDs, with a company + ti
 
 A discovery job runs every six hours to grow the watched company list by mining public new-grad listings, hiring Y Combinator startups, and previously seen URLs, then probing likely ATS slugs and only accepting boards whose company name plausibly matches.`,
     techStack: ["Python", "SQLite", "Greenhouse API", "Lever API", "Ashby API", "Discord"],
-    image: projectBumblebee,
     github: "https://github.com/araja7/Bumblebee",
     demo: null,
     featured: true,
@@ -263,7 +257,6 @@ PySceneDetect handles camera-cut detection so tracking state resets cleanly acro
 
 The pipeline outputs both a diagnostic stream with tracking overlays and the finished highlight compilation. Built with Python, OpenCV, Ultralytics YOLOv8, PySceneDetect, ByteTrack, and NumPy.`,
     techStack: ["Python", "OpenCV", "YOLOv8", "ByteTrack", "PySceneDetect", "NumPy"],
-    image: projectApexclip,
     github: "https://github.com/araja7/ApexClip",
     demo: null,
     featured: true,
@@ -279,7 +272,6 @@ The repo includes a one-shot cold-start orchestrator that sets up the Python ven
 
 Data pipeline coverage spans 7,138 EDGAR-listed companies across three Chroma collections (profiles, descriptions, annual snapshots), embedded with sentence-transformers/all-MiniLM-L6-v2. The RAG flow merges multi-collection search, formats a cited context blob, and maps LLM output to structured recommendations with EDGAR source URLs.`,
     techStack: ["Python", "FastAPI", "React", "ChromaDB", "Gemini", "Vite"],
-    image: projectStockrag,
     github: "https://github.com/araja7/StockRag",
     demo: null,
     featured: true,
@@ -295,7 +287,6 @@ Core features include real-time PJM API ingestion with CSV fallback, greedy sche
 
 Built with a FastAPI backend (scheduler, grid service, caching, fail-safe mode) and a Vite + React frontend. Simulated tests on PJM Ohio Hub data showed 15–40% cost reductions by shifting load from afternoon peaks to overnight troughs.`,
     techStack: ["Python", "FastAPI", "React", "Recharts", "PJM API", "Vite"],
-    image: projectGridsmart,
     github: "https://github.com/araja7/GridSmart",
     demo: null,
     featured: true,

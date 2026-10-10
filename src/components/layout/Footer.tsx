@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { siteConfig, socialLinks, navLinks } from "@/lib/content";
 
+/** The footer as end credits: centred, one line at a time, gold rules between. */
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -12,63 +13,48 @@ export function Footer() {
   ];
 
   return (
-    <footer className="border-t border-border bg-card/50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Brand */}
-          <div className="space-y-4">
-            <Link to="/" className="text-2xl font-bold">
-              <span className="gradient-text">{siteConfig.name}</span>
-            </Link>
-            {/* <p className="text-muted-foreground text-sm max-w-xs">
-              {siteConfig.tagline}
-            </p> */}
-          </div>
+    <footer className="mt-20 text-center">
+      <div className="gold-rule opacity-70" aria-hidden="true" />
+      <div className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
+        <Link to="/" className="gilded text-2xl md:text-3xl font-semibold uppercase tracking-[0.14em]">
+          {siteConfig.name}
+        </Link>
 
-          {/* Navigation */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-foreground">Navigation</h4>
-            <nav className="flex flex-col gap-2">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
+        <nav aria-label="Footer" className="mt-12">
+          <h2 className="credit gilt-label text-[0.66rem]">Navigation</h2>
+          <ul className="mt-4 flex flex-wrap items-center justify-center gap-x-8 gap-y-2">
+            {navLinks.map((link) => (
+              <li key={link.href} className="whitespace-nowrap">
+                <Link to={link.href} className="font-display tracking-[0.06em] text-bone-dim transition-colors hover:text-gold-bright">
                   {link.name}
                 </Link>
-              ))}
-            </nav>
-          </div>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-          {/* Social */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-foreground">Connect</h4>
-            <div className="flex gap-3">
-              {socialIcons.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-all duration-200"
-                  aria-label={social.label}
-                >
-                  <social.icon size={18} />
-                </a>
-              ))}
-            </div>
-            <p className="text-muted-foreground text-sm">
-              {siteConfig.location}
-            </p>
+        <div className="mt-12">
+          <h2 className="credit gilt-label text-[0.66rem]">Connect</h2>
+          <div className="mt-5 flex justify-center gap-3">
+            {socialIcons.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="grid h-11 w-11 place-items-center rounded-full gilt-edge text-gold-bright transition-[filter] hover:brightness-125"
+                aria-label={social.label}
+              >
+                <social.icon size={17} strokeWidth={1.5} />
+              </a>
+            ))}
           </div>
+          <p className="mt-5 italic text-bone-dim">{siteConfig.location}</p>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border">
-          <p className="text-center text-muted-foreground text-sm">
-            © {currentYear} {siteConfig.name}. All rights reserved.
-          </p>
-        </div>
+        <p className="credit mt-16 text-[0.6rem] text-bone-dim">
+          © {currentYear} {siteConfig.name}. All rights reserved.
+        </p>
       </div>
     </footer>
   );

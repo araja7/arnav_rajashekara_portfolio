@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 
 interface PublicationCardProps {
@@ -16,33 +15,25 @@ interface PublicationCardProps {
   index: number;
 }
 
-export function PublicationCard({ publication, index }: PublicationCardProps) {
+/** A publication as a title card in a gold frame. */
+export function PublicationCard({ publication }: PublicationCardProps) {
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="p-6 rounded-2xl bg-card border border-border hover-lift"
-    >
-      <div className="flex flex-wrap items-center gap-2 text-sm">
-        <span className="px-2 py-1 rounded-md bg-primary/10 text-primary font-medium">
-          {publication.type}
-        </span>
-        <span className="text-muted-foreground">{publication.year}</span>
-      </div>
-
-      <h3 className="mt-3 text-lg font-semibold text-foreground leading-snug">
-        {publication.title}
-      </h3>
-      <p className="mt-1 text-sm text-muted-foreground">{publication.venue}</p>
-
-      <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-        {publication.description}
+    <article aria-labelledby={`publication-${publication.id}`} className="gold-frame bg-ash/60 px-7 py-10 md:px-14 md:py-14">
+      <h2
+        id={`publication-${publication.id}`}
+        className="font-display text-[1.6rem] md:text-[2.2rem] font-semibold leading-[1.15] tracking-[0.02em]"
+      >
+        <span className="gilded">{publication.title}</span>
+      </h2>
+      <p className="mt-5 text-lg italic text-bone">{publication.venue}</p>
+      <p className="credit mt-2 text-[0.66rem] text-bone-dim">
+        {publication.type} · {publication.year}
       </p>
+      <div className="gold-rule my-8 opacity-60" aria-hidden="true" />
+      <p className="max-w-[65ch] text-[1.12rem] leading-[1.8] text-bone">{publication.description}</p>
 
       {publication.highlights && publication.highlights.length > 0 && (
-        <ul className="mt-3 space-y-1 text-sm text-muted-foreground list-disc list-inside">
+        <ul className="mt-4 list-inside list-disc space-y-1 text-bone-dim">
           {publication.highlights.map((highlight) => (
             <li key={highlight}>{highlight}</li>
           ))}
@@ -54,12 +45,12 @@ export function PublicationCard({ publication, index }: PublicationCardProps) {
           href={publication.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+          className="credit mt-9 inline-flex h-11 items-center gap-2 gilt-plate px-6 text-[0.68rem] text-void transition-[filter] hover:brightness-110"
         >
           {publication.linkLabel ?? "View publication"}
           <ExternalLink size={14} />
         </a>
       )}
-    </motion.article>
+    </article>
   );
 }

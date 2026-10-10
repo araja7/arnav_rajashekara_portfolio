@@ -1,10 +1,10 @@
 import { Helmet } from "react-helmet-async";
-import { motion } from "framer-motion";
 import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
-import { Home, ArrowLeft } from "lucide-react";
+import { ArrowLeft, Home } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
+import { TheRing } from "@/components/prologue/TheRing";
 import { siteConfig } from "@/lib/content";
 
 const NotFound = () => {
@@ -21,43 +21,36 @@ const NotFound = () => {
         <meta name="description" content="The page you're looking for doesn't exist." />
       </Helmet>
       <Layout>
-        <section className="min-h-[80vh] flex items-center justify-center">
+        <section className="flex min-h-[88vh] items-center pt-28 pb-20">
           <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-center"
-            >
-              <motion.span
-                initial={{ scale: 0.5, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                className="inline-block text-8xl md:text-9xl font-bold gradient-text mb-4"
-              >
-                404
-              </motion.span>
-              <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Page Not Found
-              </h1>
-              <p className="text-muted-foreground text-lg mb-8 max-w-md mx-auto">
-                The page you're looking for doesn't exist or has been moved.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button asChild variant="hero" size="lg">
-                  <Link to="/">
-                    <Home />
-                    Go Home
-                  </Link>
-                </Button>
-                <Button asChild variant="heroOutline" size="lg" onClick={() => window.history.back()}>
-                  <span className="cursor-pointer">
+            <div className="mx-auto max-w-3xl text-center">
+              <div className="relative mx-auto flex w-fit items-center justify-center">
+                <TheRing className="absolute h-[clamp(9rem,26vw,15rem)] w-[clamp(9rem,26vw,15rem)] opacity-25" />
+                <span className="gilded relative text-[clamp(5.5rem,16vw,9.5rem)] font-semibold leading-none tracking-[0.04em]">
+                  404
+                </span>
+              </div>
+              <div>
+                <h1 className="mt-10 font-display text-[clamp(1.9rem,4.5vw,3.4rem)] font-semibold uppercase leading-[1] tracking-[0.06em]">
+                  <span className="gilded">Page Not Found</span>
+                </h1>
+                <p className="mx-auto mt-6 max-w-xl text-lg font-light italic text-bone-dim md:text-xl">
+                  The page you're looking for doesn't exist or has been moved.
+                </p>
+                <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                  <Button asChild variant="hero" size="lg">
+                    <Link to="/">
+                      <Home />
+                      Go Home
+                    </Link>
+                  </Button>
+                  <Button variant="heroOutline" size="lg" onClick={() => window.history.back()}>
                     <ArrowLeft />
                     Go Back
-                  </span>
-                </Button>
+                  </Button>
+                </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
       </Layout>
