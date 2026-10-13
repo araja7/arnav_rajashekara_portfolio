@@ -63,7 +63,7 @@ export const aboutContent = {
     `When I'm not coding, you'll find me weightlifting, watching sports (Go Seahawks, Kraken, Mariners, Buckeyes, and 
     Trailblazers until the Sonics come back haha), reading, playing piano, or exploring new technologies. I'm a 
     huge fan of Lord of the Rings, Star Wars, Transformers, and Marvel/DC. Some of my favorite TV shows 
-    include Avatar the Last Airbender, Game of Thrones, Friends, Attack on Titan, and How I Met Your Mother, 
+    include Avatar the Last Airbender, Game of Thrones, Friends, Attack on Titan, and How I Met Your Mother. 
     I also love spending time with my friends and family.`,
     `I welcome opportunities to apply my technical skills to build impactful products.`,
   ],
